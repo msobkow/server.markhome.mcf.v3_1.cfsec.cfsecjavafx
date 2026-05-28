@@ -79,7 +79,7 @@ implements ICFSecJavaFXSecTentGrpPaneList
 	protected ICFFormManager cfFormManager = null;
 	protected boolean javafxIsInitializing = true;
 	protected boolean javafxSortByChain = false;
-	protected ICFLibAnyObj javafxContainer = null;
+	protected ICFSecTenantObj javafxContainer = null;
 	protected ICFRefreshCallback javafxRefreshCallback = null;
 	class ViewEditClosedCallback implements ICFFormClosedCallback {
 		public ViewEditClosedCallback() {
@@ -132,7 +132,7 @@ implements ICFSecJavaFXSecTentGrpPaneList
 
 	public CFSecJavaFXSecTentGrpListPane( ICFFormManager formManager,
 		ICFSecJavaFXSchema argSchema,
-		ICFLibAnyObj argContainer,
+		ICFSecTenantObj argContainer,
 		ICFSecSecTentGrpObj argFocus,
 		Collection<ICFSecSecTentGrpObj> argDataCollection,
 		ICFRefreshCallback refreshCallback,
@@ -388,8 +388,14 @@ implements ICFSecJavaFXSecTentGrpPaneList
 								0,
 								"edit" );
 						}
-								ICFSecTenantObj secTenant = schemaObj.getSecTenant();
-								edit.setRequiredOwnerTenant( secTenant );
+								ICFSecTenantObj container = (ICFSecTenantObj)( getJavaFXContainer() );
+								if( container == null ) {
+									throw new CFLibNullArgumentException( getClass(),
+										S_ProcName,
+										0,
+										"JavaFXContainer" );
+								}
+								edit.setRequiredContainerTenant( container );
 						CFBorderPane frame = javafxSchema.getSecTentGrpFactory().newAddForm( cfFormManager, obj, getViewEditClosedCallback(), true );
 						ICFSecJavaFXSecTentGrpPaneCommon jpanelCommon = (ICFSecJavaFXSecTentGrpPaneCommon)frame;
 						jpanelCommon.setJavaFXFocus( obj );
@@ -526,11 +532,11 @@ implements ICFSecJavaFXSecTentGrpPaneList
 		return( hboxMenu );
 	}
 
-	public ICFLibAnyObj getJavaFXContainer() {
+	public ICFSecTenantObj getJavaFXContainer() {
 		return( javafxContainer );
 	}
 
-	public void setJavaFXContainer( ICFLibAnyObj value ) {
+	public void setJavaFXContainer( ICFSecTenantObj value ) {
 		javafxContainer = value;
 	}
 

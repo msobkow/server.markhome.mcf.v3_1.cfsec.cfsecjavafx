@@ -65,7 +65,7 @@ implements ICFSecJavaFXSecTentRoleFactory
 	}
 
 	public CFBorderPane newListPane( ICFFormManager formManager,
-		ICFSecSecSysGrpObj argContainer,
+		ICFSecTenantObj argContainer,
 		ICFSecSecTentRoleObj argFocus,
 		Collection<ICFSecSecTentRoleObj> argDataCollection,
 		ICFRefreshCallback refreshCallback,
@@ -83,7 +83,7 @@ implements ICFSecJavaFXSecTentRoleFactory
 
 	public CFBorderPane newPickerPane( ICFFormManager formManager,
 		ICFSecSecTentRoleObj argFocus,
-		ICFSecSecSysGrpObj argContainer,
+		ICFSecTenantObj argContainer,
 		Collection<ICFSecSecTentRoleObj> argDataCollection,
 		ICFSecJavaFXSecTentRoleChosen whenChosen )
 	{
@@ -116,9 +116,14 @@ implements ICFSecJavaFXSecTentRoleFactory
 		return( retnew );
 	}
 
+	public CFBorderPane newFinderForm( ICFFormManager formManager ) {
+		CFSecJavaFXSecTentRoleFinderForm retnew = new CFSecJavaFXSecTentRoleFinderForm( formManager, javafxSchema );
+		return( retnew );
+	}
+
 	public CFBorderPane newPickerForm( ICFFormManager formManager,
 		ICFSecSecTentRoleObj argFocus,
-		ICFSecSecSysGrpObj argContainer,
+		ICFSecTenantObj argContainer,
 		Collection<ICFSecSecTentRoleObj> argDataCollection,
 		ICFSecJavaFXSecTentRoleChosen whenChosen )
 	{

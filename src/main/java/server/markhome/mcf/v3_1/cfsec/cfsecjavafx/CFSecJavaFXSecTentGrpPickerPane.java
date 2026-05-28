@@ -74,7 +74,7 @@ implements ICFSecJavaFXSecTentGrpPaneList
 	public final String S_ColumnNames[] = { "Name" };
 	protected ICFFormManager cfFormManager = null;
 	protected ICFSecJavaFXSecTentGrpChosen invokeWhenChosen = null;
-	protected ICFLibAnyObj javafxContainer = null;
+	protected ICFSecTenantObj javafxContainer = null;
 	protected CFButton buttonCancel = null;
 	protected CFButton buttonChooseNone = null;
 	protected CFButton buttonChooseSelected = null;
@@ -82,7 +82,7 @@ implements ICFSecJavaFXSecTentGrpPaneList
 	public CFSecJavaFXSecTentGrpPickerPane( ICFFormManager formManager,
 		ICFSecJavaFXSchema argSchema,
 		ICFSecSecTentGrpObj argFocus,
-		ICFLibAnyObj argContainer,
+		ICFSecTenantObj argContainer,
 		Collection<ICFSecSecTentGrpObj> argDataCollection,
 		ICFSecJavaFXSecTentGrpChosen whenChosen )
 	{
@@ -364,11 +364,11 @@ implements ICFSecJavaFXSecTentGrpPaneList
 		}
 	}
 
-	public ICFLibAnyObj getJavaFXContainer() {
+	public ICFSecTenantObj getJavaFXContainer() {
 		return( javafxContainer );
 	}
 
-	public void setJavaFXContainer( ICFLibAnyObj value ) {
+	public void setJavaFXContainer( ICFSecTenantObj value ) {
 		javafxContainer = value;
 	}
 

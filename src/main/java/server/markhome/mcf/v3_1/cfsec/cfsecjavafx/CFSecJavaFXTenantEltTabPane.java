@@ -56,7 +56,10 @@ implements ICFSecJavaFXTenantPaneCommon
 	protected boolean javafxIsInitializing = true;
 	public final String LABEL_TabComponentsSecGroupList = "Optional Components Tenant Security Group";
 	protected CFTab tabComponentsSecGroup = null;
+	public final String LABEL_TabComponentsSecRoleList = "Optional Components Security Role";
+	protected CFTab tabComponentsSecRole = null;
 	protected CFBorderPane tabViewComponentsSecGroupListPane = null;
+	protected CFBorderPane tabViewComponentsSecRoleListPane = null;
 
 	public CFSecJavaFXTenantEltTabPane( ICFFormManager formManager, ICFSecJavaFXSchema argSchema, ICFSecTenantObj argFocus ) {
 		super();
@@ -83,6 +86,10 @@ implements ICFSecJavaFXTenantPaneCommon
 		tabComponentsSecGroup.setText( LABEL_TabComponentsSecGroupList );
 		tabComponentsSecGroup.setContent( getTabViewComponentsSecGroupListPane() );
 		getTabs().add( tabComponentsSecGroup );
+		tabComponentsSecRole = new CFTab();
+		tabComponentsSecRole.setText( LABEL_TabComponentsSecRoleList );
+		tabComponentsSecRole.setContent( getTabViewComponentsSecRoleListPane() );
+		getTabs().add( tabComponentsSecRole );
 		javafxIsInitializing = false;
 	}
 
@@ -158,11 +165,59 @@ implements ICFSecJavaFXTenantPaneCommon
 			else {
 				dataCollection = null;
 			}
-			ICFLibAnyObj javafxContainer;
-			javafxContainer = null;
+			ICFSecTenantObj javafxContainer;
+			if( ( focus != null ) && ( focus instanceof ICFSecTenantObj ) ) {
+				javafxContainer = (ICFSecTenantObj)focus;
+			}
+			else {
+				javafxContainer = null;
+			}
 			tabViewComponentsSecGroupListPane = javafxSchema.getSecTentGrpFactory().newListPane( cfFormManager, javafxContainer, null, dataCollection, new RefreshComponentsSecGroupList(), false );
 		}
 		return( tabViewComponentsSecGroupListPane );
+	}
+
+	protected class RefreshComponentsSecRoleList
+	implements ICFRefreshCallback
+	{
+		public RefreshComponentsSecRoleList() {
+		}
+
+		public void refreshMe() {
+			Collection<ICFSecSecTentRoleObj> dataCollection;
+			ICFSecTenantObj focus = (ICFSecTenantObj)getJavaFXFocusAsTenant();
+			if( focus != null ) {
+				dataCollection = focus.getOptionalComponentsSecRole( javafxIsInitializing );
+			}
+			else {
+				dataCollection = null;
+			}
+			CFBorderPane pane = getTabViewComponentsSecRoleListPane();
+			ICFSecJavaFXSecTentRolePaneList jpList = (ICFSecJavaFXSecTentRolePaneList)pane;
+			jpList.setJavaFXDataCollection( dataCollection );
+		}
+	}
+
+	public CFBorderPane getTabViewComponentsSecRoleListPane() {
+		if( tabViewComponentsSecRoleListPane == null ) {
+			ICFSecTenantObj focus = (ICFSecTenantObj)getJavaFXFocusAsTenant();
+			Collection<ICFSecSecTentRoleObj> dataCollection;
+			if( focus != null ) {
+				dataCollection = focus.getOptionalComponentsSecRole( javafxIsInitializing );
+			}
+			else {
+				dataCollection = null;
+			}
+			ICFSecTenantObj javafxContainer;
+			if( ( focus != null ) && ( focus instanceof ICFSecTenantObj ) ) {
+				javafxContainer = (ICFSecTenantObj)focus;
+			}
+			else {
+				javafxContainer = null;
+			}
+			tabViewComponentsSecRoleListPane = javafxSchema.getSecTentRoleFactory().newListPane( cfFormManager, javafxContainer, null, dataCollection, new RefreshComponentsSecRoleList(), false );
+		}
+		return( tabViewComponentsSecRoleListPane );
 	}
 
 	public void setPaneMode( CFPane.PaneMode value ) {
@@ -170,6 +225,9 @@ implements ICFSecJavaFXTenantPaneCommon
 		super.setPaneMode( value );
 		if( tabViewComponentsSecGroupListPane != null ) {
 			((ICFSecJavaFXSecTentGrpPaneCommon)tabViewComponentsSecGroupListPane).setPaneMode( value );
+		}
+		if( tabViewComponentsSecRoleListPane != null ) {
+			((ICFSecJavaFXSecTentRolePaneCommon)tabViewComponentsSecRoleListPane).setPaneMode( value );
 		}
 	}
 }

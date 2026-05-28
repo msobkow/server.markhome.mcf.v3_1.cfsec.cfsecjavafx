@@ -265,9 +265,9 @@ implements ICFSecJavaFXClusterPaneCommon
 			else {
 				dataCollection = null;
 			}
-			ICFSecSecSysGrpObj javafxContainer;
-			if( ( focus != null ) && ( focus instanceof ICFSecSecSysGrpObj ) ) {
-				javafxContainer = (ICFSecSecSysGrpObj)focus;
+			ICFSecClusterObj javafxContainer;
+			if( ( focus != null ) && ( focus instanceof ICFSecClusterObj ) ) {
+				javafxContainer = (ICFSecClusterObj)focus;
 			}
 			else {
 				javafxContainer = null;

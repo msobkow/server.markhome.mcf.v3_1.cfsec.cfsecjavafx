@@ -370,8 +370,13 @@ implements ICFSecJavaFXSecSysGrpPaneCommon
 			else {
 				dataCollection = null;
 			}
-			ICFLibAnyObj javafxContainer;
-			javafxContainer = null;
+			ICFSecTenantObj javafxContainer;
+			if( ( focus != null ) && ( focus instanceof ICFSecTenantObj ) ) {
+				javafxContainer = (ICFSecTenantObj)focus;
+			}
+			else {
+				javafxContainer = null;
+			}
 			tabViewChildrenImplTentGrpListPane = javafxSchema.getSecTentGrpFactory().newListPane( cfFormManager, javafxContainer, null, dataCollection, new RefreshChildrenImplTentGrpList(), false );
 		}
 		return( tabViewChildrenImplTentGrpListPane );
@@ -408,9 +413,9 @@ implements ICFSecJavaFXSecSysGrpPaneCommon
 			else {
 				dataCollection = null;
 			}
-			ICFSecSecSysGrpObj javafxContainer;
-			if( ( focus != null ) && ( focus instanceof ICFSecSecSysGrpObj ) ) {
-				javafxContainer = (ICFSecSecSysGrpObj)focus;
+			ICFSecClusterObj javafxContainer;
+			if( ( focus != null ) && ( focus instanceof ICFSecClusterObj ) ) {
+				javafxContainer = (ICFSecClusterObj)focus;
 			}
 			else {
 				javafxContainer = null;
@@ -451,9 +456,9 @@ implements ICFSecJavaFXSecSysGrpPaneCommon
 			else {
 				dataCollection = null;
 			}
-			ICFSecSecSysGrpObj javafxContainer;
-			if( ( focus != null ) && ( focus instanceof ICFSecSecSysGrpObj ) ) {
-				javafxContainer = (ICFSecSecSysGrpObj)focus;
+			ICFSecTenantObj javafxContainer;
+			if( ( focus != null ) && ( focus instanceof ICFSecTenantObj ) ) {
+				javafxContainer = (ICFSecTenantObj)focus;
 			}
 			else {
 				javafxContainer = null;

@@ -73,12 +73,13 @@ implements ICFSecJavaFXSecClusRolePaneList
 	protected CFButton buttonDeleteSelected = null;
 	protected TableView<ICFSecSecClusRoleObj> dataTable = null;
 	protected TableColumn<ICFSecSecClusRoleObj, CFLibDbKeyHash256> tableColumnSecClusRoleId = null;
+	protected TableColumn<ICFSecSecClusRoleObj, ICFSecSecSysGrpObj> tableColumnParentSysRole = null;
 
 	public final String S_ColumnNames[] = { "Name" };
 	protected ICFFormManager cfFormManager = null;
 	protected boolean javafxIsInitializing = true;
 	protected boolean javafxSortByChain = false;
-	protected ICFSecSecSysGrpObj javafxContainer = null;
+	protected ICFSecClusterObj javafxContainer = null;
 	protected ICFRefreshCallback javafxRefreshCallback = null;
 	class ViewEditClosedCallback implements ICFFormClosedCallback {
 		public ViewEditClosedCallback() {
@@ -131,7 +132,7 @@ implements ICFSecJavaFXSecClusRolePaneList
 
 	public CFSecJavaFXSecClusRoleListPane( ICFFormManager formManager,
 		ICFSecJavaFXSchema argSchema,
-		ICFSecSecSysGrpObj argContainer,
+		ICFSecClusterObj argContainer,
 		ICFSecSecClusRoleObj argFocus,
 		Collection<ICFSecSecClusRoleObj> argDataCollection,
 		ICFRefreshCallback refreshCallback,
@@ -184,6 +185,29 @@ implements ICFSecJavaFXSecClusRolePaneList
 			}
 		});
 		dataTable.getColumns().add( tableColumnSecClusRoleId );
+		tableColumnParentSysRole = new TableColumn<ICFSecSecClusRoleObj, ICFSecSecSysGrpObj>( "System Role" );
+		tableColumnParentSysRole.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecClusRoleObj,ICFSecSecSysGrpObj>,ObservableValue<ICFSecSecSysGrpObj> >() {
+			public ObservableValue<ICFSecSecSysGrpObj> call( CellDataFeatures<ICFSecSecClusRoleObj, ICFSecSecSysGrpObj> p ) {
+				ICFSecSecClusRoleObj obj = p.getValue();
+				if( obj == null ) {
+					return( null );
+				}
+				else {
+					ICFSecSecSysGrpObj ref = obj.getRequiredParentSysRole();
+					ReadOnlyObjectWrapper<ICFSecSecSysGrpObj> observable = new ReadOnlyObjectWrapper<ICFSecSecSysGrpObj>();
+					observable.setValue( ref );
+					return( observable );
+				}
+			}
+		});
+		tableColumnParentSysRole.setCellFactory( new Callback<TableColumn<ICFSecSecClusRoleObj,ICFSecSecSysGrpObj>,TableCell<ICFSecSecClusRoleObj,ICFSecSecSysGrpObj>>() {
+			@Override public TableCell<ICFSecSecClusRoleObj,ICFSecSecSysGrpObj> call(
+				TableColumn<ICFSecSecClusRoleObj,ICFSecSecSysGrpObj> arg)
+			{
+				return new CFReferenceTableCell<ICFSecSecClusRoleObj,ICFSecSecSysGrpObj>();
+			}
+		});
+		dataTable.getColumns().add( tableColumnParentSysRole );
 		dataTable.getSelectionModel().selectedItemProperty().addListener(
 			new ChangeListener<ICFSecSecClusRoleObj>() {
 				@Override public void changed( ObservableValue<? extends ICFSecSecClusRoleObj> observable,
@@ -364,16 +388,14 @@ implements ICFSecJavaFXSecClusRolePaneList
 								0,
 								"edit" );
 						}
-								ICFSecClusterObj secCluster = schemaObj.getSecCluster();
-								edit.setRequiredOwnerCluster( secCluster );
-								ICFSecSecSysGrpObj container = (ICFSecSecSysGrpObj)( getJavaFXContainer() );
+								ICFSecClusterObj container = (ICFSecClusterObj)( getJavaFXContainer() );
 								if( container == null ) {
 									throw new CFLibNullArgumentException( getClass(),
 										S_ProcName,
 										0,
 										"JavaFXContainer" );
 								}
-								edit.setRequiredContainerSysRole( container );
+								edit.setRequiredContainerCluster( container );
 						CFBorderPane frame = javafxSchema.getSecClusRoleFactory().newAddForm( cfFormManager, obj, getViewEditClosedCallback(), true );
 						ICFSecJavaFXSecClusRolePaneCommon jpanelCommon = (ICFSecJavaFXSecClusRolePaneCommon)frame;
 						jpanelCommon.setJavaFXFocus( obj );
@@ -510,11 +532,11 @@ implements ICFSecJavaFXSecClusRolePaneList
 		return( hboxMenu );
 	}
 
-	public ICFSecSecSysGrpObj getJavaFXContainer() {
+	public ICFSecClusterObj getJavaFXContainer() {
 		return( javafxContainer );
 	}
 
-	public void setJavaFXContainer( ICFSecSecSysGrpObj value ) {
+	public void setJavaFXContainer( ICFSecClusterObj value ) {
 		javafxContainer = value;
 	}
 
