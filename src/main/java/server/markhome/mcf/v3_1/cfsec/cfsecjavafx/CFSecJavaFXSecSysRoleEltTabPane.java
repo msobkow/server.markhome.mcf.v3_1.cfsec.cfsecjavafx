@@ -54,11 +54,11 @@ implements ICFSecJavaFXSecSysRolePaneCommon
 	protected ICFFormManager cfFormManager = null;
 	protected ICFSecJavaFXSchema javafxSchema = null;
 	protected boolean javafxIsInitializing = true;
-	public final String LABEL_TabChildrenEnabledByRoleList = "Optional Children Enabled by Role";
-	protected CFTab tabChildrenEnabledByRole = null;
+	public final String LABEL_TabComponentsEnabledByRoleList = "Optional Components Enabled by Role";
+	protected CFTab tabComponentsEnabledByRole = null;
 	public final String LABEL_TabChildrenMembByRoleList = "Optional Children Members of System Role";
 	protected CFTab tabChildrenMembByRole = null;
-	protected CFBorderPane tabViewChildrenEnabledByRoleListPane = null;
+	protected CFBorderPane tabViewComponentsEnabledByRoleListPane = null;
 	protected CFBorderPane tabViewChildrenMembByRoleListPane = null;
 
 	public CFSecJavaFXSecSysRoleEltTabPane( ICFFormManager formManager, ICFSecJavaFXSchema argSchema, ICFSecSecSysRoleObj argFocus ) {
@@ -82,10 +82,10 @@ implements ICFSecJavaFXSecSysRolePaneCommon
 		javafxSchema = argSchema;
 		setJavaFXFocusAsSecSysRole( argFocus );
 		// Wire the newly constructed Panes/Tabs to this TabPane
-		tabChildrenEnabledByRole = new CFTab();
-		tabChildrenEnabledByRole.setText( LABEL_TabChildrenEnabledByRoleList );
-		tabChildrenEnabledByRole.setContent( getTabViewChildrenEnabledByRoleListPane() );
-		getTabs().add( tabChildrenEnabledByRole );
+		tabComponentsEnabledByRole = new CFTab();
+		tabComponentsEnabledByRole.setText( LABEL_TabComponentsEnabledByRoleList );
+		tabComponentsEnabledByRole.setContent( getTabViewComponentsEnabledByRoleListPane() );
+		getTabs().add( tabComponentsEnabledByRole );
 		tabChildrenMembByRole = new CFTab();
 		tabChildrenMembByRole.setText( LABEL_TabChildrenMembByRoleList );
 		tabChildrenMembByRole.setContent( getTabViewChildrenMembByRoleListPane() );
@@ -134,10 +134,10 @@ implements ICFSecJavaFXSecSysRolePaneCommon
 		return( (ICFSecSecSysRoleObj)getJavaFXFocus() );
 	}
 
-	protected class RefreshChildrenEnabledByRoleList
+	protected class RefreshComponentsEnabledByRoleList
 	implements ICFRefreshCallback
 	{
-		public RefreshChildrenEnabledByRoleList() {
+		public RefreshComponentsEnabledByRoleList() {
 		}
 
 		public void refreshMe() {
@@ -145,10 +145,10 @@ implements ICFSecJavaFXSecSysRolePaneCommon
 		}
 	}
 
-	protected class PageDataChildrenEnabledByRoleList
+	protected class PageDataComponentsEnabledByRoleList
 	implements ICFSecJavaFXSecSysRoleEnablesPageCallback
 	{
-		public PageDataChildrenEnabledByRoleList() {
+		public PageDataComponentsEnabledByRoleList() {
 		}
 
 		public List<ICFSecSecSysRoleEnablesObj> pageData( CFLibDbKeyHash256 priorSecSysRoleId,
@@ -169,8 +169,8 @@ implements ICFSecJavaFXSecSysRolePaneCommon
 		}
 	}
 
-	public CFBorderPane getTabViewChildrenEnabledByRoleListPane() {
-		if( tabViewChildrenEnabledByRoleListPane == null ) {
+	public CFBorderPane getTabViewComponentsEnabledByRoleListPane() {
+		if( tabViewComponentsEnabledByRoleListPane == null ) {
 			ICFSecSecSysRoleObj focus = (ICFSecSecSysRoleObj)getJavaFXFocusAsSecSysRole();
 			ICFSecSecSysRoleObj javafxContainer;
 			if( ( focus != null ) && ( focus instanceof ICFSecSecSysRoleObj ) ) {
@@ -179,9 +179,9 @@ implements ICFSecJavaFXSecSysRolePaneCommon
 			else {
 				javafxContainer = null;
 			}
-			tabViewChildrenEnabledByRoleListPane = javafxSchema.getSecSysRoleEnablesFactory().newListPane( cfFormManager, javafxContainer, null, new PageDataChildrenEnabledByRoleList(), new RefreshChildrenEnabledByRoleList(), false );
+			tabViewComponentsEnabledByRoleListPane = javafxSchema.getSecSysRoleEnablesFactory().newListPane( cfFormManager, javafxContainer, null, new PageDataComponentsEnabledByRoleList(), new RefreshComponentsEnabledByRoleList(), false );
 		}
-		return( tabViewChildrenEnabledByRoleListPane );
+		return( tabViewComponentsEnabledByRoleListPane );
 	}
 
 	protected class RefreshChildrenMembByRoleList
@@ -237,8 +237,8 @@ implements ICFSecJavaFXSecSysRolePaneCommon
 	public void setPaneMode( CFPane.PaneMode value ) {
 		CFPane.PaneMode oldMode = getPaneMode();
 		super.setPaneMode( value );
-		if( tabViewChildrenEnabledByRoleListPane != null ) {
-			((ICFSecJavaFXSecSysRoleEnablesPaneCommon)tabViewChildrenEnabledByRoleListPane).setPaneMode( value );
+		if( tabViewComponentsEnabledByRoleListPane != null ) {
+			((ICFSecJavaFXSecSysRoleEnablesPaneCommon)tabViewComponentsEnabledByRoleListPane).setPaneMode( value );
 		}
 		if( tabViewChildrenMembByRoleListPane != null ) {
 			((ICFSecJavaFXSecSysRoleMembPaneCommon)tabViewChildrenMembByRoleListPane).setPaneMode( value );

@@ -68,13 +68,12 @@ implements ICFSecJavaFXSecClusRolePaneList
 	protected Collection<ICFSecSecClusRoleObj> javafxDataCollection = null;
 	protected ObservableList<ICFSecSecClusRoleObj> observableListOfSecClusRole = null;
 	protected TableColumn<ICFSecSecClusRoleObj, CFLibDbKeyHash256> tableColumnSecClusRoleId = null;
-	protected TableColumn<ICFSecSecClusRoleObj, ICFSecSecSysGrpObj> tableColumnParentSysRole = null;
 	protected TableView<ICFSecSecClusRoleObj> dataTable = null;
 	protected CFHBox hboxMenu = null;
 	public final String S_ColumnNames[] = { "Name" };
 	protected ICFFormManager cfFormManager = null;
 	protected ICFSecJavaFXSecClusRoleChosen invokeWhenChosen = null;
-	protected ICFSecClusterObj javafxContainer = null;
+	protected ICFSecSecSysGrpObj javafxContainer = null;
 	protected CFButton buttonCancel = null;
 	protected CFButton buttonChooseNone = null;
 	protected CFButton buttonChooseSelected = null;
@@ -82,7 +81,7 @@ implements ICFSecJavaFXSecClusRolePaneList
 	public CFSecJavaFXSecClusRolePickerPane( ICFFormManager formManager,
 		ICFSecJavaFXSchema argSchema,
 		ICFSecSecClusRoleObj argFocus,
-		ICFSecClusterObj argContainer,
+		ICFSecSecSysGrpObj argContainer,
 		Collection<ICFSecSecClusRoleObj> argDataCollection,
 		ICFSecJavaFXSecClusRoleChosen whenChosen )
 	{
@@ -138,29 +137,6 @@ implements ICFSecJavaFXSecClusRolePaneList
 			}
 		});
 		dataTable.getColumns().add( tableColumnSecClusRoleId );
-		tableColumnParentSysRole = new TableColumn<ICFSecSecClusRoleObj, ICFSecSecSysGrpObj>( "System Role" );
-		tableColumnParentSysRole.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecClusRoleObj,ICFSecSecSysGrpObj>,ObservableValue<ICFSecSecSysGrpObj> >() {
-			public ObservableValue<ICFSecSecSysGrpObj> call( CellDataFeatures<ICFSecSecClusRoleObj, ICFSecSecSysGrpObj> p ) {
-				ICFSecSecClusRoleObj obj = p.getValue();
-				if( obj == null ) {
-					return( null );
-				}
-				else {
-					ICFSecSecSysGrpObj ref = obj.getRequiredParentSysRole();
-					ReadOnlyObjectWrapper<ICFSecSecSysGrpObj> observable = new ReadOnlyObjectWrapper<ICFSecSecSysGrpObj>();
-					observable.setValue( ref );
-					return( observable );
-				}
-			}
-		});
-		tableColumnParentSysRole.setCellFactory( new Callback<TableColumn<ICFSecSecClusRoleObj,ICFSecSecSysGrpObj>,TableCell<ICFSecSecClusRoleObj,ICFSecSecSysGrpObj>>() {
-			@Override public TableCell<ICFSecSecClusRoleObj,ICFSecSecSysGrpObj> call(
-				TableColumn<ICFSecSecClusRoleObj,ICFSecSecSysGrpObj> arg)
-			{
-				return new CFReferenceTableCell<ICFSecSecClusRoleObj,ICFSecSecSysGrpObj>();
-			}
-		});
-		dataTable.getColumns().add( tableColumnParentSysRole );
 		dataTable.getSelectionModel().selectedItemProperty().addListener(
 			new ChangeListener<ICFSecSecClusRoleObj>() {
 				@Override public void changed( ObservableValue<? extends ICFSecSecClusRoleObj> observable,
@@ -364,11 +340,11 @@ implements ICFSecJavaFXSecClusRolePaneList
 		}
 	}
 
-	public ICFSecClusterObj getJavaFXContainer() {
+	public ICFSecSecSysGrpObj getJavaFXContainer() {
 		return( javafxContainer );
 	}
 
-	public void setJavaFXContainer( ICFSecClusterObj value ) {
+	public void setJavaFXContainer( ICFSecSecSysGrpObj value ) {
 		javafxContainer = value;
 	}
 

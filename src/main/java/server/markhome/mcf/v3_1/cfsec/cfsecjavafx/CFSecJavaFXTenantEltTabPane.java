@@ -165,9 +165,9 @@ implements ICFSecJavaFXTenantPaneCommon
 			else {
 				dataCollection = null;
 			}
-			ICFSecTenantObj javafxContainer;
-			if( ( focus != null ) && ( focus instanceof ICFSecTenantObj ) ) {
-				javafxContainer = (ICFSecTenantObj)focus;
+			ICFSecSecSysGrpObj javafxContainer;
+			if( ( focus != null ) && ( focus instanceof ICFSecSecSysGrpObj ) ) {
+				javafxContainer = (ICFSecSecSysGrpObj)focus;
 			}
 			else {
 				javafxContainer = null;
@@ -208,9 +208,9 @@ implements ICFSecJavaFXTenantPaneCommon
 			else {
 				dataCollection = null;
 			}
-			ICFSecTenantObj javafxContainer;
-			if( ( focus != null ) && ( focus instanceof ICFSecTenantObj ) ) {
-				javafxContainer = (ICFSecTenantObj)focus;
+			ICFSecSecSysGrpObj javafxContainer;
+			if( ( focus != null ) && ( focus instanceof ICFSecSecSysGrpObj ) ) {
+				javafxContainer = (ICFSecSecSysGrpObj)focus;
 			}
 			else {
 				javafxContainer = null;

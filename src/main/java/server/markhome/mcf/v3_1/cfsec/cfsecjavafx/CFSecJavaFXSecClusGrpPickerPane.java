@@ -68,13 +68,12 @@ implements ICFSecJavaFXSecClusGrpPaneList
 	protected Collection<ICFSecSecClusGrpObj> javafxDataCollection = null;
 	protected ObservableList<ICFSecSecClusGrpObj> observableListOfSecClusGrp = null;
 	protected TableColumn<ICFSecSecClusGrpObj, CFLibDbKeyHash256> tableColumnSecClusGrpId = null;
-	protected TableColumn<ICFSecSecClusGrpObj, ICFSecSecSysGrpObj> tableColumnParentSysGrp = null;
 	protected TableView<ICFSecSecClusGrpObj> dataTable = null;
 	protected CFHBox hboxMenu = null;
 	public final String S_ColumnNames[] = { "Name" };
 	protected ICFFormManager cfFormManager = null;
 	protected ICFSecJavaFXSecClusGrpChosen invokeWhenChosen = null;
-	protected ICFLibAnyObj javafxContainer = null;
+	protected ICFSecSecSysGrpObj javafxContainer = null;
 	protected CFButton buttonCancel = null;
 	protected CFButton buttonChooseNone = null;
 	protected CFButton buttonChooseSelected = null;
@@ -82,7 +81,7 @@ implements ICFSecJavaFXSecClusGrpPaneList
 	public CFSecJavaFXSecClusGrpPickerPane( ICFFormManager formManager,
 		ICFSecJavaFXSchema argSchema,
 		ICFSecSecClusGrpObj argFocus,
-		ICFLibAnyObj argContainer,
+		ICFSecSecSysGrpObj argContainer,
 		Collection<ICFSecSecClusGrpObj> argDataCollection,
 		ICFSecJavaFXSecClusGrpChosen whenChosen )
 	{
@@ -138,29 +137,6 @@ implements ICFSecJavaFXSecClusGrpPaneList
 			}
 		});
 		dataTable.getColumns().add( tableColumnSecClusGrpId );
-		tableColumnParentSysGrp = new TableColumn<ICFSecSecClusGrpObj, ICFSecSecSysGrpObj>( "Reference system group" );
-		tableColumnParentSysGrp.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecClusGrpObj,ICFSecSecSysGrpObj>,ObservableValue<ICFSecSecSysGrpObj> >() {
-			public ObservableValue<ICFSecSecSysGrpObj> call( CellDataFeatures<ICFSecSecClusGrpObj, ICFSecSecSysGrpObj> p ) {
-				ICFSecSecClusGrpObj obj = p.getValue();
-				if( obj == null ) {
-					return( null );
-				}
-				else {
-					ICFSecSecSysGrpObj ref = obj.getRequiredParentSysGrp();
-					ReadOnlyObjectWrapper<ICFSecSecSysGrpObj> observable = new ReadOnlyObjectWrapper<ICFSecSecSysGrpObj>();
-					observable.setValue( ref );
-					return( observable );
-				}
-			}
-		});
-		tableColumnParentSysGrp.setCellFactory( new Callback<TableColumn<ICFSecSecClusGrpObj,ICFSecSecSysGrpObj>,TableCell<ICFSecSecClusGrpObj,ICFSecSecSysGrpObj>>() {
-			@Override public TableCell<ICFSecSecClusGrpObj,ICFSecSecSysGrpObj> call(
-				TableColumn<ICFSecSecClusGrpObj,ICFSecSecSysGrpObj> arg)
-			{
-				return new CFReferenceTableCell<ICFSecSecClusGrpObj,ICFSecSecSysGrpObj>();
-			}
-		});
-		dataTable.getColumns().add( tableColumnParentSysGrp );
 		dataTable.getSelectionModel().selectedItemProperty().addListener(
 			new ChangeListener<ICFSecSecClusGrpObj>() {
 				@Override public void changed( ObservableValue<? extends ICFSecSecClusGrpObj> observable,
@@ -364,11 +340,11 @@ implements ICFSecJavaFXSecClusGrpPaneList
 		}
 	}
 
-	public ICFLibAnyObj getJavaFXContainer() {
+	public ICFSecSecSysGrpObj getJavaFXContainer() {
 		return( javafxContainer );
 	}
 
-	public void setJavaFXContainer( ICFLibAnyObj value ) {
+	public void setJavaFXContainer( ICFSecSecSysGrpObj value ) {
 		javafxContainer = value;
 	}
 

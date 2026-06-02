@@ -56,7 +56,7 @@ implements ICFSecJavaFXSecTentRolePaneList,
 	public CFSecJavaFXSecTentRolePickerForm( ICFFormManager formManager,
 		ICFSecJavaFXSchema argSchema,
 		ICFSecSecTentRoleObj argFocus,
-		ICFSecTenantObj argContainer,
+		ICFSecSecSysGrpObj argContainer,
 		Collection<ICFSecSecTentRoleObj> argDataCollection,
 		ICFSecJavaFXSecTentRoleChosen whenChosen )
 	{
@@ -172,13 +172,13 @@ implements ICFSecJavaFXSecTentRolePaneList,
 		}
 	}
 
-	public ICFSecTenantObj getJavaFXContainer() {
+	public ICFSecSecSysGrpObj getJavaFXContainer() {
 		ICFSecJavaFXSecTentRolePaneList jplPicker = (ICFSecJavaFXSecTentRolePaneList)javafxPickerPane;
-		ICFSecTenantObj cnt = jplPicker.getJavaFXContainer();
+		ICFSecSecSysGrpObj cnt = jplPicker.getJavaFXContainer();
 		return( cnt );
 	}
 
-	public void setJavaFXContainer( ICFSecTenantObj value ) {
+	public void setJavaFXContainer( ICFSecSecSysGrpObj value ) {
 		ICFSecJavaFXSecTentRolePaneList jplPicker = (ICFSecJavaFXSecTentRolePaneList)javafxPickerPane;
 		jplPicker.setJavaFXContainer( value );
 	}

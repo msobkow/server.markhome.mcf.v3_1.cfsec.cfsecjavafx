@@ -227,8 +227,13 @@ implements ICFSecJavaFXClusterPaneCommon
 			else {
 				dataCollection = null;
 			}
-			ICFLibAnyObj javafxContainer;
-			javafxContainer = null;
+			ICFSecSecSysGrpObj javafxContainer;
+			if( ( focus != null ) && ( focus instanceof ICFSecSecSysGrpObj ) ) {
+				javafxContainer = (ICFSecSecSysGrpObj)focus;
+			}
+			else {
+				javafxContainer = null;
+			}
 			tabViewComponentsSecGroupListPane = javafxSchema.getSecClusGrpFactory().newListPane( cfFormManager, javafxContainer, null, dataCollection, new RefreshComponentsSecGroupList(), false );
 		}
 		return( tabViewComponentsSecGroupListPane );
@@ -265,9 +270,9 @@ implements ICFSecJavaFXClusterPaneCommon
 			else {
 				dataCollection = null;
 			}
-			ICFSecClusterObj javafxContainer;
-			if( ( focus != null ) && ( focus instanceof ICFSecClusterObj ) ) {
-				javafxContainer = (ICFSecClusterObj)focus;
+			ICFSecSecSysGrpObj javafxContainer;
+			if( ( focus != null ) && ( focus instanceof ICFSecSecSysGrpObj ) ) {
+				javafxContainer = (ICFSecSecSysGrpObj)focus;
 			}
 			else {
 				javafxContainer = null;

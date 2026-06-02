@@ -56,7 +56,7 @@ implements ICFSecJavaFXSecClusRolePaneList,
 	public CFSecJavaFXSecClusRolePickerForm( ICFFormManager formManager,
 		ICFSecJavaFXSchema argSchema,
 		ICFSecSecClusRoleObj argFocus,
-		ICFSecClusterObj argContainer,
+		ICFSecSecSysGrpObj argContainer,
 		Collection<ICFSecSecClusRoleObj> argDataCollection,
 		ICFSecJavaFXSecClusRoleChosen whenChosen )
 	{
@@ -172,13 +172,13 @@ implements ICFSecJavaFXSecClusRolePaneList,
 		}
 	}
 
-	public ICFSecClusterObj getJavaFXContainer() {
+	public ICFSecSecSysGrpObj getJavaFXContainer() {
 		ICFSecJavaFXSecClusRolePaneList jplPicker = (ICFSecJavaFXSecClusRolePaneList)javafxPickerPane;
-		ICFSecClusterObj cnt = jplPicker.getJavaFXContainer();
+		ICFSecSecSysGrpObj cnt = jplPicker.getJavaFXContainer();
 		return( cnt );
 	}
 
-	public void setJavaFXContainer( ICFSecClusterObj value ) {
+	public void setJavaFXContainer( ICFSecSecSysGrpObj value ) {
 		ICFSecJavaFXSecClusRolePaneList jplPicker = (ICFSecJavaFXSecClusRolePaneList)javafxPickerPane;
 		jplPicker.setJavaFXContainer( value );
 	}

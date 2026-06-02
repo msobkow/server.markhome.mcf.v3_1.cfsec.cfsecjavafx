@@ -56,7 +56,7 @@ implements ICFSecJavaFXSecTentGrpPaneList,
 	public CFSecJavaFXSecTentGrpPickerForm( ICFFormManager formManager,
 		ICFSecJavaFXSchema argSchema,
 		ICFSecSecTentGrpObj argFocus,
-		ICFSecTenantObj argContainer,
+		ICFSecSecSysGrpObj argContainer,
 		Collection<ICFSecSecTentGrpObj> argDataCollection,
 		ICFSecJavaFXSecTentGrpChosen whenChosen )
 	{
@@ -172,13 +172,13 @@ implements ICFSecJavaFXSecTentGrpPaneList,
 		}
 	}
 
-	public ICFSecTenantObj getJavaFXContainer() {
+	public ICFSecSecSysGrpObj getJavaFXContainer() {
 		ICFSecJavaFXSecTentGrpPaneList jplPicker = (ICFSecJavaFXSecTentGrpPaneList)javafxPickerPane;
-		ICFSecTenantObj cnt = jplPicker.getJavaFXContainer();
+		ICFSecSecSysGrpObj cnt = jplPicker.getJavaFXContainer();
 		return( cnt );
 	}
 
-	public void setJavaFXContainer( ICFSecTenantObj value ) {
+	public void setJavaFXContainer( ICFSecSecSysGrpObj value ) {
 		ICFSecJavaFXSecTentGrpPaneList jplPicker = (ICFSecJavaFXSecTentGrpPaneList)javafxPickerPane;
 		jplPicker.setJavaFXContainer( value );
 	}

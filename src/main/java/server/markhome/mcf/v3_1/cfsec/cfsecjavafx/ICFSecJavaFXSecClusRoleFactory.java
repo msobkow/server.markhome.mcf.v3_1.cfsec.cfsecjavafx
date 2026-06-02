@@ -48,7 +48,7 @@ public interface ICFSecJavaFXSecClusRoleFactory
 	public CFGridPane newAttrPane( ICFFormManager formManager, ICFSecSecClusRoleObj javaFXFocus );
 
 	public CFBorderPane newListPane( ICFFormManager formManager,
-		ICFSecClusterObj argContainer,
+		ICFSecSecSysGrpObj argContainer,
 		ICFSecSecClusRoleObj argFocus,
 		Collection<ICFSecSecClusRoleObj> argDataCollection,
 		ICFRefreshCallback refreshCallback,
@@ -56,7 +56,7 @@ public interface ICFSecJavaFXSecClusRoleFactory
 
 	public CFBorderPane newPickerPane( ICFFormManager formManager,
 		ICFSecSecClusRoleObj argFocus,
-		ICFSecClusterObj argContainer,
+		ICFSecSecSysGrpObj argContainer,
 		Collection<ICFSecSecClusRoleObj> argDataCollection,
 		ICFSecJavaFXSecClusRoleChosen whenChosen );
 
@@ -68,11 +68,9 @@ public interface ICFSecJavaFXSecClusRoleFactory
 
 	public CFSplitPane newViewEditPane( ICFFormManager formManger, ICFSecSecClusRoleObj javaFXFocus );
 
-	public CFBorderPane newFinderForm( ICFFormManager formManager );
-
 	public CFBorderPane newPickerForm( ICFFormManager formManager,
 		ICFSecSecClusRoleObj javaFXFocus,
-		ICFSecClusterObj argContainer,
+		ICFSecSecSysGrpObj argContainer,
 		Collection<ICFSecSecClusRoleObj> argDataCollection,
 		ICFSecJavaFXSecClusRoleChosen whenChosen );
 

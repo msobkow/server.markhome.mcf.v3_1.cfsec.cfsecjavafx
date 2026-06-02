@@ -73,13 +73,12 @@ implements ICFSecJavaFXSecTentRolePaneList
 	protected CFButton buttonDeleteSelected = null;
 	protected TableView<ICFSecSecTentRoleObj> dataTable = null;
 	protected TableColumn<ICFSecSecTentRoleObj, CFLibDbKeyHash256> tableColumnSecTentRoleId = null;
-	protected TableColumn<ICFSecSecTentRoleObj, ICFSecSecSysGrpObj> tableColumnParentSysRole = null;
 
 	public final String S_ColumnNames[] = { "Name" };
 	protected ICFFormManager cfFormManager = null;
 	protected boolean javafxIsInitializing = true;
 	protected boolean javafxSortByChain = false;
-	protected ICFSecTenantObj javafxContainer = null;
+	protected ICFSecSecSysGrpObj javafxContainer = null;
 	protected ICFRefreshCallback javafxRefreshCallback = null;
 	class ViewEditClosedCallback implements ICFFormClosedCallback {
 		public ViewEditClosedCallback() {
@@ -132,7 +131,7 @@ implements ICFSecJavaFXSecTentRolePaneList
 
 	public CFSecJavaFXSecTentRoleListPane( ICFFormManager formManager,
 		ICFSecJavaFXSchema argSchema,
-		ICFSecTenantObj argContainer,
+		ICFSecSecSysGrpObj argContainer,
 		ICFSecSecTentRoleObj argFocus,
 		Collection<ICFSecSecTentRoleObj> argDataCollection,
 		ICFRefreshCallback refreshCallback,
@@ -185,29 +184,6 @@ implements ICFSecJavaFXSecTentRolePaneList
 			}
 		});
 		dataTable.getColumns().add( tableColumnSecTentRoleId );
-		tableColumnParentSysRole = new TableColumn<ICFSecSecTentRoleObj, ICFSecSecSysGrpObj>( "System Role" );
-		tableColumnParentSysRole.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecTentRoleObj,ICFSecSecSysGrpObj>,ObservableValue<ICFSecSecSysGrpObj> >() {
-			public ObservableValue<ICFSecSecSysGrpObj> call( CellDataFeatures<ICFSecSecTentRoleObj, ICFSecSecSysGrpObj> p ) {
-				ICFSecSecTentRoleObj obj = p.getValue();
-				if( obj == null ) {
-					return( null );
-				}
-				else {
-					ICFSecSecSysGrpObj ref = obj.getRequiredParentSysRole();
-					ReadOnlyObjectWrapper<ICFSecSecSysGrpObj> observable = new ReadOnlyObjectWrapper<ICFSecSecSysGrpObj>();
-					observable.setValue( ref );
-					return( observable );
-				}
-			}
-		});
-		tableColumnParentSysRole.setCellFactory( new Callback<TableColumn<ICFSecSecTentRoleObj,ICFSecSecSysGrpObj>,TableCell<ICFSecSecTentRoleObj,ICFSecSecSysGrpObj>>() {
-			@Override public TableCell<ICFSecSecTentRoleObj,ICFSecSecSysGrpObj> call(
-				TableColumn<ICFSecSecTentRoleObj,ICFSecSecSysGrpObj> arg)
-			{
-				return new CFReferenceTableCell<ICFSecSecTentRoleObj,ICFSecSecSysGrpObj>();
-			}
-		});
-		dataTable.getColumns().add( tableColumnParentSysRole );
 		dataTable.getSelectionModel().selectedItemProperty().addListener(
 			new ChangeListener<ICFSecSecTentRoleObj>() {
 				@Override public void changed( ObservableValue<? extends ICFSecSecTentRoleObj> observable,
@@ -388,14 +364,16 @@ implements ICFSecJavaFXSecTentRolePaneList
 								0,
 								"edit" );
 						}
-								ICFSecTenantObj container = (ICFSecTenantObj)( getJavaFXContainer() );
+								ICFSecTenantObj secTenant = schemaObj.getSecTenant();
+								edit.setRequiredOwnerTenant( secTenant );
+								ICFSecSecSysGrpObj container = (ICFSecSecSysGrpObj)( getJavaFXContainer() );
 								if( container == null ) {
 									throw new CFLibNullArgumentException( getClass(),
 										S_ProcName,
 										0,
 										"JavaFXContainer" );
 								}
-								edit.setRequiredContainerTenant( container );
+								edit.setRequiredContainerSysRole( container );
 						CFBorderPane frame = javafxSchema.getSecTentRoleFactory().newAddForm( cfFormManager, obj, getViewEditClosedCallback(), true );
 						ICFSecJavaFXSecTentRolePaneCommon jpanelCommon = (ICFSecJavaFXSecTentRolePaneCommon)frame;
 						jpanelCommon.setJavaFXFocus( obj );
@@ -532,11 +510,11 @@ implements ICFSecJavaFXSecTentRolePaneList
 		return( hboxMenu );
 	}
 
-	public ICFSecTenantObj getJavaFXContainer() {
+	public ICFSecSecSysGrpObj getJavaFXContainer() {
 		return( javafxContainer );
 	}
 
-	public void setJavaFXContainer( ICFSecTenantObj value ) {
+	public void setJavaFXContainer( ICFSecSecSysGrpObj value ) {
 		javafxContainer = value;
 	}
 
