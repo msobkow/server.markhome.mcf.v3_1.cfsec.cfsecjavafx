@@ -64,6 +64,99 @@ implements ICFSecJavaFXTableInfoPaneCommon
 	protected ICFSecJavaFXSchema javafxSchema = null;
 	boolean javafxIsInitializing = true;
 
+	protected class TableInfoSuperRefCFLabel
+		extends CFLabel
+	{
+		public TableInfoSuperRefCFLabel() {
+			super();
+			setText(Inz.s("cfsec.javafx.TableInfo.AttrPane.ParentSuperRef.EffLabel"));
+		}
+	}
+
+	protected class CallbackTableInfoSuperRefChosen
+	implements ICFSecJavaFXTableInfoChosen
+	{
+		public CallbackTableInfoSuperRefChosen() {
+		}
+
+		public void choseTableInfo( ICFSecTableInfoObj value ) {
+			if( javafxReferenceParentSuperRef != null ) {
+				ICFSecTableInfoObj cur = getJavaFXFocusAsTableInfo();
+				if( cur != null ) {
+					ICFSecTableInfoEditObj editObj = (ICFSecTableInfoEditObj)cur.getEdit();
+					if( null != editObj ) {
+						CFPane.PaneMode curMode = getPaneMode();
+						if( ( curMode == CFPane.PaneMode.Add ) || ( curMode == CFPane.PaneMode.Edit ) ) {
+							javafxReferenceParentSuperRef.setReferencedObject( value );
+							editObj.setOptionalParentSuperRef( value );
+						}
+					}
+				}
+			}
+		}
+	}
+
+	protected class TableInfoSuperRefReferenceCallback
+	implements ICFReferenceCallback
+	{
+		public void chose( ICFLibAnyObj value ) {
+			final String S_ProcName = "chose";
+			Node cont;
+			ICFSecSchemaObj schemaObj = (ICFSecSchemaObj)javafxSchema.getSchema();
+			ICFSecTableInfoObj focus = getEffJavaFXFocus();
+			ICFSecTableInfoObj referencedObj = (ICFSecTableInfoObj)javafxReferenceParentSuperRef.getReferencedObject();
+			java.util.List<ICFSecTableInfoObj> listOfTableInfo = null;
+			listOfTableInfo = schemaObj.getTableInfoTableObj().readAllTableInfo();
+			if( listOfTableInfo == null ) {
+				throw new CFLibNullArgumentException( getClass(),
+					S_ProcName,
+					0,
+					"listOfTableInfo" );
+			}
+			Collection<ICFSecTableInfoObj> cltn = listOfTableInfo;
+			CFBorderPane form = javafxSchema.getTableInfoFactory().newPickerForm( cfFormManager, referencedObj, null, cltn, new CallbackTableInfoSuperRefChosen() );
+			((ICFSecJavaFXTableInfoPaneCommon)form).setPaneMode( CFPane.PaneMode.View );
+			cfFormManager.pushForm( form );
+		}
+
+		public void view( ICFLibAnyObj value ) {
+			final String S_ProcName = "actionPerformed";
+			ICFSecTableInfoObj focus = getEffJavaFXFocus();
+			if( focus != null ) {
+				ICFSecTableInfoObj referencedObj = (ICFSecTableInfoObj)javafxReferenceParentSuperRef.getReferencedObject();
+				CFBorderPane form = null;
+				if( referencedObj != null ) {
+					int classCode = referencedObj.getClassCode();
+					ICFSecSchema.ClassMapEntry entry = ICFSecSchema.getClassMapByRuntimeClassCode(classCode);
+					int backingClassCode = entry.getBackingClassCode();
+					if( entry.getSchemaName().equals("CFSec") && backingClassCode == ICFSecTableInfo.CLASS_CODE ) {
+						form = javafxSchema.getTableInfoFactory().newAddForm( cfFormManager, referencedObj, null, true );
+						ICFSecJavaFXTableInfoPaneCommon spec = (ICFSecJavaFXTableInfoPaneCommon)form;
+						spec.setJavaFXFocus( referencedObj );
+						spec.setPaneMode( CFPane.PaneMode.View );
+					}
+					else {
+						throw new CFLibUnsupportedClassException( getClass(),
+							S_ProcName,
+							"javaFXFocus",
+							focus,
+							"ICFSecTableInfoObj" );
+					}
+					cfFormManager.pushForm( form );
+				}
+			}
+		}
+	}
+
+	protected class TableInfoSuperRefCFReferenceEditor
+		extends CFReferenceEditor
+	{
+		public TableInfoSuperRefCFReferenceEditor() {
+			super( new TableInfoSuperRefReferenceCallback() );
+			setFieldNameInzTag( "cfsec.javafx.TableInfo.AttrPane.TableInfoSuperRef.EffLabel" );
+		}
+	}
+
 	protected class TableInfoIdCFLabel
 		extends CFLabel
 	{
@@ -235,6 +328,9 @@ implements ICFSecJavaFXTableInfoPaneCommon
 		}
 	}
 
+	protected ICFSecTableInfoObj javafxParentSuperRefObj = null;
+	protected TableInfoSuperRefCFLabel javafxLabelParentSuperRef = null;
+	protected TableInfoSuperRefCFReferenceEditor javafxReferenceParentSuperRef = null;
 	protected TableInfoIdCFLabel javafxLabelTableInfoId = null;
 	protected TableInfoIdEditor javafxEditorTableInfoId = null;
 	protected SchemaNameCFLabel javafxLabelSchemaName = null;
@@ -285,6 +381,17 @@ implements ICFSecJavaFXTableInfoPaneCommon
 		column1.setPercentWidth( 100 );
 		getColumnConstraints().addAll( column1 );
 		int gridRow = 0;
+		label = getJavaFXLabelParentSuperRef();
+		setHalignment( label, HPos.LEFT );
+		setValignment( label, VPos.BOTTOM );
+		add( label, 0, gridRow );
+		gridRow ++;
+
+		reference = getJavaFXReferenceParentSuperRef();
+		setHalignment( reference, HPos.LEFT );
+		add( reference, 0, gridRow );
+		gridRow ++;
+
 		label = getJavaFXLabelTableInfoId();
 		setHalignment( label, HPos.LEFT );
 		setValignment( label, VPos.BOTTOM );
@@ -440,6 +547,32 @@ implements ICFSecJavaFXTableInfoPaneCommon
 			}
 		}
 		return( eff );
+	}
+
+	public ICFSecTableInfoObj getJavaFXParentSuperRefObj() {
+		return( javafxParentSuperRefObj );
+	}
+
+	public void setJavaFXParentSuperRefObj( ICFSecTableInfoObj value ) {
+		javafxParentSuperRefObj = value;
+	}
+
+	public CFLabel getJavaFXLabelParentSuperRef() {
+		if( javafxLabelParentSuperRef == null ) {
+			javafxLabelParentSuperRef = new TableInfoSuperRefCFLabel();
+		}
+		return( javafxLabelParentSuperRef );
+	}
+
+	public CFReferenceEditor getJavaFXReferenceParentSuperRef() {
+		if( javafxReferenceParentSuperRef == null ) {
+			javafxReferenceParentSuperRef = new TableInfoSuperRefCFReferenceEditor();
+		}
+		return( javafxReferenceParentSuperRef );
+	}
+
+	public void setJavaFXReferenceParentSuperRef( TableInfoSuperRefCFReferenceEditor value ) {
+		javafxReferenceParentSuperRef = value;
 	}
 
 	public TableInfoIdCFLabel getJavaFXLabelTableInfoId() {
@@ -647,6 +780,16 @@ implements ICFSecJavaFXTableInfoPaneCommon
 			popObj = null;
 		}
 		if( popObj == null ) {
+			javafxParentSuperRefObj = null;
+		}
+		else {
+			javafxParentSuperRefObj = (ICFSecTableInfoObj)popObj.getOptionalParentSuperRef( javafxIsInitializing );
+		}
+		if( javafxReferenceParentSuperRef != null ) {
+			javafxReferenceParentSuperRef.setReferencedObject( javafxParentSuperRefObj );
+		}
+
+		if( popObj == null ) {
 			getJavaFXEditorTableInfoId().setInt32Value( null );
 		}
 		else {
@@ -727,6 +870,9 @@ implements ICFSecJavaFXTableInfoPaneCommon
 				Inz.s("cflibjavafx.common.PaneIsUnfocusedOrNotEditing"),
 				Inz.x("cflibjavafx.common.PaneIsUnfocusedOrNotEditing") );
 		}
+
+		javafxParentSuperRefObj = (ICFSecTableInfoObj)( javafxReferenceParentSuperRef.getReferencedObject() );
+		editObj.setOptionalParentSuperRef( javafxParentSuperRefObj );
 
 		if( getJavaFXEditorSchemaName().getStringValue() == null ) {
 			editObj.setRequiredSchemaName( "" );
@@ -1047,6 +1193,9 @@ implements ICFSecJavaFXTableInfoPaneCommon
 			else if( null == focus.getEdit() ) {
 				isEditing = false;
 			}
+		}
+		if( javafxReferenceParentSuperRef != null ) {
+			javafxReferenceParentSuperRef.setCustomDisable( ! isEditing );
 		}
 		if( javafxEditorTableInfoId != null ) {
 			javafxEditorTableInfoId.setDisable( true );

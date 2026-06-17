@@ -90,6 +90,7 @@ implements ICFSecJavaFXTableInfoPaneCommon,
 	protected TableColumn<ICFSecTableInfoObj, Boolean> tableColumnIsMutable = null;
 	protected TableColumn<ICFSecTableInfoObj, String> tableColumnSecScopeName = null;
 	protected TableColumn<ICFSecTableInfoObj, String> tableColumnCodeVis = null;
+	protected TableColumn<ICFSecTableInfoObj, ICFSecTableInfoObj> tableColumnParentSuperRef = null;
 	protected TableView<ICFSecTableInfoObj> dataTable = null;
 
 	class ViewEditClosedCallback implements ICFFormClosedCallback {
@@ -371,6 +372,29 @@ implements ICFSecJavaFXTableInfoPaneCommon,
 			}
 		});
 		dataTable.getColumns().add( tableColumnCodeVis );
+		tableColumnParentSuperRef = new TableColumn<ICFSecTableInfoObj, ICFSecTableInfoObj>( "Superclass Table Reference" );
+		tableColumnParentSuperRef.setCellValueFactory( new Callback<CellDataFeatures<ICFSecTableInfoObj,ICFSecTableInfoObj>,ObservableValue<ICFSecTableInfoObj> >() {
+			public ObservableValue<ICFSecTableInfoObj> call( CellDataFeatures<ICFSecTableInfoObj, ICFSecTableInfoObj> p ) {
+				ICFSecTableInfoObj obj = p.getValue();
+				if( obj == null ) {
+					return( null );
+				}
+				else {
+					ICFSecTableInfoObj ref = obj.getOptionalParentSuperRef();
+					ReadOnlyObjectWrapper<ICFSecTableInfoObj> observable = new ReadOnlyObjectWrapper<ICFSecTableInfoObj>();
+					observable.setValue( ref );
+					return( observable );
+				}
+			}
+		});
+		tableColumnParentSuperRef.setCellFactory( new Callback<TableColumn<ICFSecTableInfoObj,ICFSecTableInfoObj>,TableCell<ICFSecTableInfoObj,ICFSecTableInfoObj>>() {
+			@Override public TableCell<ICFSecTableInfoObj,ICFSecTableInfoObj> call(
+				TableColumn<ICFSecTableInfoObj,ICFSecTableInfoObj> arg)
+			{
+				return new CFReferenceTableCell<ICFSecTableInfoObj,ICFSecTableInfoObj>();
+			}
+		});
+		dataTable.getColumns().add( tableColumnParentSuperRef );
 		dataTable.getSelectionModel().selectedItemProperty().addListener(
 			new ChangeListener<ICFSecTableInfoObj>() {
 				@Override public void changed( ObservableValue<? extends ICFSecTableInfoObj> observable,

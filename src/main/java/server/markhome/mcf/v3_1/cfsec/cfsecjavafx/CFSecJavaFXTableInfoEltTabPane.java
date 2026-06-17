@@ -54,6 +54,9 @@ implements ICFSecJavaFXTableInfoPaneCommon
 	protected ICFFormManager cfFormManager = null;
 	protected ICFSecJavaFXSchema javafxSchema = null;
 	protected boolean javafxIsInitializing = true;
+	public final String LABEL_TabChildrenSubRefsList = "Optional Children Subclass Table References";
+	protected CFTab tabChildrenSubRefs = null;
+	protected CFBorderPane tabViewChildrenSubRefsListPane = null;
 
 	public CFSecJavaFXTableInfoEltTabPane( ICFFormManager formManager, ICFSecJavaFXSchema argSchema, ICFSecTableInfoObj argFocus ) {
 		super();
@@ -76,6 +79,10 @@ implements ICFSecJavaFXTableInfoPaneCommon
 		javafxSchema = argSchema;
 		setJavaFXFocusAsTableInfo( argFocus );
 		// Wire the newly constructed Panes/Tabs to this TabPane
+		tabChildrenSubRefs = new CFTab();
+		tabChildrenSubRefs.setText( LABEL_TabChildrenSubRefsList );
+		tabChildrenSubRefs.setContent( getTabViewChildrenSubRefsListPane() );
+		getTabs().add( tabChildrenSubRefs );
 		javafxIsInitializing = false;
 	}
 
@@ -120,8 +127,49 @@ implements ICFSecJavaFXTableInfoPaneCommon
 		return( (ICFSecTableInfoObj)getJavaFXFocus() );
 	}
 
+	protected class RefreshChildrenSubRefsList
+	implements ICFRefreshCallback
+	{
+		public RefreshChildrenSubRefsList() {
+		}
+
+		public void refreshMe() {
+			Collection<ICFSecTableInfoObj> dataCollection;
+			ICFSecTableInfoObj focus = (ICFSecTableInfoObj)getJavaFXFocusAsTableInfo();
+			if( focus != null ) {
+				dataCollection = focus.getOptionalChildrenSubRefs( javafxIsInitializing );
+			}
+			else {
+				dataCollection = null;
+			}
+			CFBorderPane pane = getTabViewChildrenSubRefsListPane();
+			ICFSecJavaFXTableInfoPaneList jpList = (ICFSecJavaFXTableInfoPaneList)pane;
+			jpList.setJavaFXDataCollection( dataCollection );
+		}
+	}
+
+	public CFBorderPane getTabViewChildrenSubRefsListPane() {
+		if( tabViewChildrenSubRefsListPane == null ) {
+			ICFSecTableInfoObj focus = (ICFSecTableInfoObj)getJavaFXFocusAsTableInfo();
+			Collection<ICFSecTableInfoObj> dataCollection;
+			if( focus != null ) {
+				dataCollection = focus.getOptionalChildrenSubRefs( javafxIsInitializing );
+			}
+			else {
+				dataCollection = null;
+			}
+			ICFLibAnyObj javafxContainer;
+			javafxContainer = null;
+			tabViewChildrenSubRefsListPane = javafxSchema.getTableInfoFactory().newListPane( cfFormManager, javafxContainer, null, dataCollection, new RefreshChildrenSubRefsList(), false );
+		}
+		return( tabViewChildrenSubRefsListPane );
+	}
+
 	public void setPaneMode( CFPane.PaneMode value ) {
 		CFPane.PaneMode oldMode = getPaneMode();
 		super.setPaneMode( value );
+		if( tabViewChildrenSubRefsListPane != null ) {
+			((ICFSecJavaFXTableInfoPaneCommon)tabViewChildrenSubRefsListPane).setPaneMode( value );
+		}
 	}
 }

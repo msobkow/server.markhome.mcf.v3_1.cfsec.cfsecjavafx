@@ -54,6 +54,7 @@ implements ICFSecJavaFXTableInfoPaneCommon
 	protected ICFSecJavaFXSchema javafxSchema = null;
 	protected ScrollPane attrScrollPane = null;
 	protected CFGridPane attrPane = null;
+	protected CFTabPane eltTabPane = null;
 
 	public CFSecJavaFXTableInfoViewEditPane( ICFFormManager formManager, ICFSecJavaFXSchema argSchema, ICFSecTableInfoObj argFocus ) {
 		super();
@@ -81,8 +82,10 @@ implements ICFSecJavaFXTableInfoPaneCommon
 		attrScrollPane.setHbarPolicy( ScrollBarPolicy.NEVER );
 		attrScrollPane.setVbarPolicy( ScrollBarPolicy.AS_NEEDED );
 		attrScrollPane.setContent( attrPane );
+		eltTabPane = argSchema.getTableInfoFactory().newEltTabPane( cfFormManager, argFocus );
 		setOrientation( Orientation.VERTICAL );
 		getItems().add( attrScrollPane );
+		getItems().add( eltTabPane );
 	}
 
 	public ICFFormManager getCFFormManager() {
@@ -119,6 +122,9 @@ implements ICFSecJavaFXTableInfoPaneCommon
 		if( attrPane != null ) {
 			attrPane.setJavaFXFocus( value );
 		}
+		if( eltTabPane != null ) {
+			eltTabPane.setJavaFXFocus( value );
+		}
 	}
 
 	public void setJavaFXFocusAsTableInfo( ICFSecTableInfoObj value ) {
@@ -137,10 +143,12 @@ implements ICFSecJavaFXTableInfoPaneCommon
 		try {
 			super.setPaneMode( value );
 			((ICFSecJavaFXTableInfoPaneCommon)attrPane).setPaneMode( value );
+			((ICFSecJavaFXTableInfoPaneCommon)eltTabPane).setPaneMode( value );
 		}
 		catch( Throwable t ) {
 			super.setPaneMode( oldMode );
 			((ICFSecJavaFXTableInfoPaneCommon)attrPane).setPaneMode( oldMode );
+			((ICFSecJavaFXTableInfoPaneCommon)eltTabPane).setPaneMode( oldMode );
 			throw t;
 		}
 	}
