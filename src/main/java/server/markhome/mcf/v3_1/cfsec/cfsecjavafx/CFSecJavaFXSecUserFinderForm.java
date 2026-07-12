@@ -86,7 +86,7 @@ implements ICFSecJavaFXSecUserPaneCommon,
 	protected ObservableList<ICFSecSecUserObj> observableListOfSecUser = null;
 	protected TableColumn<ICFSecSecUserObj, CFLibDbKeyHash256> tableColumnSecUserId = null;
 	protected TableColumn<ICFSecSecUserObj, String> tableColumnLoginId = null;
-	protected TableColumn<ICFSecSecUserObj, ICFSecSchema.SecAccountStatusEnum> tableColumnAccountStatus = null;
+	protected TableColumn<ICFSecSecUserObj, ICFSecPubSchema.SecAccountStatusEnum> tableColumnAccountStatus = null;
 	protected TableColumn<ICFSecSecUserObj, String> tableColumnDfltSysGrpName = null;
 	protected TableColumn<ICFSecSecUserObj, String> tableColumnDfltClusGrpName = null;
 	protected TableColumn<ICFSecSecUserObj, String> tableColumnDfltTentGrpName = null;
@@ -222,24 +222,24 @@ implements ICFSecJavaFXSecUserPaneCommon,
 			}
 		});
 		dataTable.getColumns().add( tableColumnLoginId );
-		tableColumnAccountStatus = new TableColumn<ICFSecSecUserObj,ICFSecSchema.SecAccountStatusEnum>( "Account Status" );
-		tableColumnAccountStatus.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserObj,ICFSecSchema.SecAccountStatusEnum>,ObservableValue<ICFSecSchema.SecAccountStatusEnum> >() {
-			public ObservableValue<ICFSecSchema.SecAccountStatusEnum> call( CellDataFeatures<ICFSecSecUserObj, ICFSecSchema.SecAccountStatusEnum> p ) {
+		tableColumnAccountStatus = new TableColumn<ICFSecSecUserObj,ICFSecPubSchema.SecAccountStatusEnum>( "Account Status" );
+		tableColumnAccountStatus.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserObj,ICFSecPubSchema.SecAccountStatusEnum>,ObservableValue<ICFSecPubSchema.SecAccountStatusEnum> >() {
+			public ObservableValue<ICFSecPubSchema.SecAccountStatusEnum> call( CellDataFeatures<ICFSecSecUserObj, ICFSecPubSchema.SecAccountStatusEnum> p ) {
 				ICFSecSecUserObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					ICFSecSchema.SecAccountStatusEnum value = obj.getRequiredAccountStatus();
-					ReadOnlyObjectWrapper<ICFSecSchema.SecAccountStatusEnum> observable = new ReadOnlyObjectWrapper<ICFSecSchema.SecAccountStatusEnum>();
+					ICFSecPubSchema.SecAccountStatusEnum value = obj.getRequiredAccountStatus();
+					ReadOnlyObjectWrapper<ICFSecPubSchema.SecAccountStatusEnum> observable = new ReadOnlyObjectWrapper<ICFSecPubSchema.SecAccountStatusEnum>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnAccountStatus.setCellFactory( new Callback<TableColumn<ICFSecSecUserObj,ICFSecSchema.SecAccountStatusEnum>,TableCell<ICFSecSecUserObj,ICFSecSchema.SecAccountStatusEnum>>() {
-			@Override public TableCell<ICFSecSecUserObj,ICFSecSchema.SecAccountStatusEnum> call(
-				TableColumn<ICFSecSecUserObj,ICFSecSchema.SecAccountStatusEnum> arg)
+		tableColumnAccountStatus.setCellFactory( new Callback<TableColumn<ICFSecSecUserObj,ICFSecPubSchema.SecAccountStatusEnum>,TableCell<ICFSecSecUserObj,ICFSecPubSchema.SecAccountStatusEnum>>() {
+			@Override public TableCell<ICFSecSecUserObj,ICFSecPubSchema.SecAccountStatusEnum> call(
+				TableColumn<ICFSecSecUserObj,ICFSecPubSchema.SecAccountStatusEnum> arg)
 			{
 				return new CFEnumTableCell<ICFSecSecUserObj,ICFSecSchema.SecAccountStatusEnum>();
 			}

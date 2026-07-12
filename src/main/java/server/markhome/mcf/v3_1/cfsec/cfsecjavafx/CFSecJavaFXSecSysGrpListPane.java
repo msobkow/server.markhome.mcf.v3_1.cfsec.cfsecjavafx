@@ -74,7 +74,7 @@ implements ICFSecJavaFXSecSysGrpPaneList
 	protected TableView<ICFSecSecSysGrpObj> dataTable = null;
 	protected TableColumn<ICFSecSecSysGrpObj, CFLibDbKeyHash256> tableColumnSecSysGrpId = null;
 	protected TableColumn<ICFSecSecSysGrpObj, String> tableColumnName = null;
-	protected TableColumn<ICFSecSecSysGrpObj, ICFSecSchema.SecLevelEnum> tableColumnSecLevel = null;
+	protected TableColumn<ICFSecSecSysGrpObj, ICFSecPubSchema.SecLevelEnum> tableColumnSecLevel = null;
 
 	public final String S_ColumnNames[] = { "Name" };
 	protected ICFFormManager cfFormManager = null;
@@ -209,24 +209,24 @@ implements ICFSecJavaFXSecSysGrpPaneList
 			}
 		});
 		dataTable.getColumns().add( tableColumnName );
-		tableColumnSecLevel = new TableColumn<ICFSecSecSysGrpObj,ICFSecSchema.SecLevelEnum>( "Group Level" );
-		tableColumnSecLevel.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecSysGrpObj,ICFSecSchema.SecLevelEnum>,ObservableValue<ICFSecSchema.SecLevelEnum> >() {
-			public ObservableValue<ICFSecSchema.SecLevelEnum> call( CellDataFeatures<ICFSecSecSysGrpObj, ICFSecSchema.SecLevelEnum> p ) {
+		tableColumnSecLevel = new TableColumn<ICFSecSecSysGrpObj,ICFSecPubSchema.SecLevelEnum>( "Group Level" );
+		tableColumnSecLevel.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecSysGrpObj,ICFSecPubSchema.SecLevelEnum>,ObservableValue<ICFSecPubSchema.SecLevelEnum> >() {
+			public ObservableValue<ICFSecPubSchema.SecLevelEnum> call( CellDataFeatures<ICFSecSecSysGrpObj, ICFSecPubSchema.SecLevelEnum> p ) {
 				ICFSecSecSysGrpObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					ICFSecSchema.SecLevelEnum value = obj.getRequiredSecLevel();
-					ReadOnlyObjectWrapper<ICFSecSchema.SecLevelEnum> observable = new ReadOnlyObjectWrapper<ICFSecSchema.SecLevelEnum>();
+					ICFSecPubSchema.SecLevelEnum value = obj.getRequiredSecLevel();
+					ReadOnlyObjectWrapper<ICFSecPubSchema.SecLevelEnum> observable = new ReadOnlyObjectWrapper<ICFSecPubSchema.SecLevelEnum>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnSecLevel.setCellFactory( new Callback<TableColumn<ICFSecSecSysGrpObj,ICFSecSchema.SecLevelEnum>,TableCell<ICFSecSecSysGrpObj,ICFSecSchema.SecLevelEnum>>() {
-			@Override public TableCell<ICFSecSecSysGrpObj,ICFSecSchema.SecLevelEnum> call(
-				TableColumn<ICFSecSecSysGrpObj,ICFSecSchema.SecLevelEnum> arg)
+		tableColumnSecLevel.setCellFactory( new Callback<TableColumn<ICFSecSecSysGrpObj,ICFSecPubSchema.SecLevelEnum>,TableCell<ICFSecSecSysGrpObj,ICFSecPubSchema.SecLevelEnum>>() {
+			@Override public TableCell<ICFSecSecSysGrpObj,ICFSecPubSchema.SecLevelEnum> call(
+				TableColumn<ICFSecSecSysGrpObj,ICFSecPubSchema.SecLevelEnum> arg)
 			{
 				return new CFEnumTableCell<ICFSecSecSysGrpObj,ICFSecSchema.SecLevelEnum>();
 			}
