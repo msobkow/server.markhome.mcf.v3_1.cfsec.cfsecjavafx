@@ -59,7 +59,7 @@ implements ICFSecJavaFXSecSessionPaneList,
 	public CFSecJavaFXSecSessionPickerForm( ICFFormManager formManager,
 		ICFSecJavaFXSchema argSchema,
 		ICFSecSecSessionObj argFocus,
-		ICFLibAnyObj argContainer,
+		ICFSecSecUserObj argContainer,
 		ICFSecJavaFXSecSessionPageCallback argPageCallback,
 		ICFSecJavaFXSecSessionChosen whenChosen )
 	{
@@ -174,13 +174,13 @@ implements ICFSecJavaFXSecSessionPaneList,
 		}
 	}
 
-	public ICFLibAnyObj getJavaFXContainer() {
+	public ICFSecSecUserObj getJavaFXContainer() {
 		ICFSecJavaFXSecSessionPaneList jplPicker = (ICFSecJavaFXSecSessionPaneList)javafxPickerPane;
-		ICFLibAnyObj cnt = jplPicker.getJavaFXContainer();
+		ICFSecSecUserObj cnt = jplPicker.getJavaFXContainer();
 		return( cnt );
 	}
 
-	public void setJavaFXContainer( ICFLibAnyObj value ) {
+	public void setJavaFXContainer( ICFSecSecUserObj value ) {
 		ICFSecJavaFXSecSessionPaneList jplPicker = (ICFSecJavaFXSecSessionPaneList)javafxPickerPane;
 		jplPicker.setJavaFXContainer( value );
 	}

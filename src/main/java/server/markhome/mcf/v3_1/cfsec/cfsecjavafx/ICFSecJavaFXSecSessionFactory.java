@@ -48,7 +48,7 @@ public interface ICFSecJavaFXSecSessionFactory
 	public CFGridPane newAttrPane( ICFFormManager formManager, ICFSecSecSessionObj javaFXFocus );
 
 	public CFBorderPane newListPane( ICFFormManager formManager,
-		ICFLibAnyObj argContainer,
+		ICFSecSecUserObj argContainer,
 		ICFSecSecSessionObj argFocus,
 		ICFSecJavaFXSecSessionPageCallback argPageCallback,
 		ICFRefreshCallback refreshCallback,
@@ -56,7 +56,7 @@ public interface ICFSecJavaFXSecSessionFactory
 
 	public CFBorderPane newPickerPane( ICFFormManager formManager,
 		ICFSecSecSessionObj argFocus,
-		ICFLibAnyObj argContainer,
+		ICFSecSecUserObj argContainer,
 		ICFSecJavaFXSecSessionPageCallback argPageCallback,
 		ICFSecJavaFXSecSessionChosen whenChosen );
 
@@ -68,11 +68,9 @@ public interface ICFSecJavaFXSecSessionFactory
 
 	public CFSplitPane newViewEditPane( ICFFormManager formManger, ICFSecSecSessionObj javaFXFocus );
 
-	public CFBorderPane newFinderForm( ICFFormManager formManager );
-
 	public CFBorderPane newPickerForm( ICFFormManager formManager,
 		ICFSecSecSessionObj javaFXFocus,
-		ICFLibAnyObj argContainer,
+		ICFSecSecUserObj argContainer,
 		ICFSecJavaFXSecSessionPageCallback argPageCallback,
 		ICFSecJavaFXSecSessionChosen whenChosen );
 

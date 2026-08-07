@@ -49,6 +49,6 @@ import server.markhome.mcf.v3_1.cfsec.cfsecobj.*;
 public interface ICFSecJavaFXSecSessionPaneList
 extends
 	ICFSecJavaFXSecSessionPaneCommon,
-	ICFPaneList<ICFLibAnyObj,ICFSecSecSessionObj>
+	ICFPaneList<ICFSecSecUserObj,ICFSecSecSessionObj>
 {
 }

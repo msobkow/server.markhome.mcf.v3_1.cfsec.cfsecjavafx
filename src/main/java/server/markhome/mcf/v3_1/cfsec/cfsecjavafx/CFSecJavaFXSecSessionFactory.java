@@ -65,7 +65,7 @@ implements ICFSecJavaFXSecSessionFactory
 	}
 
 	public CFBorderPane newListPane( ICFFormManager formManager,
-		ICFLibAnyObj argContainer,
+		ICFSecSecUserObj argContainer,
 		ICFSecSecSessionObj argFocus,
 		ICFSecJavaFXSecSessionPageCallback argPageCallback,
 		ICFRefreshCallback refreshCallback,
@@ -83,7 +83,7 @@ implements ICFSecJavaFXSecSessionFactory
 
 	public CFBorderPane newPickerPane( ICFFormManager formManager,
 		ICFSecSecSessionObj argFocus,
-		ICFLibAnyObj argContainer,
+		ICFSecSecUserObj argContainer,
 		ICFSecJavaFXSecSessionPageCallback argPageCallback,
 		ICFSecJavaFXSecSessionChosen whenChosen )
 	{
@@ -116,14 +116,9 @@ implements ICFSecJavaFXSecSessionFactory
 		return( retnew );
 	}
 
-	public CFBorderPane newFinderForm( ICFFormManager formManager ) {
-		CFSecJavaFXSecSessionFinderForm retnew = new CFSecJavaFXSecSessionFinderForm( formManager, javafxSchema );
-		return( retnew );
-	}
-
 	public CFBorderPane newPickerForm( ICFFormManager formManager,
 		ICFSecSecSessionObj argFocus,
-		ICFLibAnyObj argContainer,
+		ICFSecSecUserObj argContainer,
 		ICFSecJavaFXSecSessionPageCallback argPageCallback,
 		ICFSecJavaFXSecSessionChosen whenChosen )
 	{

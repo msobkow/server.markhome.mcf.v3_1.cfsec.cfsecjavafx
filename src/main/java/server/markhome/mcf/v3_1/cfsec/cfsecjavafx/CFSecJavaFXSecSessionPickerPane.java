@@ -71,16 +71,15 @@ implements ICFSecJavaFXSecSessionPaneList
 	protected boolean endOfData = true;
 	protected ObservableList<ICFSecSecSessionObj> observableListOfSecSession = null;
 	protected TableColumn<ICFSecSecSessionObj, CFLibDbKeyHash256> tableColumnSecSessionId = null;
-	protected TableColumn<ICFSecSecSessionObj, CFLibDbKeyHash256> tableColumnSecUserId = null;
 	protected TableColumn<ICFSecSecSessionObj, LocalDateTime> tableColumnStart = null;
 	protected TableColumn<ICFSecSecSessionObj, LocalDateTime> tableColumnFinish = null;
-	protected TableColumn<ICFSecSecSessionObj, CFLibDbKeyHash256> tableColumnSecProxyId = null;
+	protected TableColumn<ICFSecSecSessionObj, ICFSecSecUserObj> tableColumnParentSecProxy = null;
 	protected TableView<ICFSecSecSessionObj> dataTable = null;
 	protected CFHBox hboxMenu = null;
 	public final String S_ColumnNames[] = { "Name" };
 	protected ICFFormManager cfFormManager = null;
 	protected ICFSecJavaFXSecSessionChosen invokeWhenChosen = null;
-	protected ICFLibAnyObj javafxContainer = null;
+	protected ICFSecSecUserObj javafxContainer = null;
 	protected CFButton buttonCancel = null;
 	protected CFButton buttonChooseNone = null;
 	protected CFButton buttonChooseSelected = null;
@@ -88,7 +87,7 @@ implements ICFSecJavaFXSecSessionPaneList
 	public CFSecJavaFXSecSessionPickerPane( ICFFormManager formManager,
 		ICFSecJavaFXSchema argSchema,
 		ICFSecSecSessionObj argFocus,
-		ICFLibAnyObj argContainer,
+		ICFSecSecUserObj argContainer,
 		ICFSecJavaFXSecSessionPageCallback argPageCallback,
 		ICFSecJavaFXSecSessionChosen whenChosen )
 	{
@@ -144,29 +143,6 @@ implements ICFSecJavaFXSecSessionPaneList
 			}
 		});
 		dataTable.getColumns().add( tableColumnSecSessionId );
-		tableColumnSecUserId = new TableColumn<ICFSecSecSessionObj,CFLibDbKeyHash256>( "Security User Id" );
-		tableColumnSecUserId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecSessionObj,CFLibDbKeyHash256>,ObservableValue<CFLibDbKeyHash256> >() {
-			public ObservableValue<CFLibDbKeyHash256> call( CellDataFeatures<ICFSecSecSessionObj, CFLibDbKeyHash256> p ) {
-				ICFSecSecSessionObj obj = p.getValue();
-				if( obj == null ) {
-					return( null );
-				}
-				else {
-					CFLibDbKeyHash256 value = obj.getRequiredSecUserId();
-					ReadOnlyObjectWrapper<CFLibDbKeyHash256> observable = new ReadOnlyObjectWrapper<CFLibDbKeyHash256>();
-					observable.setValue( value );
-					return( observable );
-				}
-			}
-		});
-		tableColumnSecUserId.setCellFactory( new Callback<TableColumn<ICFSecSecSessionObj,CFLibDbKeyHash256>,TableCell<ICFSecSecSessionObj,CFLibDbKeyHash256>>() {
-			@Override public TableCell<ICFSecSecSessionObj,CFLibDbKeyHash256> call(
-				TableColumn<ICFSecSecSessionObj,CFLibDbKeyHash256> arg)
-			{
-				return new CFDbKeyHash256TableCell<ICFSecSecSessionObj>();
-			}
-		});
-		dataTable.getColumns().add( tableColumnSecUserId );
 		tableColumnStart = new TableColumn<ICFSecSecSessionObj,LocalDateTime>( "Start" );
 		tableColumnStart.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecSessionObj,LocalDateTime>,ObservableValue<LocalDateTime> >() {
 			public ObservableValue<LocalDateTime> call( CellDataFeatures<ICFSecSecSessionObj, LocalDateTime> p ) {
@@ -213,29 +189,29 @@ implements ICFSecJavaFXSecSessionPaneList
 			}
 		});
 		dataTable.getColumns().add( tableColumnFinish );
-		tableColumnSecProxyId = new TableColumn<ICFSecSecSessionObj,CFLibDbKeyHash256>( "Security Proxy User Id" );
-		tableColumnSecProxyId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecSessionObj,CFLibDbKeyHash256>,ObservableValue<CFLibDbKeyHash256> >() {
-			public ObservableValue<CFLibDbKeyHash256> call( CellDataFeatures<ICFSecSecSessionObj, CFLibDbKeyHash256> p ) {
+		tableColumnParentSecProxy = new TableColumn<ICFSecSecSessionObj, ICFSecSecUserObj>( "Security Proxy User" );
+		tableColumnParentSecProxy.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecSessionObj,ICFSecSecUserObj>,ObservableValue<ICFSecSecUserObj> >() {
+			public ObservableValue<ICFSecSecUserObj> call( CellDataFeatures<ICFSecSecSessionObj, ICFSecSecUserObj> p ) {
 				ICFSecSecSessionObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					CFLibDbKeyHash256 value = obj.getOptionalSecProxyId();
-					ReadOnlyObjectWrapper<CFLibDbKeyHash256> observable = new ReadOnlyObjectWrapper<CFLibDbKeyHash256>();
-					observable.setValue( value );
+					ICFSecSecUserObj ref = obj.getRequiredParentSecProxy();
+					ReadOnlyObjectWrapper<ICFSecSecUserObj> observable = new ReadOnlyObjectWrapper<ICFSecSecUserObj>();
+					observable.setValue( ref );
 					return( observable );
 				}
 			}
 		});
-		tableColumnSecProxyId.setCellFactory( new Callback<TableColumn<ICFSecSecSessionObj,CFLibDbKeyHash256>,TableCell<ICFSecSecSessionObj,CFLibDbKeyHash256>>() {
-			@Override public TableCell<ICFSecSecSessionObj,CFLibDbKeyHash256> call(
-				TableColumn<ICFSecSecSessionObj,CFLibDbKeyHash256> arg)
+		tableColumnParentSecProxy.setCellFactory( new Callback<TableColumn<ICFSecSecSessionObj,ICFSecSecUserObj>,TableCell<ICFSecSecSessionObj,ICFSecSecUserObj>>() {
+			@Override public TableCell<ICFSecSecSessionObj,ICFSecSecUserObj> call(
+				TableColumn<ICFSecSecSessionObj,ICFSecSecUserObj> arg)
 			{
-				return new CFDbKeyHash256TableCell<ICFSecSecSessionObj>();
+				return new CFReferenceTableCell<ICFSecSecSessionObj,ICFSecSecUserObj>();
 			}
 		});
-		dataTable.getColumns().add( tableColumnSecProxyId );
+		dataTable.getColumns().add( tableColumnParentSecProxy );
 		dataTable.getSelectionModel().selectedItemProperty().addListener(
 			new ChangeListener<ICFSecSecSessionObj>() {
 				@Override public void changed( ObservableValue<? extends ICFSecSecSessionObj> observable,
@@ -503,11 +479,11 @@ implements ICFSecJavaFXSecSessionPaneList
 		// Use page data instead
 	}
 
-	public ICFLibAnyObj getJavaFXContainer() {
+	public ICFSecSecUserObj getJavaFXContainer() {
 		return( javafxContainer );
 	}
 
-	public void setJavaFXContainer( ICFLibAnyObj value ) {
+	public void setJavaFXContainer( ICFSecSecUserObj value ) {
 		javafxContainer = value;
 	}
 

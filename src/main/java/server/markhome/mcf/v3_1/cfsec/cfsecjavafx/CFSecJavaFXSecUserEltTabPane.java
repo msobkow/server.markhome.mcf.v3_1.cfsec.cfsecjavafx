@@ -60,6 +60,12 @@ implements ICFSecJavaFXSecUserPaneCommon
 	protected CFTab tabComponentsEMConf = null;
 	public final String LABEL_TabComponentsPWResetAttr = "Optional Components Password Reset Singleton";
 	protected CFTab tabComponentsPWReset = null;
+	public final String LABEL_TabChildrenPWHistoryAttr = "Optional Children Password History Entries";
+	protected CFTab tabChildrenPWHistory = null;
+	public final String LABEL_TabComponentsSecSessList = "Optional Components Security Session";
+	protected CFTab tabComponentsSecSess = null;
+	public final String LABEL_TabChildrenSecProxyList = "Optional Children Security Proxy Session";
+	protected CFTab tabChildrenSecProxy = null;
 	public final String LABEL_TabChildrenSysSecGrpMembList = "Optional Children System Security Group Members";
 	protected CFTab tabChildrenSysSecGrpMemb = null;
 	public final String LABEL_TabChildrenClusSecGrpMembList = "Optional Children Cluster Security Group Members";
@@ -72,6 +78,10 @@ implements ICFSecJavaFXSecUserPaneCommon
 	protected CFGridPane tabViewComponentsEMConfAttrPane = null;
 	protected ScrollPane tabViewComponentsPWResetAttrScrollPane = null;
 	protected CFGridPane tabViewComponentsPWResetAttrPane = null;
+	protected ScrollPane tabViewChildrenPWHistoryAttrScrollPane = null;
+	protected CFGridPane tabViewChildrenPWHistoryAttrPane = null;
+	protected CFBorderPane tabViewComponentsSecSessListPane = null;
+	protected CFBorderPane tabViewChildrenSecProxyListPane = null;
 	protected CFBorderPane tabViewChildrenSysSecGrpMembListPane = null;
 	protected CFBorderPane tabViewChildrenClusSecGrpMembListPane = null;
 	protected CFBorderPane tabViewChildrenTentSecGrpMembListPane = null;
@@ -109,6 +119,18 @@ implements ICFSecJavaFXSecUserPaneCommon
 		tabComponentsPWReset.setText( LABEL_TabComponentsPWResetAttr );
 		tabComponentsPWReset.setContent( getTabViewComponentsPWResetAttrScrollPane() );
 		getTabs().add( tabComponentsPWReset );
+		tabChildrenPWHistory = new CFTab();
+		tabChildrenPWHistory.setText( LABEL_TabChildrenPWHistoryAttr );
+		tabChildrenPWHistory.setContent( getTabViewChildrenPWHistoryAttrScrollPane() );
+		getTabs().add( tabChildrenPWHistory );
+		tabComponentsSecSess = new CFTab();
+		tabComponentsSecSess.setText( LABEL_TabComponentsSecSessList );
+		tabComponentsSecSess.setContent( getTabViewComponentsSecSessListPane() );
+		getTabs().add( tabComponentsSecSess );
+		tabChildrenSecProxy = new CFTab();
+		tabChildrenSecProxy.setText( LABEL_TabChildrenSecProxyList );
+		tabChildrenSecProxy.setContent( getTabViewChildrenSecProxyListPane() );
+		getTabs().add( tabChildrenSecProxy );
 		tabChildrenSysSecGrpMemb = new CFTab();
 		tabChildrenSysSecGrpMemb.setText( LABEL_TabChildrenSysSecGrpMembList );
 		tabChildrenSysSecGrpMemb.setContent( getTabViewChildrenSysSecGrpMembListPane() );
@@ -214,6 +236,119 @@ implements ICFSecJavaFXSecUserPaneCommon
 			tabViewComponentsPWResetAttrScrollPane.setContent( tabViewComponentsPWResetAttrPane );
 		}
 		return( tabViewComponentsPWResetAttrScrollPane );
+	}
+
+	public ScrollPane getTabViewChildrenPWHistoryAttrScrollPane() {
+		if( tabViewChildrenPWHistoryAttrScrollPane == null ) {
+			ICFSecSecUserObj focus = (ICFSecSecUserObj)getJavaFXFocusAsSecUser();
+			ICFSecSecUserPWHistoryObj refPWHistory =
+				( focus != null )
+					? focus.getOptionalChildrenPWHistory()
+					: null;
+			tabViewChildrenPWHistoryAttrPane = javafxSchema.getSecUserPWHistoryFactory().newAttrPane( cfFormManager, refPWHistory );
+			tabViewChildrenPWHistoryAttrScrollPane = new ScrollPane();
+			tabViewChildrenPWHistoryAttrScrollPane.setFitToWidth( true );
+			tabViewChildrenPWHistoryAttrScrollPane.setHbarPolicy( ScrollBarPolicy.NEVER );
+			tabViewChildrenPWHistoryAttrScrollPane.setVbarPolicy( ScrollBarPolicy.AS_NEEDED );
+			tabViewChildrenPWHistoryAttrScrollPane.setContent( tabViewChildrenPWHistoryAttrPane );
+		}
+		return( tabViewChildrenPWHistoryAttrScrollPane );
+	}
+
+	protected class RefreshComponentsSecSessList
+	implements ICFRefreshCallback
+	{
+		public RefreshComponentsSecSessList() {
+		}
+
+		public void refreshMe() {
+			// Use page data instead
+		}
+	}
+
+	protected class PageDataComponentsSecSessList
+	implements ICFSecJavaFXSecSessionPageCallback
+	{
+		public PageDataComponentsSecSessList() {
+		}
+
+		public List<ICFSecSecSessionObj> pageData( CFLibDbKeyHash256 priorSecSessionId )
+		{
+			List<ICFSecSecSessionObj> dataList;
+			ICFSecSecUserObj focus = (ICFSecSecUserObj)getJavaFXFocusAsSecUser();
+			if( focus != null ) {
+				ICFSecSchemaObj schemaObj = (ICFSecSchemaObj)javafxSchema.getSchema();
+				dataList = schemaObj.getSecSessionTableObj().pageSecSessionBySecUserIdx( focus.getRequiredSecUserId(),
+					priorSecSessionId );
+			}
+			else {
+				dataList = new ArrayList<ICFSecSecSessionObj>();
+			}
+			return( dataList );
+		}
+	}
+
+	public CFBorderPane getTabViewComponentsSecSessListPane() {
+		if( tabViewComponentsSecSessListPane == null ) {
+			ICFSecSecUserObj focus = (ICFSecSecUserObj)getJavaFXFocusAsSecUser();
+			ICFSecSecUserObj javafxContainer;
+			if( ( focus != null ) && ( focus instanceof ICFSecSecUserObj ) ) {
+				javafxContainer = (ICFSecSecUserObj)focus;
+			}
+			else {
+				javafxContainer = null;
+			}
+			tabViewComponentsSecSessListPane = javafxSchema.getSecSessionFactory().newListPane( cfFormManager, javafxContainer, null, new PageDataComponentsSecSessList(), new RefreshComponentsSecSessList(), false );
+		}
+		return( tabViewComponentsSecSessListPane );
+	}
+
+	protected class RefreshChildrenSecProxyList
+	implements ICFRefreshCallback
+	{
+		public RefreshChildrenSecProxyList() {
+		}
+
+		public void refreshMe() {
+			// Use page data instead
+		}
+	}
+
+	protected class PageDataChildrenSecProxyList
+	implements ICFSecJavaFXSecSessionPageCallback
+	{
+		public PageDataChildrenSecProxyList() {
+		}
+
+		public List<ICFSecSecSessionObj> pageData( CFLibDbKeyHash256 priorSecSessionId )
+		{
+			List<ICFSecSecSessionObj> dataList;
+			ICFSecSecUserObj focus = (ICFSecSecUserObj)getJavaFXFocusAsSecUser();
+			if( focus != null ) {
+				ICFSecSchemaObj schemaObj = (ICFSecSchemaObj)javafxSchema.getSchema();
+				dataList = schemaObj.getSecSessionTableObj().pageSecSessionBySecProxyIdx( focus.getRequiredSecUserId(),
+					priorSecSessionId );
+			}
+			else {
+				dataList = new ArrayList<ICFSecSecSessionObj>();
+			}
+			return( dataList );
+		}
+	}
+
+	public CFBorderPane getTabViewChildrenSecProxyListPane() {
+		if( tabViewChildrenSecProxyListPane == null ) {
+			ICFSecSecUserObj focus = (ICFSecSecUserObj)getJavaFXFocusAsSecUser();
+			ICFSecSecUserObj javafxContainer;
+			if( ( focus != null ) && ( focus instanceof ICFSecSecUserObj ) ) {
+				javafxContainer = (ICFSecSecUserObj)focus;
+			}
+			else {
+				javafxContainer = null;
+			}
+			tabViewChildrenSecProxyListPane = javafxSchema.getSecSessionFactory().newListPane( cfFormManager, javafxContainer, null, new PageDataChildrenSecProxyList(), new RefreshChildrenSecProxyList(), false );
+		}
+		return( tabViewChildrenSecProxyListPane );
 	}
 
 	protected class RefreshChildrenSysSecGrpMembList
@@ -378,6 +513,15 @@ implements ICFSecJavaFXSecUserPaneCommon
 	if( tabViewComponentsPWResetAttrPane != null ) {
 		((ICFSecJavaFXSecUserPWResetPaneCommon)tabViewComponentsPWResetAttrPane).setPaneMode( CFPane.PaneMode.View );
 	}
+	if( tabViewChildrenPWHistoryAttrPane != null ) {
+		((ICFSecJavaFXSecUserPWHistoryPaneCommon)tabViewChildrenPWHistoryAttrPane).setPaneMode( CFPane.PaneMode.View );
+	}
+		if( tabViewComponentsSecSessListPane != null ) {
+			((ICFSecJavaFXSecSessionPaneCommon)tabViewComponentsSecSessListPane).setPaneMode( value );
+		}
+		if( tabViewChildrenSecProxyListPane != null ) {
+			((ICFSecJavaFXSecSessionPaneCommon)tabViewChildrenSecProxyListPane).setPaneMode( value );
+		}
 		if( tabViewChildrenSysSecGrpMembListPane != null ) {
 			((ICFSecJavaFXSecSysGrpMembPaneCommon)tabViewChildrenSysSecGrpMembListPane).setPaneMode( value );
 		}
