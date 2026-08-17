@@ -72,7 +72,7 @@ implements ICFSecJavaFXSecTentGrpPaneList
 	protected CFButton buttonEditSelected = null;
 	protected CFButton buttonDeleteSelected = null;
 	protected TableView<ICFSecSecTentGrpObj> dataTable = null;
-	protected TableColumn<ICFSecSecTentGrpObj, CFLibDbKeyHash256> tableColumnSecTentGrpId = null;
+	protected TableColumn<ICFSecSecTentGrpObj, $implJavaOptAtomType$> tableColumnSecTentGrpId = null;
 
 	public final String S_ColumnNames[] = { "Name" };
 	protected ICFFormManager cfFormManager = null;
@@ -161,24 +161,24 @@ implements ICFSecJavaFXSecTentGrpPaneList
 		javafxSortByChain = sortByChain;
 		setJavaFXDataCollection( argDataCollection );
 		dataTable = new TableView<ICFSecSecTentGrpObj>();
-		tableColumnSecTentGrpId = new TableColumn<ICFSecSecTentGrpObj,CFLibDbKeyHash256>( "Tenant Security Group Id" );
-		tableColumnSecTentGrpId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecTentGrpObj,CFLibDbKeyHash256>,ObservableValue<CFLibDbKeyHash256> >() {
-			public ObservableValue<CFLibDbKeyHash256> call( CellDataFeatures<ICFSecSecTentGrpObj, CFLibDbKeyHash256> p ) {
+		tableColumnSecTentGrpId = new TableColumn<ICFSecSecTentGrpObj,$implJavaOptAtomType$>( "Tenant Security Group Id" );
+		tableColumnSecTentGrpId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecTentGrpObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
+			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecSecTentGrpObj, $implJavaOptAtomType$> p ) {
 				ICFSecSecTentGrpObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					CFLibDbKeyHash256 value = obj.getRequiredSecTentGrpId();
-					ReadOnlyObjectWrapper<CFLibDbKeyHash256> observable = new ReadOnlyObjectWrapper<CFLibDbKeyHash256>();
+					$implJavaAtomType$ value = obj.getRequiredSecTentGrpId();
+					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnSecTentGrpId.setCellFactory( new Callback<TableColumn<ICFSecSecTentGrpObj,CFLibDbKeyHash256>,TableCell<ICFSecSecTentGrpObj,CFLibDbKeyHash256>>() {
-			@Override public TableCell<ICFSecSecTentGrpObj,CFLibDbKeyHash256> call(
-				TableColumn<ICFSecSecTentGrpObj,CFLibDbKeyHash256> arg)
+		tableColumnSecTentGrpId.setCellFactory( new Callback<TableColumn<ICFSecSecTentGrpObj,$implJavaOptAtomType$>,TableCell<ICFSecSecTentGrpObj,$implJavaOptAtomType$>>() {
+			@Override public TableCell<ICFSecSecTentGrpObj,$implJavaOptAtomType$> call(
+				TableColumn<ICFSecSecTentGrpObj,$implJavaOptAtomType$> arg)
 			{
 				return new CFDbKeyHash256TableCell<ICFSecSecTentGrpObj>();
 			}

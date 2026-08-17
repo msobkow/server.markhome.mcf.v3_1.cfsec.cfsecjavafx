@@ -151,7 +151,7 @@ implements ICFSecJavaFXSecSysRolePaneCommon
 		public PageDataComponentsEnabledByRoleList() {
 		}
 
-		public List<ICFSecSecSysRoleEnablesObj> pageData( CFLibDbKeyHash256 priorSecSysRoleId,
+		public List<ICFSecSecSysRoleEnablesObj> pageData( ICFLibKeyHash256 priorSecSysRoleId,
 		String priorEnableName )
 		{
 			List<ICFSecSecSysRoleEnablesObj> dataList;
@@ -201,7 +201,7 @@ implements ICFSecJavaFXSecSysRolePaneCommon
 		public PageDataChildrenMembByRoleList() {
 		}
 
-		public List<ICFSecSecSysRoleMembObj> pageData( CFLibDbKeyHash256 priorSecSysRoleId,
+		public List<ICFSecSecSysRoleMembObj> pageData( ICFLibKeyHash256 priorSecSysRoleId,
 		String priorLoginId )
 		{
 			List<ICFSecSecSysRoleMembObj> dataList;

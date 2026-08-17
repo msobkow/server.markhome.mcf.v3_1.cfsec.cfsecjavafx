@@ -75,10 +75,10 @@ implements ICFSecJavaFXSecUserEMConfPaneList
 	protected CFButton buttonEditSelected = null;
 	protected CFButton buttonDeleteSelected = null;
 	protected TableView<ICFSecSecUserEMConfObj> dataTable = null;
-	protected TableColumn<ICFSecSecUserEMConfObj, String> tableColumnConfirmEMailAddr = null;
-	protected TableColumn<ICFSecSecUserEMConfObj, LocalDateTime> tableColumnEMailSentStamp = null;
-	protected TableColumn<ICFSecSecUserEMConfObj, CFLibUuid6> tableColumnEMConfirmationUuid6 = null;
-	protected TableColumn<ICFSecSecUserEMConfObj, Boolean> tableColumnNewAccount = null;
+	protected TableColumn<ICFSecSecUserEMConfObj, $implJavaOptAtomType$> tableColumnConfirmEMailAddr = null;
+	protected TableColumn<ICFSecSecUserEMConfObj, $implJavaOptAtomType$> tableColumnEMailSentStamp = null;
+	protected TableColumn<ICFSecSecUserEMConfObj, $implJavaOptAtomType$> tableColumnEMConfirmationUuid6 = null;
+	protected TableColumn<ICFSecSecUserEMConfObj, $implJavaOptAtomType$> tableColumnNewAccount = null;
 
 	public final String S_ColumnNames[] = { "Name" };
 	protected ICFFormManager cfFormManager = null;
@@ -167,94 +167,94 @@ implements ICFSecJavaFXSecUserEMConfPaneList
 		javafxSortByChain = sortByChain;
 		pageCallback = argPageCallback;
 		dataTable = new TableView<ICFSecSecUserEMConfObj>();
-		tableColumnConfirmEMailAddr = new TableColumn<ICFSecSecUserEMConfObj,String>( "Confirm EMail Address" );
-		tableColumnConfirmEMailAddr.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserEMConfObj,String>,ObservableValue<String> >() {
-			public ObservableValue<String> call( CellDataFeatures<ICFSecSecUserEMConfObj, String> p ) {
+		tableColumnConfirmEMailAddr = new TableColumn<ICFSecSecUserEMConfObj,$implJavaOptAtomType$>( "Confirm EMail Address" );
+		tableColumnConfirmEMailAddr.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserEMConfObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
+			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecSecUserEMConfObj, $implJavaOptAtomType$> p ) {
 				ICFSecSecUserEMConfObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					String value = obj.getRequiredConfirmEMailAddr();
-					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
+					$implJavaAtomType$ value = obj.getRequiredConfirmEMailAddr();
+					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnConfirmEMailAddr.setCellFactory( new Callback<TableColumn<ICFSecSecUserEMConfObj,String>,TableCell<ICFSecSecUserEMConfObj,String>>() {
-			@Override public TableCell<ICFSecSecUserEMConfObj,String> call(
-				TableColumn<ICFSecSecUserEMConfObj,String> arg)
+		tableColumnConfirmEMailAddr.setCellFactory( new Callback<TableColumn<ICFSecSecUserEMConfObj,$implJavaOptAtomType$>,TableCell<ICFSecSecUserEMConfObj,$implJavaOptAtomType$>>() {
+			@Override public TableCell<ICFSecSecUserEMConfObj,$implJavaOptAtomType$> call(
+				TableColumn<ICFSecSecUserEMConfObj,$implJavaOptAtomType$> arg)
 			{
 				return new CFStringTableCell<ICFSecSecUserEMConfObj>();
 			}
 		});
 		dataTable.getColumns().add( tableColumnConfirmEMailAddr );
-		tableColumnEMailSentStamp = new TableColumn<ICFSecSecUserEMConfObj,LocalDateTime>( "Confirmation EMail Sent At" );
-		tableColumnEMailSentStamp.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserEMConfObj,LocalDateTime>,ObservableValue<LocalDateTime> >() {
-			public ObservableValue<LocalDateTime> call( CellDataFeatures<ICFSecSecUserEMConfObj, LocalDateTime> p ) {
+		tableColumnEMailSentStamp = new TableColumn<ICFSecSecUserEMConfObj,$implJavaOptAtomType$>( "Confirmation EMail Sent At" );
+		tableColumnEMailSentStamp.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserEMConfObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
+			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecSecUserEMConfObj, $implJavaOptAtomType$> p ) {
 				ICFSecSecUserEMConfObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					LocalDateTime value = obj.getRequiredEMailSentStamp();
-					ReadOnlyObjectWrapper<LocalDateTime> observable = new ReadOnlyObjectWrapper<LocalDateTime>();
+					$implJavaAtomType$ value = obj.getRequiredEMailSentStamp();
+					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnEMailSentStamp.setCellFactory( new Callback<TableColumn<ICFSecSecUserEMConfObj,LocalDateTime>,TableCell<ICFSecSecUserEMConfObj,LocalDateTime>>() {
-			@Override public TableCell<ICFSecSecUserEMConfObj,LocalDateTime> call(
-				TableColumn<ICFSecSecUserEMConfObj,LocalDateTime> arg)
+		tableColumnEMailSentStamp.setCellFactory( new Callback<TableColumn<ICFSecSecUserEMConfObj,$implJavaOptAtomType$>,TableCell<ICFSecSecUserEMConfObj,$implJavaOptAtomType$>>() {
+			@Override public TableCell<ICFSecSecUserEMConfObj,$implJavaOptAtomType$> call(
+				TableColumn<ICFSecSecUserEMConfObj,$implJavaOptAtomType$> arg)
 			{
 				return new CFTimestampTableCell<ICFSecSecUserEMConfObj>();
 			}
 		});
 		dataTable.getColumns().add( tableColumnEMailSentStamp );
-		tableColumnEMConfirmationUuid6 = new TableColumn<ICFSecSecUserEMConfObj,CFLibUuid6>( "EMail Confirmation UUID6" );
-		tableColumnEMConfirmationUuid6.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserEMConfObj,CFLibUuid6>,ObservableValue<CFLibUuid6> >() {
-			public ObservableValue<CFLibUuid6> call( CellDataFeatures<ICFSecSecUserEMConfObj, CFLibUuid6> p ) {
+		tableColumnEMConfirmationUuid6 = new TableColumn<ICFSecSecUserEMConfObj,$implJavaOptAtomType$>( "EMail Confirmation UUID6" );
+		tableColumnEMConfirmationUuid6.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserEMConfObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
+			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecSecUserEMConfObj, $implJavaOptAtomType$> p ) {
 				ICFSecSecUserEMConfObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					CFLibUuid6 value = obj.getRequiredEMConfirmationUuid6();
-					ReadOnlyObjectWrapper<CFLibUuid6> observable = new ReadOnlyObjectWrapper<CFLibUuid6>();
+					$implJavaAtomType$ value = obj.getRequiredEMConfirmationUuid6();
+					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnEMConfirmationUuid6.setCellFactory( new Callback<TableColumn<ICFSecSecUserEMConfObj,CFLibUuid6>,TableCell<ICFSecSecUserEMConfObj,CFLibUuid6>>() {
-			@Override public TableCell<ICFSecSecUserEMConfObj,CFLibUuid6> call(
-				TableColumn<ICFSecSecUserEMConfObj,CFLibUuid6> arg)
+		tableColumnEMConfirmationUuid6.setCellFactory( new Callback<TableColumn<ICFSecSecUserEMConfObj,$implJavaOptAtomType$>,TableCell<ICFSecSecUserEMConfObj,$implJavaOptAtomType$>>() {
+			@Override public TableCell<ICFSecSecUserEMConfObj,$implJavaOptAtomType$> call(
+				TableColumn<ICFSecSecUserEMConfObj,$implJavaOptAtomType$> arg)
 			{
 				return new CFUuid6TableCell<ICFSecSecUserEMConfObj>();
 			}
 		});
 		dataTable.getColumns().add( tableColumnEMConfirmationUuid6 );
-		tableColumnNewAccount = new TableColumn<ICFSecSecUserEMConfObj,Boolean>( "Confirmation email is for new account?" );
-		tableColumnNewAccount.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserEMConfObj,Boolean>,ObservableValue<Boolean> >() {
-			public ObservableValue<Boolean> call( CellDataFeatures<ICFSecSecUserEMConfObj, Boolean> p ) {
+		tableColumnNewAccount = new TableColumn<ICFSecSecUserEMConfObj,$implJavaOptAtomType$>( "Confirmation email is for new account?" );
+		tableColumnNewAccount.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserEMConfObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
+			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecSecUserEMConfObj, $implJavaOptAtomType$> p ) {
 				ICFSecSecUserEMConfObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					boolean value = obj.getRequiredNewAccount();
-					Boolean wrapped = Boolean.valueOf( value );
-					ReadOnlyObjectWrapper<Boolean> observable = new ReadOnlyObjectWrapper<Boolean>();
+					$implJavaAtomType$ value = obj.getRequiredNewAccount();
+					$implJavaOptAtomType$ wrapped = $implJavaOptAtomType$.valueOf( value );
+					ReadOnlyObjectWrapper<$implJavaOptAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaOptAtomType$>();
 					observable.setValue( wrapped );
 					return( observable );
 				}
 			}
 		});
-		tableColumnNewAccount.setCellFactory( new Callback<TableColumn<ICFSecSecUserEMConfObj,Boolean>,TableCell<ICFSecSecUserEMConfObj,Boolean>>() {
-			@Override public TableCell<ICFSecSecUserEMConfObj,Boolean> call(
-				TableColumn<ICFSecSecUserEMConfObj,Boolean> arg)
+		tableColumnNewAccount.setCellFactory( new Callback<TableColumn<ICFSecSecUserEMConfObj,$implJavaOptAtomType$>,TableCell<ICFSecSecUserEMConfObj,$implJavaOptAtomType$>>() {
+			@Override public TableCell<ICFSecSecUserEMConfObj,$implJavaOptAtomType$> call(
+				TableColumn<ICFSecSecUserEMConfObj,$implJavaOptAtomType$> arg)
 			{
 				return new CFBoolTableCell<ICFSecSecUserEMConfObj>();
 			}

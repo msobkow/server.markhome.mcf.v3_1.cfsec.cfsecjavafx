@@ -84,10 +84,10 @@ implements ICFSecJavaFXSecUserPWHistoryPaneCommon,
 	protected CFButton buttonMoreData = null;
 	protected boolean endOfData = true;
 	protected ObservableList<ICFSecSecUserPWHistoryObj> observableListOfSecUserPWHistory = null;
-	protected TableColumn<ICFSecSecUserPWHistoryObj, CFLibDbKeyHash256> tableColumnSecUserId = null;
-	protected TableColumn<ICFSecSecUserPWHistoryObj, LocalDateTime> tableColumnPWSetStamp = null;
-	protected TableColumn<ICFSecSecUserPWHistoryObj, LocalDateTime> tableColumnPWReplacedStamp = null;
-	protected TableColumn<ICFSecSecUserPWHistoryObj, String> tableColumnPasswordHash = null;
+	protected TableColumn<ICFSecSecUserPWHistoryObj, $implJavaOptAtomType$> tableColumnSecUserId = null;
+	protected TableColumn<ICFSecSecUserPWHistoryObj, $implJavaOptAtomType$> tableColumnPWSetStamp = null;
+	protected TableColumn<ICFSecSecUserPWHistoryObj, $implJavaOptAtomType$> tableColumnPWReplacedStamp = null;
+	protected TableColumn<ICFSecSecUserPWHistoryObj, $implJavaOptAtomType$> tableColumnPasswordHash = null;
 	protected TableView<ICFSecSecUserPWHistoryObj> dataTable = null;
 
 	protected class PageDataSecUserPWHistoryList
@@ -96,7 +96,7 @@ implements ICFSecJavaFXSecUserPWHistoryPaneCommon,
 		public PageDataSecUserPWHistoryList() {
 		}
 
-		public List<ICFSecSecUserPWHistoryObj> pageData( CFLibDbKeyHash256 priorSecUserId,
+		public List<ICFSecSecUserPWHistoryObj> pageData( ICFLibKeyHash256 priorSecUserId,
 		LocalDateTime priorPWSetStamp )
 		{
 			List<ICFSecSecUserPWHistoryObj> dataList;
@@ -175,93 +175,93 @@ implements ICFSecJavaFXSecUserPWHistoryPaneCommon,
 		javafxSchema = argSchema;
 		pageCallback = new PageDataSecUserPWHistoryList();
 		dataTable = new TableView<ICFSecSecUserPWHistoryObj>();
-		tableColumnSecUserId = new TableColumn<ICFSecSecUserPWHistoryObj,CFLibDbKeyHash256>( "Security User Id" );
-		tableColumnSecUserId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserPWHistoryObj,CFLibDbKeyHash256>,ObservableValue<CFLibDbKeyHash256> >() {
-			public ObservableValue<CFLibDbKeyHash256> call( CellDataFeatures<ICFSecSecUserPWHistoryObj, CFLibDbKeyHash256> p ) {
+		tableColumnSecUserId = new TableColumn<ICFSecSecUserPWHistoryObj,$implJavaOptAtomType$>( "Security User Id" );
+		tableColumnSecUserId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserPWHistoryObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
+			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecSecUserPWHistoryObj, $implJavaOptAtomType$> p ) {
 				ICFSecSecUserPWHistoryObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					CFLibDbKeyHash256 value = obj.getRequiredSecUserId();
-					ReadOnlyObjectWrapper<CFLibDbKeyHash256> observable = new ReadOnlyObjectWrapper<CFLibDbKeyHash256>();
+					$implJavaAtomType$ value = obj.getRequiredSecUserId();
+					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnSecUserId.setCellFactory( new Callback<TableColumn<ICFSecSecUserPWHistoryObj,CFLibDbKeyHash256>,TableCell<ICFSecSecUserPWHistoryObj,CFLibDbKeyHash256>>() {
-			@Override public TableCell<ICFSecSecUserPWHistoryObj,CFLibDbKeyHash256> call(
-				TableColumn<ICFSecSecUserPWHistoryObj,CFLibDbKeyHash256> arg)
+		tableColumnSecUserId.setCellFactory( new Callback<TableColumn<ICFSecSecUserPWHistoryObj,$implJavaOptAtomType$>,TableCell<ICFSecSecUserPWHistoryObj,$implJavaOptAtomType$>>() {
+			@Override public TableCell<ICFSecSecUserPWHistoryObj,$implJavaOptAtomType$> call(
+				TableColumn<ICFSecSecUserPWHistoryObj,$implJavaOptAtomType$> arg)
 			{
 				return new CFDbKeyHash256TableCell<ICFSecSecUserPWHistoryObj>();
 			}
 		});
 		dataTable.getColumns().add( tableColumnSecUserId );
-		tableColumnPWSetStamp = new TableColumn<ICFSecSecUserPWHistoryObj,LocalDateTime>( "Password set at" );
-		tableColumnPWSetStamp.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserPWHistoryObj,LocalDateTime>,ObservableValue<LocalDateTime> >() {
-			public ObservableValue<LocalDateTime> call( CellDataFeatures<ICFSecSecUserPWHistoryObj, LocalDateTime> p ) {
+		tableColumnPWSetStamp = new TableColumn<ICFSecSecUserPWHistoryObj,$implJavaOptAtomType$>( "Password set at" );
+		tableColumnPWSetStamp.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserPWHistoryObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
+			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecSecUserPWHistoryObj, $implJavaOptAtomType$> p ) {
 				ICFSecSecUserPWHistoryObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					LocalDateTime value = obj.getRequiredPWSetStamp();
-					ReadOnlyObjectWrapper<LocalDateTime> observable = new ReadOnlyObjectWrapper<LocalDateTime>();
+					$implJavaAtomType$ value = obj.getRequiredPWSetStamp();
+					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnPWSetStamp.setCellFactory( new Callback<TableColumn<ICFSecSecUserPWHistoryObj,LocalDateTime>,TableCell<ICFSecSecUserPWHistoryObj,LocalDateTime>>() {
-			@Override public TableCell<ICFSecSecUserPWHistoryObj,LocalDateTime> call(
-				TableColumn<ICFSecSecUserPWHistoryObj,LocalDateTime> arg)
+		tableColumnPWSetStamp.setCellFactory( new Callback<TableColumn<ICFSecSecUserPWHistoryObj,$implJavaOptAtomType$>,TableCell<ICFSecSecUserPWHistoryObj,$implJavaOptAtomType$>>() {
+			@Override public TableCell<ICFSecSecUserPWHistoryObj,$implJavaOptAtomType$> call(
+				TableColumn<ICFSecSecUserPWHistoryObj,$implJavaOptAtomType$> arg)
 			{
 				return new CFTimestampTableCell<ICFSecSecUserPWHistoryObj>();
 			}
 		});
 		dataTable.getColumns().add( tableColumnPWSetStamp );
-		tableColumnPWReplacedStamp = new TableColumn<ICFSecSecUserPWHistoryObj,LocalDateTime>( "Password set at" );
-		tableColumnPWReplacedStamp.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserPWHistoryObj,LocalDateTime>,ObservableValue<LocalDateTime> >() {
-			public ObservableValue<LocalDateTime> call( CellDataFeatures<ICFSecSecUserPWHistoryObj, LocalDateTime> p ) {
+		tableColumnPWReplacedStamp = new TableColumn<ICFSecSecUserPWHistoryObj,$implJavaOptAtomType$>( "Password set at" );
+		tableColumnPWReplacedStamp.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserPWHistoryObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
+			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecSecUserPWHistoryObj, $implJavaOptAtomType$> p ) {
 				ICFSecSecUserPWHistoryObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					LocalDateTime value = obj.getRequiredPWReplacedStamp();
-					ReadOnlyObjectWrapper<LocalDateTime> observable = new ReadOnlyObjectWrapper<LocalDateTime>();
+					$implJavaAtomType$ value = obj.getRequiredPWReplacedStamp();
+					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnPWReplacedStamp.setCellFactory( new Callback<TableColumn<ICFSecSecUserPWHistoryObj,LocalDateTime>,TableCell<ICFSecSecUserPWHistoryObj,LocalDateTime>>() {
-			@Override public TableCell<ICFSecSecUserPWHistoryObj,LocalDateTime> call(
-				TableColumn<ICFSecSecUserPWHistoryObj,LocalDateTime> arg)
+		tableColumnPWReplacedStamp.setCellFactory( new Callback<TableColumn<ICFSecSecUserPWHistoryObj,$implJavaOptAtomType$>,TableCell<ICFSecSecUserPWHistoryObj,$implJavaOptAtomType$>>() {
+			@Override public TableCell<ICFSecSecUserPWHistoryObj,$implJavaOptAtomType$> call(
+				TableColumn<ICFSecSecUserPWHistoryObj,$implJavaOptAtomType$> arg)
 			{
 				return new CFTimestampTableCell<ICFSecSecUserPWHistoryObj>();
 			}
 		});
 		dataTable.getColumns().add( tableColumnPWReplacedStamp );
-		tableColumnPasswordHash = new TableColumn<ICFSecSecUserPWHistoryObj,String>( "Password Hash" );
-		tableColumnPasswordHash.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserPWHistoryObj,String>,ObservableValue<String> >() {
-			public ObservableValue<String> call( CellDataFeatures<ICFSecSecUserPWHistoryObj, String> p ) {
+		tableColumnPasswordHash = new TableColumn<ICFSecSecUserPWHistoryObj,$implJavaOptAtomType$>( "Password Hash" );
+		tableColumnPasswordHash.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserPWHistoryObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
+			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecSecUserPWHistoryObj, $implJavaOptAtomType$> p ) {
 				ICFSecSecUserPWHistoryObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					String value = obj.getRequiredPasswordHash();
-					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
+					$implJavaAtomType$ value = obj.getRequiredPasswordHash();
+					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnPasswordHash.setCellFactory( new Callback<TableColumn<ICFSecSecUserPWHistoryObj,String>,TableCell<ICFSecSecUserPWHistoryObj,String>>() {
-			@Override public TableCell<ICFSecSecUserPWHistoryObj,String> call(
-				TableColumn<ICFSecSecUserPWHistoryObj,String> arg)
+		tableColumnPasswordHash.setCellFactory( new Callback<TableColumn<ICFSecSecUserPWHistoryObj,$implJavaOptAtomType$>,TableCell<ICFSecSecUserPWHistoryObj,$implJavaOptAtomType$>>() {
+			@Override public TableCell<ICFSecSecUserPWHistoryObj,$implJavaOptAtomType$> call(
+				TableColumn<ICFSecSecUserPWHistoryObj,$implJavaOptAtomType$> arg)
 			{
 				return new CFStringTableCell<ICFSecSecUserPWHistoryObj>();
 			}

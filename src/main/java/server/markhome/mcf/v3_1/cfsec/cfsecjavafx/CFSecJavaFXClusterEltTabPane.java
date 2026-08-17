@@ -165,7 +165,7 @@ implements ICFSecJavaFXClusterPaneCommon
 		public PageDataComponentsTenantList() {
 		}
 
-		public List<ICFSecTenantObj> pageData( CFLibDbKeyHash256 priorId )
+		public List<ICFSecTenantObj> pageData( ICFLibKeyHash256 priorId )
 		{
 			List<ICFSecTenantObj> dataList;
 			ICFSecClusterObj focus = (ICFSecClusterObj)getJavaFXFocusAsCluster();

@@ -72,7 +72,7 @@ implements ICFSecJavaFXSecTentRolePaneList
 	protected CFButton buttonEditSelected = null;
 	protected CFButton buttonDeleteSelected = null;
 	protected TableView<ICFSecSecTentRoleObj> dataTable = null;
-	protected TableColumn<ICFSecSecTentRoleObj, CFLibDbKeyHash256> tableColumnSecTentRoleId = null;
+	protected TableColumn<ICFSecSecTentRoleObj, $implJavaOptAtomType$> tableColumnSecTentRoleId = null;
 
 	public final String S_ColumnNames[] = { "Name" };
 	protected ICFFormManager cfFormManager = null;
@@ -161,24 +161,24 @@ implements ICFSecJavaFXSecTentRolePaneList
 		javafxSortByChain = sortByChain;
 		setJavaFXDataCollection( argDataCollection );
 		dataTable = new TableView<ICFSecSecTentRoleObj>();
-		tableColumnSecTentRoleId = new TableColumn<ICFSecSecTentRoleObj,CFLibDbKeyHash256>( "Tenant Security Role Id" );
-		tableColumnSecTentRoleId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecTentRoleObj,CFLibDbKeyHash256>,ObservableValue<CFLibDbKeyHash256> >() {
-			public ObservableValue<CFLibDbKeyHash256> call( CellDataFeatures<ICFSecSecTentRoleObj, CFLibDbKeyHash256> p ) {
+		tableColumnSecTentRoleId = new TableColumn<ICFSecSecTentRoleObj,$implJavaOptAtomType$>( "Tenant Security Role Id" );
+		tableColumnSecTentRoleId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecTentRoleObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
+			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecSecTentRoleObj, $implJavaOptAtomType$> p ) {
 				ICFSecSecTentRoleObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					CFLibDbKeyHash256 value = obj.getRequiredSecTentRoleId();
-					ReadOnlyObjectWrapper<CFLibDbKeyHash256> observable = new ReadOnlyObjectWrapper<CFLibDbKeyHash256>();
+					$implJavaAtomType$ value = obj.getRequiredSecTentRoleId();
+					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnSecTentRoleId.setCellFactory( new Callback<TableColumn<ICFSecSecTentRoleObj,CFLibDbKeyHash256>,TableCell<ICFSecSecTentRoleObj,CFLibDbKeyHash256>>() {
-			@Override public TableCell<ICFSecSecTentRoleObj,CFLibDbKeyHash256> call(
-				TableColumn<ICFSecSecTentRoleObj,CFLibDbKeyHash256> arg)
+		tableColumnSecTentRoleId.setCellFactory( new Callback<TableColumn<ICFSecSecTentRoleObj,$implJavaOptAtomType$>,TableCell<ICFSecSecTentRoleObj,$implJavaOptAtomType$>>() {
+			@Override public TableCell<ICFSecSecTentRoleObj,$implJavaOptAtomType$> call(
+				TableColumn<ICFSecSecTentRoleObj,$implJavaOptAtomType$> arg)
 			{
 				return new CFDbKeyHash256TableCell<ICFSecSecTentRoleObj>();
 			}

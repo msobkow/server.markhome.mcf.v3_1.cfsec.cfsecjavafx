@@ -45,5 +45,5 @@ import server.markhome.mcf.v3_1.cfsec.cfsecobj.*;
  */
 public interface ICFSecJavaFXSecUserPWResetPageCallback
 {
-	public List<ICFSecSecUserPWResetObj> pageData( CFLibDbKeyHash256 priorSecUserId );
+	public List<ICFSecSecUserPWResetObj> pageData( ICFLibKeyHash256 priorSecUserId );
 }

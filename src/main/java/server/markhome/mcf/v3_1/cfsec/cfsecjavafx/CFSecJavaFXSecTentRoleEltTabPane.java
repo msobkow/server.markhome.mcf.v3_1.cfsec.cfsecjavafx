@@ -144,7 +144,7 @@ implements ICFSecJavaFXSecTentRolePaneCommon
 		public PageDataChildrenMembByRoleList() {
 		}
 
-		public List<ICFSecSecTentRoleMembObj> pageData( CFLibDbKeyHash256 priorSecTentRoleId,
+		public List<ICFSecSecTentRoleMembObj> pageData( ICFLibKeyHash256 priorSecTentRoleId,
 		String priorLoginId )
 		{
 			List<ICFSecSecTentRoleMembObj> dataList;

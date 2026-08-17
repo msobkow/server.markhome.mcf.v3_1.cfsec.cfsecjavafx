@@ -45,6 +45,6 @@ import server.markhome.mcf.v3_1.cfsec.cfsecobj.*;
  */
 public interface ICFSecJavaFXSecUserPWHistoryPageCallback
 {
-	public List<ICFSecSecUserPWHistoryObj> pageData( CFLibDbKeyHash256 priorSecUserId,
+	public List<ICFSecSecUserPWHistoryObj> pageData( ICFLibKeyHash256 priorSecUserId,
 		LocalDateTime priorPWSetStamp );
 }

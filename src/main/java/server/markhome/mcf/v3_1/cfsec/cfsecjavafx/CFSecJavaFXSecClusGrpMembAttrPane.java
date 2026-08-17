@@ -102,7 +102,7 @@ implements ICFSecJavaFXSecClusGrpMembPaneCommon
 		public PageDataParentUserList() {
 		}
 
-		public List<ICFSecSecUserObj> pageData( CFLibDbKeyHash256 priorSecUserId )
+		public List<ICFSecSecUserObj> pageData( ICFLibKeyHash256 priorSecUserId )
 		{
 			java.util.List<ICFSecSecUserObj> listOfSecUser = null;
 			ICFSecSecClusGrpMembObj focus = (ICFSecSecClusGrpMembObj)getEffJavaFXFocus();

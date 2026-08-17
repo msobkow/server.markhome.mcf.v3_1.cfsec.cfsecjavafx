@@ -218,7 +218,7 @@ implements ICFSecJavaFXSecSysGrpPaneCommon
 		public PageDataComponentsIncByGrpList() {
 		}
 
-		public List<ICFSecSecSysGrpIncObj> pageData( CFLibDbKeyHash256 priorSecSysGrpId,
+		public List<ICFSecSecSysGrpIncObj> pageData( ICFLibKeyHash256 priorSecSysGrpId,
 		String priorInclName )
 		{
 			List<ICFSecSecSysGrpIncObj> dataList;
@@ -268,7 +268,7 @@ implements ICFSecJavaFXSecSysGrpPaneCommon
 		public PageDataChildrenMembByGrpList() {
 		}
 
-		public List<ICFSecSecSysGrpMembObj> pageData( CFLibDbKeyHash256 priorSecSysGrpId,
+		public List<ICFSecSecSysGrpMembObj> pageData( ICFLibKeyHash256 priorSecSysGrpId,
 		String priorLoginId )
 		{
 			List<ICFSecSecSysGrpMembObj> dataList;
@@ -490,7 +490,7 @@ implements ICFSecJavaFXSecSysGrpPaneCommon
 		public PageDataChildrenSysGrpByNameList() {
 		}
 
-		public List<ICFSecSecSysGrpIncObj> pageData( CFLibDbKeyHash256 priorSecSysGrpId,
+		public List<ICFSecSecSysGrpIncObj> pageData( ICFLibKeyHash256 priorSecSysGrpId,
 		String priorInclName )
 		{
 			List<ICFSecSecSysGrpIncObj> dataList;
@@ -540,7 +540,7 @@ implements ICFSecJavaFXSecSysGrpPaneCommon
 		public PageDataChildrenRoleByEnableNameList() {
 		}
 
-		public List<ICFSecSecSysRoleEnablesObj> pageData( CFLibDbKeyHash256 priorSecSysRoleId,
+		public List<ICFSecSecSysRoleEnablesObj> pageData( ICFLibKeyHash256 priorSecSysRoleId,
 		String priorEnableName )
 		{
 			List<ICFSecSecSysRoleEnablesObj> dataList;
