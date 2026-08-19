@@ -72,7 +72,7 @@ implements ICFSecJavaFXSecClusRolePaneList
 	protected CFButton buttonEditSelected = null;
 	protected CFButton buttonDeleteSelected = null;
 	protected TableView<ICFSecSecClusRoleObj> dataTable = null;
-	protected TableColumn<ICFSecSecClusRoleObj, $implJavaOptAtomType$> tableColumnSecClusRoleId = null;
+	protected TableColumn<ICFSecSecClusRoleObj, ICFLibKeyHash256> tableColumnSecClusRoleId = null;
 
 	public final String S_ColumnNames[] = { "Name" };
 	protected ICFFormManager cfFormManager = null;
@@ -161,24 +161,24 @@ implements ICFSecJavaFXSecClusRolePaneList
 		javafxSortByChain = sortByChain;
 		setJavaFXDataCollection( argDataCollection );
 		dataTable = new TableView<ICFSecSecClusRoleObj>();
-		tableColumnSecClusRoleId = new TableColumn<ICFSecSecClusRoleObj,$implJavaOptAtomType$>( "Cluster Security Role Id" );
-		tableColumnSecClusRoleId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecClusRoleObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
-			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecSecClusRoleObj, $implJavaOptAtomType$> p ) {
+		tableColumnSecClusRoleId = new TableColumn<ICFSecSecClusRoleObj,ICFLibKeyHash256>( "Cluster Security Role Id" );
+		tableColumnSecClusRoleId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecClusRoleObj,ICFLibKeyHash256>,ObservableValue<ICFLibKeyHash256> >() {
+			public ObservableValue<ICFLibKeyHash256> call( CellDataFeatures<ICFSecSecClusRoleObj, ICFLibKeyHash256> p ) {
 				ICFSecSecClusRoleObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					$implJavaAtomType$ value = obj.getRequiredSecClusRoleId();
-					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
+					ICFLibKeyHash256 value = obj.getRequiredSecClusRoleId();
+					ReadOnlyObjectWrapper<ICFLibKeyHash256> observable = new ReadOnlyObjectWrapper<ICFLibKeyHash256>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnSecClusRoleId.setCellFactory( new Callback<TableColumn<ICFSecSecClusRoleObj,$implJavaOptAtomType$>,TableCell<ICFSecSecClusRoleObj,$implJavaOptAtomType$>>() {
-			@Override public TableCell<ICFSecSecClusRoleObj,$implJavaOptAtomType$> call(
-				TableColumn<ICFSecSecClusRoleObj,$implJavaOptAtomType$> arg)
+		tableColumnSecClusRoleId.setCellFactory( new Callback<TableColumn<ICFSecSecClusRoleObj,ICFLibKeyHash256>,TableCell<ICFSecSecClusRoleObj,ICFLibKeyHash256>>() {
+			@Override public TableCell<ICFSecSecClusRoleObj,ICFLibKeyHash256> call(
+				TableColumn<ICFSecSecClusRoleObj,ICFLibKeyHash256> arg)
 			{
 				return new CFDbKeyHash256TableCell<ICFSecSecClusRoleObj>();
 			}

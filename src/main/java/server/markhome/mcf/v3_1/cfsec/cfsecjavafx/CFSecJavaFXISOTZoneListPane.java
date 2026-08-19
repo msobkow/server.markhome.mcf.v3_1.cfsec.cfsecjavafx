@@ -72,13 +72,13 @@ implements ICFSecJavaFXISOTZonePaneList
 	protected CFButton buttonEditSelected = null;
 	protected CFButton buttonDeleteSelected = null;
 	protected TableView<ICFSecISOTZoneObj> dataTable = null;
-	protected TableColumn<ICFSecISOTZoneObj, $implJavaOptAtomType$> tableColumnISOTZoneId = null;
-	protected TableColumn<ICFSecISOTZoneObj, $implJavaOptAtomType$> tableColumnIso8601 = null;
-	protected TableColumn<ICFSecISOTZoneObj, $implJavaOptAtomType$> tableColumnTZName = null;
-	protected TableColumn<ICFSecISOTZoneObj, $implJavaOptAtomType$> tableColumnTZHourOffset = null;
-	protected TableColumn<ICFSecISOTZoneObj, $implJavaOptAtomType$> tableColumnTZMinOffset = null;
-	protected TableColumn<ICFSecISOTZoneObj, $implJavaOptAtomType$> tableColumnDescription = null;
-	protected TableColumn<ICFSecISOTZoneObj, $implJavaOptAtomType$> tableColumnVisible = null;
+	protected TableColumn<ICFSecISOTZoneObj, Short> tableColumnISOTZoneId = null;
+	protected TableColumn<ICFSecISOTZoneObj, String> tableColumnIso8601 = null;
+	protected TableColumn<ICFSecISOTZoneObj, String> tableColumnTZName = null;
+	protected TableColumn<ICFSecISOTZoneObj, Short> tableColumnTZHourOffset = null;
+	protected TableColumn<ICFSecISOTZoneObj, Short> tableColumnTZMinOffset = null;
+	protected TableColumn<ICFSecISOTZoneObj, String> tableColumnDescription = null;
+	protected TableColumn<ICFSecISOTZoneObj, Boolean> tableColumnVisible = null;
 
 	public final String S_ColumnNames[] = { "Name" };
 	protected ICFFormManager cfFormManager = null;
@@ -167,166 +167,166 @@ implements ICFSecJavaFXISOTZonePaneList
 		javafxSortByChain = sortByChain;
 		setJavaFXDataCollection( argDataCollection );
 		dataTable = new TableView<ICFSecISOTZoneObj>();
-		tableColumnISOTZoneId = new TableColumn<ICFSecISOTZoneObj,$implJavaOptAtomType$>( "ISO Timezone Id" );
-		tableColumnISOTZoneId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOTZoneObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
-			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecISOTZoneObj, $implJavaOptAtomType$> p ) {
+		tableColumnISOTZoneId = new TableColumn<ICFSecISOTZoneObj,Short>( "ISO Timezone Id" );
+		tableColumnISOTZoneId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOTZoneObj,Short>,ObservableValue<Short> >() {
+			public ObservableValue<Short> call( CellDataFeatures<ICFSecISOTZoneObj, Short> p ) {
 				ICFSecISOTZoneObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					$implJavaAtomType$ value = obj.getRequiredISOTZoneId();
-					$implJavaOptAtomType$ wrapped = $implJavaOptAtomType$.valueOf( value );
-					ReadOnlyObjectWrapper<$implJavaOptAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaOptAtomType$>();
+					short value = obj.getRequiredISOTZoneId();
+					Short wrapped = Short.valueOf( value );
+					ReadOnlyObjectWrapper<Short> observable = new ReadOnlyObjectWrapper<Short>();
 					observable.setValue( wrapped );
 					return( observable );
 				}
 			}
 		});
-		tableColumnISOTZoneId.setCellFactory( new Callback<TableColumn<ICFSecISOTZoneObj,$implJavaOptAtomType$>,TableCell<ICFSecISOTZoneObj,$implJavaOptAtomType$>>() {
-			@Override public TableCell<ICFSecISOTZoneObj,$implJavaOptAtomType$> call(
-				TableColumn<ICFSecISOTZoneObj,$implJavaOptAtomType$> arg)
+		tableColumnISOTZoneId.setCellFactory( new Callback<TableColumn<ICFSecISOTZoneObj,Short>,TableCell<ICFSecISOTZoneObj,Short>>() {
+			@Override public TableCell<ICFSecISOTZoneObj,Short> call(
+				TableColumn<ICFSecISOTZoneObj,Short> arg)
 			{
 				return new CFInt16TableCell<ICFSecISOTZoneObj>();
 			}
 		});
 		dataTable.getColumns().add( tableColumnISOTZoneId );
-		tableColumnIso8601 = new TableColumn<ICFSecISOTZoneObj,$implJavaOptAtomType$>( "ISO8601" );
-		tableColumnIso8601.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOTZoneObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
-			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecISOTZoneObj, $implJavaOptAtomType$> p ) {
+		tableColumnIso8601 = new TableColumn<ICFSecISOTZoneObj,String>( "ISO8601" );
+		tableColumnIso8601.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOTZoneObj,String>,ObservableValue<String> >() {
+			public ObservableValue<String> call( CellDataFeatures<ICFSecISOTZoneObj, String> p ) {
 				ICFSecISOTZoneObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					$implJavaAtomType$ value = obj.getRequiredIso8601();
-					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
+					String value = obj.getRequiredIso8601();
+					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnIso8601.setCellFactory( new Callback<TableColumn<ICFSecISOTZoneObj,$implJavaOptAtomType$>,TableCell<ICFSecISOTZoneObj,$implJavaOptAtomType$>>() {
-			@Override public TableCell<ICFSecISOTZoneObj,$implJavaOptAtomType$> call(
-				TableColumn<ICFSecISOTZoneObj,$implJavaOptAtomType$> arg)
+		tableColumnIso8601.setCellFactory( new Callback<TableColumn<ICFSecISOTZoneObj,String>,TableCell<ICFSecISOTZoneObj,String>>() {
+			@Override public TableCell<ICFSecISOTZoneObj,String> call(
+				TableColumn<ICFSecISOTZoneObj,String> arg)
 			{
 				return new CFStringTableCell<ICFSecISOTZoneObj>();
 			}
 		});
 		dataTable.getColumns().add( tableColumnIso8601 );
-		tableColumnTZName = new TableColumn<ICFSecISOTZoneObj,$implJavaOptAtomType$>( "Timezone Name" );
-		tableColumnTZName.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOTZoneObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
-			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecISOTZoneObj, $implJavaOptAtomType$> p ) {
+		tableColumnTZName = new TableColumn<ICFSecISOTZoneObj,String>( "Timezone Name" );
+		tableColumnTZName.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOTZoneObj,String>,ObservableValue<String> >() {
+			public ObservableValue<String> call( CellDataFeatures<ICFSecISOTZoneObj, String> p ) {
 				ICFSecISOTZoneObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					$implJavaAtomType$ value = obj.getRequiredTZName();
-					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
+					String value = obj.getRequiredTZName();
+					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnTZName.setCellFactory( new Callback<TableColumn<ICFSecISOTZoneObj,$implJavaOptAtomType$>,TableCell<ICFSecISOTZoneObj,$implJavaOptAtomType$>>() {
-			@Override public TableCell<ICFSecISOTZoneObj,$implJavaOptAtomType$> call(
-				TableColumn<ICFSecISOTZoneObj,$implJavaOptAtomType$> arg)
+		tableColumnTZName.setCellFactory( new Callback<TableColumn<ICFSecISOTZoneObj,String>,TableCell<ICFSecISOTZoneObj,String>>() {
+			@Override public TableCell<ICFSecISOTZoneObj,String> call(
+				TableColumn<ICFSecISOTZoneObj,String> arg)
 			{
 				return new CFStringTableCell<ICFSecISOTZoneObj>();
 			}
 		});
 		dataTable.getColumns().add( tableColumnTZName );
-		tableColumnTZHourOffset = new TableColumn<ICFSecISOTZoneObj,$implJavaOptAtomType$>( "Timezone Hour Offset" );
-		tableColumnTZHourOffset.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOTZoneObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
-			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecISOTZoneObj, $implJavaOptAtomType$> p ) {
+		tableColumnTZHourOffset = new TableColumn<ICFSecISOTZoneObj,Short>( "Timezone Hour Offset" );
+		tableColumnTZHourOffset.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOTZoneObj,Short>,ObservableValue<Short> >() {
+			public ObservableValue<Short> call( CellDataFeatures<ICFSecISOTZoneObj, Short> p ) {
 				ICFSecISOTZoneObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					$implJavaAtomType$ value = obj.getRequiredTZHourOffset();
-					$implJavaOptAtomType$ wrapped = $implJavaOptAtomType$.valueOf( value );
-					ReadOnlyObjectWrapper<$implJavaOptAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaOptAtomType$>();
+					short value = obj.getRequiredTZHourOffset();
+					Short wrapped = Short.valueOf( value );
+					ReadOnlyObjectWrapper<Short> observable = new ReadOnlyObjectWrapper<Short>();
 					observable.setValue( wrapped );
 					return( observable );
 				}
 			}
 		});
-		tableColumnTZHourOffset.setCellFactory( new Callback<TableColumn<ICFSecISOTZoneObj,$implJavaOptAtomType$>,TableCell<ICFSecISOTZoneObj,$implJavaOptAtomType$>>() {
-			@Override public TableCell<ICFSecISOTZoneObj,$implJavaOptAtomType$> call(
-				TableColumn<ICFSecISOTZoneObj,$implJavaOptAtomType$> arg)
+		tableColumnTZHourOffset.setCellFactory( new Callback<TableColumn<ICFSecISOTZoneObj,Short>,TableCell<ICFSecISOTZoneObj,Short>>() {
+			@Override public TableCell<ICFSecISOTZoneObj,Short> call(
+				TableColumn<ICFSecISOTZoneObj,Short> arg)
 			{
 				return new CFInt16TableCell<ICFSecISOTZoneObj>();
 			}
 		});
 		dataTable.getColumns().add( tableColumnTZHourOffset );
-		tableColumnTZMinOffset = new TableColumn<ICFSecISOTZoneObj,$implJavaOptAtomType$>( "Timezone Minute Offset" );
-		tableColumnTZMinOffset.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOTZoneObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
-			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecISOTZoneObj, $implJavaOptAtomType$> p ) {
+		tableColumnTZMinOffset = new TableColumn<ICFSecISOTZoneObj,Short>( "Timezone Minute Offset" );
+		tableColumnTZMinOffset.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOTZoneObj,Short>,ObservableValue<Short> >() {
+			public ObservableValue<Short> call( CellDataFeatures<ICFSecISOTZoneObj, Short> p ) {
 				ICFSecISOTZoneObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					$implJavaAtomType$ value = obj.getRequiredTZMinOffset();
-					$implJavaOptAtomType$ wrapped = $implJavaOptAtomType$.valueOf( value );
-					ReadOnlyObjectWrapper<$implJavaOptAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaOptAtomType$>();
+					short value = obj.getRequiredTZMinOffset();
+					Short wrapped = Short.valueOf( value );
+					ReadOnlyObjectWrapper<Short> observable = new ReadOnlyObjectWrapper<Short>();
 					observable.setValue( wrapped );
 					return( observable );
 				}
 			}
 		});
-		tableColumnTZMinOffset.setCellFactory( new Callback<TableColumn<ICFSecISOTZoneObj,$implJavaOptAtomType$>,TableCell<ICFSecISOTZoneObj,$implJavaOptAtomType$>>() {
-			@Override public TableCell<ICFSecISOTZoneObj,$implJavaOptAtomType$> call(
-				TableColumn<ICFSecISOTZoneObj,$implJavaOptAtomType$> arg)
+		tableColumnTZMinOffset.setCellFactory( new Callback<TableColumn<ICFSecISOTZoneObj,Short>,TableCell<ICFSecISOTZoneObj,Short>>() {
+			@Override public TableCell<ICFSecISOTZoneObj,Short> call(
+				TableColumn<ICFSecISOTZoneObj,Short> arg)
 			{
 				return new CFInt16TableCell<ICFSecISOTZoneObj>();
 			}
 		});
 		dataTable.getColumns().add( tableColumnTZMinOffset );
-		tableColumnDescription = new TableColumn<ICFSecISOTZoneObj,$implJavaOptAtomType$>( "Description" );
-		tableColumnDescription.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOTZoneObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
-			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecISOTZoneObj, $implJavaOptAtomType$> p ) {
+		tableColumnDescription = new TableColumn<ICFSecISOTZoneObj,String>( "Description" );
+		tableColumnDescription.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOTZoneObj,String>,ObservableValue<String> >() {
+			public ObservableValue<String> call( CellDataFeatures<ICFSecISOTZoneObj, String> p ) {
 				ICFSecISOTZoneObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					$implJavaAtomType$ value = obj.getRequiredDescription();
-					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
+					String value = obj.getRequiredDescription();
+					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnDescription.setCellFactory( new Callback<TableColumn<ICFSecISOTZoneObj,$implJavaOptAtomType$>,TableCell<ICFSecISOTZoneObj,$implJavaOptAtomType$>>() {
-			@Override public TableCell<ICFSecISOTZoneObj,$implJavaOptAtomType$> call(
-				TableColumn<ICFSecISOTZoneObj,$implJavaOptAtomType$> arg)
+		tableColumnDescription.setCellFactory( new Callback<TableColumn<ICFSecISOTZoneObj,String>,TableCell<ICFSecISOTZoneObj,String>>() {
+			@Override public TableCell<ICFSecISOTZoneObj,String> call(
+				TableColumn<ICFSecISOTZoneObj,String> arg)
 			{
 				return new CFStringTableCell<ICFSecISOTZoneObj>();
 			}
 		});
 		dataTable.getColumns().add( tableColumnDescription );
-		tableColumnVisible = new TableColumn<ICFSecISOTZoneObj,$implJavaOptAtomType$>( "Visible" );
-		tableColumnVisible.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOTZoneObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
-			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecISOTZoneObj, $implJavaOptAtomType$> p ) {
+		tableColumnVisible = new TableColumn<ICFSecISOTZoneObj,Boolean>( "Visible" );
+		tableColumnVisible.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOTZoneObj,Boolean>,ObservableValue<Boolean> >() {
+			public ObservableValue<Boolean> call( CellDataFeatures<ICFSecISOTZoneObj, Boolean> p ) {
 				ICFSecISOTZoneObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					$implJavaAtomType$ value = obj.getRequiredVisible();
-					$implJavaOptAtomType$ wrapped = $implJavaOptAtomType$.valueOf( value );
-					ReadOnlyObjectWrapper<$implJavaOptAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaOptAtomType$>();
+					boolean value = obj.getRequiredVisible();
+					Boolean wrapped = Boolean.valueOf( value );
+					ReadOnlyObjectWrapper<Boolean> observable = new ReadOnlyObjectWrapper<Boolean>();
 					observable.setValue( wrapped );
 					return( observable );
 				}
 			}
 		});
-		tableColumnVisible.setCellFactory( new Callback<TableColumn<ICFSecISOTZoneObj,$implJavaOptAtomType$>,TableCell<ICFSecISOTZoneObj,$implJavaOptAtomType$>>() {
-			@Override public TableCell<ICFSecISOTZoneObj,$implJavaOptAtomType$> call(
-				TableColumn<ICFSecISOTZoneObj,$implJavaOptAtomType$> arg)
+		tableColumnVisible.setCellFactory( new Callback<TableColumn<ICFSecISOTZoneObj,Boolean>,TableCell<ICFSecISOTZoneObj,Boolean>>() {
+			@Override public TableCell<ICFSecISOTZoneObj,Boolean> call(
+				TableColumn<ICFSecISOTZoneObj,Boolean> arg)
 			{
 				return new CFBoolTableCell<ICFSecISOTZoneObj>();
 			}

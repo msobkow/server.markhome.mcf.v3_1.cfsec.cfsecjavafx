@@ -67,8 +67,8 @@ implements ICFSecJavaFXSecSysRolePaneList
 	protected ICFSecJavaFXSchema javafxSchema = null;
 	protected Collection<ICFSecSecSysRoleObj> javafxDataCollection = null;
 	protected ObservableList<ICFSecSecSysRoleObj> observableListOfSecSysRole = null;
-	protected TableColumn<ICFSecSecSysRoleObj, $implJavaOptAtomType$> tableColumnSecSysRoleId = null;
-	protected TableColumn<ICFSecSecSysRoleObj, $implJavaOptAtomType$> tableColumnName = null;
+	protected TableColumn<ICFSecSecSysRoleObj, ICFLibKeyHash256> tableColumnSecSysRoleId = null;
+	protected TableColumn<ICFSecSecSysRoleObj, String> tableColumnName = null;
 	protected TableView<ICFSecSecSysRoleObj> dataTable = null;
 	protected CFHBox hboxMenu = null;
 	public final String S_ColumnNames[] = { "Name" };
@@ -115,47 +115,47 @@ implements ICFSecJavaFXSecSysRolePaneList
 		javafxContainer = argContainer;
 		setJavaFXDataCollection( argDataCollection );
 		dataTable = new TableView<ICFSecSecSysRoleObj>();
-		tableColumnSecSysRoleId = new TableColumn<ICFSecSecSysRoleObj,$implJavaOptAtomType$>( "Security System Role Id" );
-		tableColumnSecSysRoleId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecSysRoleObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
-			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecSecSysRoleObj, $implJavaOptAtomType$> p ) {
+		tableColumnSecSysRoleId = new TableColumn<ICFSecSecSysRoleObj,ICFLibKeyHash256>( "Security System Role Id" );
+		tableColumnSecSysRoleId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecSysRoleObj,ICFLibKeyHash256>,ObservableValue<ICFLibKeyHash256> >() {
+			public ObservableValue<ICFLibKeyHash256> call( CellDataFeatures<ICFSecSecSysRoleObj, ICFLibKeyHash256> p ) {
 				ICFSecSecSysRoleObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					$implJavaAtomType$ value = obj.getRequiredSecSysRoleId();
-					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
+					ICFLibKeyHash256 value = obj.getRequiredSecSysRoleId();
+					ReadOnlyObjectWrapper<ICFLibKeyHash256> observable = new ReadOnlyObjectWrapper<ICFLibKeyHash256>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnSecSysRoleId.setCellFactory( new Callback<TableColumn<ICFSecSecSysRoleObj,$implJavaOptAtomType$>,TableCell<ICFSecSecSysRoleObj,$implJavaOptAtomType$>>() {
-			@Override public TableCell<ICFSecSecSysRoleObj,$implJavaOptAtomType$> call(
-				TableColumn<ICFSecSecSysRoleObj,$implJavaOptAtomType$> arg)
+		tableColumnSecSysRoleId.setCellFactory( new Callback<TableColumn<ICFSecSecSysRoleObj,ICFLibKeyHash256>,TableCell<ICFSecSecSysRoleObj,ICFLibKeyHash256>>() {
+			@Override public TableCell<ICFSecSecSysRoleObj,ICFLibKeyHash256> call(
+				TableColumn<ICFSecSecSysRoleObj,ICFLibKeyHash256> arg)
 			{
 				return new CFDbKeyHash256TableCell<ICFSecSecSysRoleObj>();
 			}
 		});
 		dataTable.getColumns().add( tableColumnSecSysRoleId );
-		tableColumnName = new TableColumn<ICFSecSecSysRoleObj,$implJavaOptAtomType$>( "Name" );
-		tableColumnName.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecSysRoleObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
-			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecSecSysRoleObj, $implJavaOptAtomType$> p ) {
+		tableColumnName = new TableColumn<ICFSecSecSysRoleObj,String>( "Name" );
+		tableColumnName.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecSysRoleObj,String>,ObservableValue<String> >() {
+			public ObservableValue<String> call( CellDataFeatures<ICFSecSecSysRoleObj, String> p ) {
 				ICFSecSecSysRoleObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					$implJavaAtomType$ value = obj.getRequiredName();
-					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
+					String value = obj.getRequiredName();
+					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnName.setCellFactory( new Callback<TableColumn<ICFSecSecSysRoleObj,$implJavaOptAtomType$>,TableCell<ICFSecSecSysRoleObj,$implJavaOptAtomType$>>() {
-			@Override public TableCell<ICFSecSecSysRoleObj,$implJavaOptAtomType$> call(
-				TableColumn<ICFSecSecSysRoleObj,$implJavaOptAtomType$> arg)
+		tableColumnName.setCellFactory( new Callback<TableColumn<ICFSecSecSysRoleObj,String>,TableCell<ICFSecSecSysRoleObj,String>>() {
+			@Override public TableCell<ICFSecSecSysRoleObj,String> call(
+				TableColumn<ICFSecSecSysRoleObj,String> arg)
 			{
 				return new CFStringTableCell<ICFSecSecSysRoleObj>();
 			}

@@ -72,7 +72,7 @@ implements ICFSecJavaFXSysClusterPaneList
 	protected CFButton buttonEditSelected = null;
 	protected CFButton buttonDeleteSelected = null;
 	protected TableView<ICFSecSysClusterObj> dataTable = null;
-	protected TableColumn<ICFSecSysClusterObj, $implJavaOptAtomType$> tableColumnSingletonId = null;
+	protected TableColumn<ICFSecSysClusterObj, Integer> tableColumnSingletonId = null;
 
 	public final String S_ColumnNames[] = { "Name" };
 	protected ICFFormManager cfFormManager = null;
@@ -161,25 +161,25 @@ implements ICFSecJavaFXSysClusterPaneList
 		javafxSortByChain = sortByChain;
 		setJavaFXDataCollection( argDataCollection );
 		dataTable = new TableView<ICFSecSysClusterObj>();
-		tableColumnSingletonId = new TableColumn<ICFSecSysClusterObj,$implJavaOptAtomType$>( "Singleton" );
-		tableColumnSingletonId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSysClusterObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
-			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecSysClusterObj, $implJavaOptAtomType$> p ) {
+		tableColumnSingletonId = new TableColumn<ICFSecSysClusterObj,Integer>( "Singleton" );
+		tableColumnSingletonId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSysClusterObj,Integer>,ObservableValue<Integer> >() {
+			public ObservableValue<Integer> call( CellDataFeatures<ICFSecSysClusterObj, Integer> p ) {
 				ICFSecSysClusterObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					$implJavaAtomType$ value = obj.getRequiredSingletonId();
-					$implJavaOptAtomType$ wrapped = $implJavaOptAtomType$.valueOf( value );
-					ReadOnlyObjectWrapper<$implJavaOptAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaOptAtomType$>();
+					int value = obj.getRequiredSingletonId();
+					Integer wrapped = Integer.valueOf( value );
+					ReadOnlyObjectWrapper<Integer> observable = new ReadOnlyObjectWrapper<Integer>();
 					observable.setValue( wrapped );
 					return( observable );
 				}
 			}
 		});
-		tableColumnSingletonId.setCellFactory( new Callback<TableColumn<ICFSecSysClusterObj,$implJavaOptAtomType$>,TableCell<ICFSecSysClusterObj,$implJavaOptAtomType$>>() {
-			@Override public TableCell<ICFSecSysClusterObj,$implJavaOptAtomType$> call(
-				TableColumn<ICFSecSysClusterObj,$implJavaOptAtomType$> arg)
+		tableColumnSingletonId.setCellFactory( new Callback<TableColumn<ICFSecSysClusterObj,Integer>,TableCell<ICFSecSysClusterObj,Integer>>() {
+			@Override public TableCell<ICFSecSysClusterObj,Integer> call(
+				TableColumn<ICFSecSysClusterObj,Integer> arg)
 			{
 				return new CFInt32TableCell<ICFSecSysClusterObj>();
 			}

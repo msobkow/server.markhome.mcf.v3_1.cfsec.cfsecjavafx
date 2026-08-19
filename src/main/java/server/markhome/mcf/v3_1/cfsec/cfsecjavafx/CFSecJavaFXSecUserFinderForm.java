@@ -84,13 +84,13 @@ implements ICFSecJavaFXSecUserPaneCommon,
 	protected CFButton buttonMoreData = null;
 	protected boolean endOfData = true;
 	protected ObservableList<ICFSecSecUserObj> observableListOfSecUser = null;
-	protected TableColumn<ICFSecSecUserObj, $implJavaOptAtomType$> tableColumnSecUserId = null;
-	protected TableColumn<ICFSecSecUserObj, $implJavaOptAtomType$> tableColumnLoginId = null;
-	protected TableColumn<ICFSecSecUserObj, $implJavaOptAtomType$> tableColumnAccountStatus = null;
-	protected TableColumn<ICFSecSecUserObj, $implJavaOptAtomType$> tableColumnDfltSysGrpName = null;
-	protected TableColumn<ICFSecSecUserObj, $implJavaOptAtomType$> tableColumnDfltClusGrpName = null;
-	protected TableColumn<ICFSecSecUserObj, $implJavaOptAtomType$> tableColumnDfltTentGrpName = null;
-	protected TableColumn<ICFSecSecUserObj, $implJavaOptAtomType$> tableColumnEMailAddress = null;
+	protected TableColumn<ICFSecSecUserObj, ICFLibKeyHash256> tableColumnSecUserId = null;
+	protected TableColumn<ICFSecSecUserObj, String> tableColumnLoginId = null;
+	protected TableColumn<ICFSecSecUserObj, ICFSecPubSchema.SecAccountStatusEnum> tableColumnAccountStatus = null;
+	protected TableColumn<ICFSecSecUserObj, String> tableColumnDfltSysGrpName = null;
+	protected TableColumn<ICFSecSecUserObj, String> tableColumnDfltClusGrpName = null;
+	protected TableColumn<ICFSecSecUserObj, String> tableColumnDfltTentGrpName = null;
+	protected TableColumn<ICFSecSecUserObj, String> tableColumnEMailAddress = null;
 	protected TableView<ICFSecSecUserObj> dataTable = null;
 
 	protected class PageDataSecUserList
@@ -176,162 +176,162 @@ implements ICFSecJavaFXSecUserPaneCommon,
 		javafxSchema = argSchema;
 		pageCallback = new PageDataSecUserList();
 		dataTable = new TableView<ICFSecSecUserObj>();
-		tableColumnSecUserId = new TableColumn<ICFSecSecUserObj,$implJavaOptAtomType$>( "Security User Id" );
-		tableColumnSecUserId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
-			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecSecUserObj, $implJavaOptAtomType$> p ) {
+		tableColumnSecUserId = new TableColumn<ICFSecSecUserObj,ICFLibKeyHash256>( "Security User Id" );
+		tableColumnSecUserId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserObj,ICFLibKeyHash256>,ObservableValue<ICFLibKeyHash256> >() {
+			public ObservableValue<ICFLibKeyHash256> call( CellDataFeatures<ICFSecSecUserObj, ICFLibKeyHash256> p ) {
 				ICFSecSecUserObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					$implJavaAtomType$ value = obj.getRequiredSecUserId();
-					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
+					ICFLibKeyHash256 value = obj.getRequiredSecUserId();
+					ReadOnlyObjectWrapper<ICFLibKeyHash256> observable = new ReadOnlyObjectWrapper<ICFLibKeyHash256>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnSecUserId.setCellFactory( new Callback<TableColumn<ICFSecSecUserObj,$implJavaOptAtomType$>,TableCell<ICFSecSecUserObj,$implJavaOptAtomType$>>() {
-			@Override public TableCell<ICFSecSecUserObj,$implJavaOptAtomType$> call(
-				TableColumn<ICFSecSecUserObj,$implJavaOptAtomType$> arg)
+		tableColumnSecUserId.setCellFactory( new Callback<TableColumn<ICFSecSecUserObj,ICFLibKeyHash256>,TableCell<ICFSecSecUserObj,ICFLibKeyHash256>>() {
+			@Override public TableCell<ICFSecSecUserObj,ICFLibKeyHash256> call(
+				TableColumn<ICFSecSecUserObj,ICFLibKeyHash256> arg)
 			{
 				return new CFDbKeyHash256TableCell<ICFSecSecUserObj>();
 			}
 		});
 		dataTable.getColumns().add( tableColumnSecUserId );
-		tableColumnLoginId = new TableColumn<ICFSecSecUserObj,$implJavaOptAtomType$>( "Login Id" );
-		tableColumnLoginId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
-			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecSecUserObj, $implJavaOptAtomType$> p ) {
+		tableColumnLoginId = new TableColumn<ICFSecSecUserObj,String>( "Login Id" );
+		tableColumnLoginId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserObj,String>,ObservableValue<String> >() {
+			public ObservableValue<String> call( CellDataFeatures<ICFSecSecUserObj, String> p ) {
 				ICFSecSecUserObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					$implJavaAtomType$ value = obj.getRequiredLoginId();
-					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
+					String value = obj.getRequiredLoginId();
+					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnLoginId.setCellFactory( new Callback<TableColumn<ICFSecSecUserObj,$implJavaOptAtomType$>,TableCell<ICFSecSecUserObj,$implJavaOptAtomType$>>() {
-			@Override public TableCell<ICFSecSecUserObj,$implJavaOptAtomType$> call(
-				TableColumn<ICFSecSecUserObj,$implJavaOptAtomType$> arg)
+		tableColumnLoginId.setCellFactory( new Callback<TableColumn<ICFSecSecUserObj,String>,TableCell<ICFSecSecUserObj,String>>() {
+			@Override public TableCell<ICFSecSecUserObj,String> call(
+				TableColumn<ICFSecSecUserObj,String> arg)
 			{
 				return new CFStringTableCell<ICFSecSecUserObj>();
 			}
 		});
 		dataTable.getColumns().add( tableColumnLoginId );
-		tableColumnAccountStatus = new TableColumn<ICFSecSecUserObj,$implJavaOptAtomType$>( "Account Status" );
-		tableColumnAccountStatus.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
-			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecSecUserObj, $implJavaOptAtomType$> p ) {
+		tableColumnAccountStatus = new TableColumn<ICFSecSecUserObj,ICFSecPubSchema.SecAccountStatusEnum>( "Account Status" );
+		tableColumnAccountStatus.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserObj,ICFSecPubSchema.SecAccountStatusEnum>,ObservableValue<ICFSecPubSchema.SecAccountStatusEnum> >() {
+			public ObservableValue<ICFSecPubSchema.SecAccountStatusEnum> call( CellDataFeatures<ICFSecSecUserObj, ICFSecPubSchema.SecAccountStatusEnum> p ) {
 				ICFSecSecUserObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					$implJavaAtomType$ value = obj.getRequiredAccountStatus();
-					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
+					ICFSecPubSchema.SecAccountStatusEnum value = obj.getRequiredAccountStatus();
+					ReadOnlyObjectWrapper<ICFSecPubSchema.SecAccountStatusEnum> observable = new ReadOnlyObjectWrapper<ICFSecPubSchema.SecAccountStatusEnum>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnAccountStatus.setCellFactory( new Callback<TableColumn<ICFSecSecUserObj,$implJavaOptAtomType$>,TableCell<ICFSecSecUserObj,$implJavaOptAtomType$>>() {
-			@Override public TableCell<ICFSecSecUserObj,$implJavaOptAtomType$> call(
-				TableColumn<ICFSecSecUserObj,$implJavaOptAtomType$> arg)
+		tableColumnAccountStatus.setCellFactory( new Callback<TableColumn<ICFSecSecUserObj,ICFSecPubSchema.SecAccountStatusEnum>,TableCell<ICFSecSecUserObj,ICFSecPubSchema.SecAccountStatusEnum>>() {
+			@Override public TableCell<ICFSecSecUserObj,ICFSecPubSchema.SecAccountStatusEnum> call(
+				TableColumn<ICFSecSecUserObj,ICFSecPubSchema.SecAccountStatusEnum> arg)
 			{
 				return new CFEnumTableCell<ICFSecSecUserObj,ICFSecSchema.SecAccountStatusEnum>();
 			}
 		});
 		dataTable.getColumns().add( tableColumnAccountStatus );
-		tableColumnDfltSysGrpName = new TableColumn<ICFSecSecUserObj,$implJavaOptAtomType$>( "Default System Group Name" );
-		tableColumnDfltSysGrpName.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
-			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecSecUserObj, $implJavaOptAtomType$> p ) {
+		tableColumnDfltSysGrpName = new TableColumn<ICFSecSecUserObj,String>( "Default System Group Name" );
+		tableColumnDfltSysGrpName.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserObj,String>,ObservableValue<String> >() {
+			public ObservableValue<String> call( CellDataFeatures<ICFSecSecUserObj, String> p ) {
 				ICFSecSecUserObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					$implJavaAtomType$ value = obj.getOptionalDfltSysGrpName();
-					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
+					String value = obj.getOptionalDfltSysGrpName();
+					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnDfltSysGrpName.setCellFactory( new Callback<TableColumn<ICFSecSecUserObj,$implJavaOptAtomType$>,TableCell<ICFSecSecUserObj,$implJavaOptAtomType$>>() {
-			@Override public TableCell<ICFSecSecUserObj,$implJavaOptAtomType$> call(
-				TableColumn<ICFSecSecUserObj,$implJavaOptAtomType$> arg)
+		tableColumnDfltSysGrpName.setCellFactory( new Callback<TableColumn<ICFSecSecUserObj,String>,TableCell<ICFSecSecUserObj,String>>() {
+			@Override public TableCell<ICFSecSecUserObj,String> call(
+				TableColumn<ICFSecSecUserObj,String> arg)
 			{
 				return new CFStringTableCell<ICFSecSecUserObj>();
 			}
 		});
 		dataTable.getColumns().add( tableColumnDfltSysGrpName );
-		tableColumnDfltClusGrpName = new TableColumn<ICFSecSecUserObj,$implJavaOptAtomType$>( "Default Cluster Group Name" );
-		tableColumnDfltClusGrpName.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
-			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecSecUserObj, $implJavaOptAtomType$> p ) {
+		tableColumnDfltClusGrpName = new TableColumn<ICFSecSecUserObj,String>( "Default Cluster Group Name" );
+		tableColumnDfltClusGrpName.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserObj,String>,ObservableValue<String> >() {
+			public ObservableValue<String> call( CellDataFeatures<ICFSecSecUserObj, String> p ) {
 				ICFSecSecUserObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					$implJavaAtomType$ value = obj.getOptionalDfltClusGrpName();
-					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
+					String value = obj.getOptionalDfltClusGrpName();
+					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnDfltClusGrpName.setCellFactory( new Callback<TableColumn<ICFSecSecUserObj,$implJavaOptAtomType$>,TableCell<ICFSecSecUserObj,$implJavaOptAtomType$>>() {
-			@Override public TableCell<ICFSecSecUserObj,$implJavaOptAtomType$> call(
-				TableColumn<ICFSecSecUserObj,$implJavaOptAtomType$> arg)
+		tableColumnDfltClusGrpName.setCellFactory( new Callback<TableColumn<ICFSecSecUserObj,String>,TableCell<ICFSecSecUserObj,String>>() {
+			@Override public TableCell<ICFSecSecUserObj,String> call(
+				TableColumn<ICFSecSecUserObj,String> arg)
 			{
 				return new CFStringTableCell<ICFSecSecUserObj>();
 			}
 		});
 		dataTable.getColumns().add( tableColumnDfltClusGrpName );
-		tableColumnDfltTentGrpName = new TableColumn<ICFSecSecUserObj,$implJavaOptAtomType$>( "Default Tenant Group Name" );
-		tableColumnDfltTentGrpName.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
-			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecSecUserObj, $implJavaOptAtomType$> p ) {
+		tableColumnDfltTentGrpName = new TableColumn<ICFSecSecUserObj,String>( "Default Tenant Group Name" );
+		tableColumnDfltTentGrpName.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserObj,String>,ObservableValue<String> >() {
+			public ObservableValue<String> call( CellDataFeatures<ICFSecSecUserObj, String> p ) {
 				ICFSecSecUserObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					$implJavaAtomType$ value = obj.getOptionalDfltTentGrpName();
-					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
+					String value = obj.getOptionalDfltTentGrpName();
+					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnDfltTentGrpName.setCellFactory( new Callback<TableColumn<ICFSecSecUserObj,$implJavaOptAtomType$>,TableCell<ICFSecSecUserObj,$implJavaOptAtomType$>>() {
-			@Override public TableCell<ICFSecSecUserObj,$implJavaOptAtomType$> call(
-				TableColumn<ICFSecSecUserObj,$implJavaOptAtomType$> arg)
+		tableColumnDfltTentGrpName.setCellFactory( new Callback<TableColumn<ICFSecSecUserObj,String>,TableCell<ICFSecSecUserObj,String>>() {
+			@Override public TableCell<ICFSecSecUserObj,String> call(
+				TableColumn<ICFSecSecUserObj,String> arg)
 			{
 				return new CFStringTableCell<ICFSecSecUserObj>();
 			}
 		});
 		dataTable.getColumns().add( tableColumnDfltTentGrpName );
-		tableColumnEMailAddress = new TableColumn<ICFSecSecUserObj,$implJavaOptAtomType$>( "EMail Address" );
-		tableColumnEMailAddress.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
-			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecSecUserObj, $implJavaOptAtomType$> p ) {
+		tableColumnEMailAddress = new TableColumn<ICFSecSecUserObj,String>( "EMail Address" );
+		tableColumnEMailAddress.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserObj,String>,ObservableValue<String> >() {
+			public ObservableValue<String> call( CellDataFeatures<ICFSecSecUserObj, String> p ) {
 				ICFSecSecUserObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					$implJavaAtomType$ value = obj.getRequiredEMailAddress();
-					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
+					String value = obj.getRequiredEMailAddress();
+					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnEMailAddress.setCellFactory( new Callback<TableColumn<ICFSecSecUserObj,$implJavaOptAtomType$>,TableCell<ICFSecSecUserObj,$implJavaOptAtomType$>>() {
-			@Override public TableCell<ICFSecSecUserObj,$implJavaOptAtomType$> call(
-				TableColumn<ICFSecSecUserObj,$implJavaOptAtomType$> arg)
+		tableColumnEMailAddress.setCellFactory( new Callback<TableColumn<ICFSecSecUserObj,String>,TableCell<ICFSecSecUserObj,String>>() {
+			@Override public TableCell<ICFSecSecUserObj,String> call(
+				TableColumn<ICFSecSecUserObj,String> arg)
 			{
 				return new CFStringTableCell<ICFSecSecUserObj>();
 			}

@@ -72,9 +72,9 @@ implements ICFSecJavaFXSecSysGrpPaneList
 	protected CFButton buttonEditSelected = null;
 	protected CFButton buttonDeleteSelected = null;
 	protected TableView<ICFSecSecSysGrpObj> dataTable = null;
-	protected TableColumn<ICFSecSecSysGrpObj, $implJavaOptAtomType$> tableColumnSecSysGrpId = null;
-	protected TableColumn<ICFSecSecSysGrpObj, $implJavaOptAtomType$> tableColumnName = null;
-	protected TableColumn<ICFSecSecSysGrpObj, $implJavaOptAtomType$> tableColumnSecLevel = null;
+	protected TableColumn<ICFSecSecSysGrpObj, ICFLibKeyHash256> tableColumnSecSysGrpId = null;
+	protected TableColumn<ICFSecSecSysGrpObj, String> tableColumnName = null;
+	protected TableColumn<ICFSecSecSysGrpObj, ICFSecPubSchema.SecLevelEnum> tableColumnSecLevel = null;
 
 	public final String S_ColumnNames[] = { "Name" };
 	protected ICFFormManager cfFormManager = null;
@@ -163,70 +163,70 @@ implements ICFSecJavaFXSecSysGrpPaneList
 		javafxSortByChain = sortByChain;
 		setJavaFXDataCollection( argDataCollection );
 		dataTable = new TableView<ICFSecSecSysGrpObj>();
-		tableColumnSecSysGrpId = new TableColumn<ICFSecSecSysGrpObj,$implJavaOptAtomType$>( "System Security Group Id" );
-		tableColumnSecSysGrpId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecSysGrpObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
-			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecSecSysGrpObj, $implJavaOptAtomType$> p ) {
+		tableColumnSecSysGrpId = new TableColumn<ICFSecSecSysGrpObj,ICFLibKeyHash256>( "System Security Group Id" );
+		tableColumnSecSysGrpId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecSysGrpObj,ICFLibKeyHash256>,ObservableValue<ICFLibKeyHash256> >() {
+			public ObservableValue<ICFLibKeyHash256> call( CellDataFeatures<ICFSecSecSysGrpObj, ICFLibKeyHash256> p ) {
 				ICFSecSecSysGrpObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					$implJavaAtomType$ value = obj.getRequiredSecSysGrpId();
-					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
+					ICFLibKeyHash256 value = obj.getRequiredSecSysGrpId();
+					ReadOnlyObjectWrapper<ICFLibKeyHash256> observable = new ReadOnlyObjectWrapper<ICFLibKeyHash256>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnSecSysGrpId.setCellFactory( new Callback<TableColumn<ICFSecSecSysGrpObj,$implJavaOptAtomType$>,TableCell<ICFSecSecSysGrpObj,$implJavaOptAtomType$>>() {
-			@Override public TableCell<ICFSecSecSysGrpObj,$implJavaOptAtomType$> call(
-				TableColumn<ICFSecSecSysGrpObj,$implJavaOptAtomType$> arg)
+		tableColumnSecSysGrpId.setCellFactory( new Callback<TableColumn<ICFSecSecSysGrpObj,ICFLibKeyHash256>,TableCell<ICFSecSecSysGrpObj,ICFLibKeyHash256>>() {
+			@Override public TableCell<ICFSecSecSysGrpObj,ICFLibKeyHash256> call(
+				TableColumn<ICFSecSecSysGrpObj,ICFLibKeyHash256> arg)
 			{
 				return new CFDbKeyHash256TableCell<ICFSecSecSysGrpObj>();
 			}
 		});
 		dataTable.getColumns().add( tableColumnSecSysGrpId );
-		tableColumnName = new TableColumn<ICFSecSecSysGrpObj,$implJavaOptAtomType$>( "Name" );
-		tableColumnName.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecSysGrpObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
-			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecSecSysGrpObj, $implJavaOptAtomType$> p ) {
+		tableColumnName = new TableColumn<ICFSecSecSysGrpObj,String>( "Name" );
+		tableColumnName.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecSysGrpObj,String>,ObservableValue<String> >() {
+			public ObservableValue<String> call( CellDataFeatures<ICFSecSecSysGrpObj, String> p ) {
 				ICFSecSecSysGrpObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					$implJavaAtomType$ value = obj.getRequiredName();
-					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
+					String value = obj.getRequiredName();
+					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnName.setCellFactory( new Callback<TableColumn<ICFSecSecSysGrpObj,$implJavaOptAtomType$>,TableCell<ICFSecSecSysGrpObj,$implJavaOptAtomType$>>() {
-			@Override public TableCell<ICFSecSecSysGrpObj,$implJavaOptAtomType$> call(
-				TableColumn<ICFSecSecSysGrpObj,$implJavaOptAtomType$> arg)
+		tableColumnName.setCellFactory( new Callback<TableColumn<ICFSecSecSysGrpObj,String>,TableCell<ICFSecSecSysGrpObj,String>>() {
+			@Override public TableCell<ICFSecSecSysGrpObj,String> call(
+				TableColumn<ICFSecSecSysGrpObj,String> arg)
 			{
 				return new CFStringTableCell<ICFSecSecSysGrpObj>();
 			}
 		});
 		dataTable.getColumns().add( tableColumnName );
-		tableColumnSecLevel = new TableColumn<ICFSecSecSysGrpObj,$implJavaOptAtomType$>( "Group Level" );
-		tableColumnSecLevel.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecSysGrpObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
-			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecSecSysGrpObj, $implJavaOptAtomType$> p ) {
+		tableColumnSecLevel = new TableColumn<ICFSecSecSysGrpObj,ICFSecPubSchema.SecLevelEnum>( "Group Level" );
+		tableColumnSecLevel.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecSysGrpObj,ICFSecPubSchema.SecLevelEnum>,ObservableValue<ICFSecPubSchema.SecLevelEnum> >() {
+			public ObservableValue<ICFSecPubSchema.SecLevelEnum> call( CellDataFeatures<ICFSecSecSysGrpObj, ICFSecPubSchema.SecLevelEnum> p ) {
 				ICFSecSecSysGrpObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					$implJavaAtomType$ value = obj.getRequiredSecLevel();
-					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
+					ICFSecPubSchema.SecLevelEnum value = obj.getRequiredSecLevel();
+					ReadOnlyObjectWrapper<ICFSecPubSchema.SecLevelEnum> observable = new ReadOnlyObjectWrapper<ICFSecPubSchema.SecLevelEnum>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnSecLevel.setCellFactory( new Callback<TableColumn<ICFSecSecSysGrpObj,$implJavaOptAtomType$>,TableCell<ICFSecSecSysGrpObj,$implJavaOptAtomType$>>() {
-			@Override public TableCell<ICFSecSecSysGrpObj,$implJavaOptAtomType$> call(
-				TableColumn<ICFSecSecSysGrpObj,$implJavaOptAtomType$> arg)
+		tableColumnSecLevel.setCellFactory( new Callback<TableColumn<ICFSecSecSysGrpObj,ICFSecPubSchema.SecLevelEnum>,TableCell<ICFSecSecSysGrpObj,ICFSecPubSchema.SecLevelEnum>>() {
+			@Override public TableCell<ICFSecSecSysGrpObj,ICFSecPubSchema.SecLevelEnum> call(
+				TableColumn<ICFSecSecSysGrpObj,ICFSecPubSchema.SecLevelEnum> arg)
 			{
 				return new CFEnumTableCell<ICFSecSecSysGrpObj,ICFSecSchema.SecLevelEnum>();
 			}

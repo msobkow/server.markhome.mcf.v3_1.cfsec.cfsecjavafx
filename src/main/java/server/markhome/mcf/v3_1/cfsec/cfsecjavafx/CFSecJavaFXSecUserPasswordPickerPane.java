@@ -67,8 +67,8 @@ implements ICFSecJavaFXSecUserPasswordPaneList
 	protected ICFSecJavaFXSchema javafxSchema = null;
 	protected Collection<ICFSecSecUserPasswordObj> javafxDataCollection = null;
 	protected ObservableList<ICFSecSecUserPasswordObj> observableListOfSecUserPassword = null;
-	protected TableColumn<ICFSecSecUserPasswordObj, $implJavaOptAtomType$> tableColumnPWSetStamp = null;
-	protected TableColumn<ICFSecSecUserPasswordObj, $implJavaOptAtomType$> tableColumnPasswordHash = null;
+	protected TableColumn<ICFSecSecUserPasswordObj, LocalDateTime> tableColumnPWSetStamp = null;
+	protected TableColumn<ICFSecSecUserPasswordObj, String> tableColumnPasswordHash = null;
 	protected TableView<ICFSecSecUserPasswordObj> dataTable = null;
 	protected CFHBox hboxMenu = null;
 	public final String S_ColumnNames[] = { "Name" };
@@ -115,47 +115,47 @@ implements ICFSecJavaFXSecUserPasswordPaneList
 		javafxContainer = argContainer;
 		setJavaFXDataCollection( argDataCollection );
 		dataTable = new TableView<ICFSecSecUserPasswordObj>();
-		tableColumnPWSetStamp = new TableColumn<ICFSecSecUserPasswordObj,$implJavaOptAtomType$>( "Password set at" );
-		tableColumnPWSetStamp.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserPasswordObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
-			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecSecUserPasswordObj, $implJavaOptAtomType$> p ) {
+		tableColumnPWSetStamp = new TableColumn<ICFSecSecUserPasswordObj,LocalDateTime>( "Password set at" );
+		tableColumnPWSetStamp.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserPasswordObj,LocalDateTime>,ObservableValue<LocalDateTime> >() {
+			public ObservableValue<LocalDateTime> call( CellDataFeatures<ICFSecSecUserPasswordObj, LocalDateTime> p ) {
 				ICFSecSecUserPasswordObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					$implJavaAtomType$ value = obj.getRequiredPWSetStamp();
-					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
+					LocalDateTime value = obj.getRequiredPWSetStamp();
+					ReadOnlyObjectWrapper<LocalDateTime> observable = new ReadOnlyObjectWrapper<LocalDateTime>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnPWSetStamp.setCellFactory( new Callback<TableColumn<ICFSecSecUserPasswordObj,$implJavaOptAtomType$>,TableCell<ICFSecSecUserPasswordObj,$implJavaOptAtomType$>>() {
-			@Override public TableCell<ICFSecSecUserPasswordObj,$implJavaOptAtomType$> call(
-				TableColumn<ICFSecSecUserPasswordObj,$implJavaOptAtomType$> arg)
+		tableColumnPWSetStamp.setCellFactory( new Callback<TableColumn<ICFSecSecUserPasswordObj,LocalDateTime>,TableCell<ICFSecSecUserPasswordObj,LocalDateTime>>() {
+			@Override public TableCell<ICFSecSecUserPasswordObj,LocalDateTime> call(
+				TableColumn<ICFSecSecUserPasswordObj,LocalDateTime> arg)
 			{
 				return new CFTimestampTableCell<ICFSecSecUserPasswordObj>();
 			}
 		});
 		dataTable.getColumns().add( tableColumnPWSetStamp );
-		tableColumnPasswordHash = new TableColumn<ICFSecSecUserPasswordObj,$implJavaOptAtomType$>( "Password Hash" );
-		tableColumnPasswordHash.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserPasswordObj,$implJavaOptAtomType$>,ObservableValue<$implJavaOptAtomType$> >() {
-			public ObservableValue<$implJavaOptAtomType$> call( CellDataFeatures<ICFSecSecUserPasswordObj, $implJavaOptAtomType$> p ) {
+		tableColumnPasswordHash = new TableColumn<ICFSecSecUserPasswordObj,String>( "Password Hash" );
+		tableColumnPasswordHash.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserPasswordObj,String>,ObservableValue<String> >() {
+			public ObservableValue<String> call( CellDataFeatures<ICFSecSecUserPasswordObj, String> p ) {
 				ICFSecSecUserPasswordObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					$implJavaAtomType$ value = obj.getRequiredPasswordHash();
-					ReadOnlyObjectWrapper<$implJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implJavaAtomType$>();
+					String value = obj.getRequiredPasswordHash();
+					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnPasswordHash.setCellFactory( new Callback<TableColumn<ICFSecSecUserPasswordObj,$implJavaOptAtomType$>,TableCell<ICFSecSecUserPasswordObj,$implJavaOptAtomType$>>() {
-			@Override public TableCell<ICFSecSecUserPasswordObj,$implJavaOptAtomType$> call(
-				TableColumn<ICFSecSecUserPasswordObj,$implJavaOptAtomType$> arg)
+		tableColumnPasswordHash.setCellFactory( new Callback<TableColumn<ICFSecSecUserPasswordObj,String>,TableCell<ICFSecSecUserPasswordObj,String>>() {
+			@Override public TableCell<ICFSecSecUserPasswordObj,String> call(
+				TableColumn<ICFSecSecUserPasswordObj,String> arg)
 			{
 				return new CFStringTableCell<ICFSecSecUserPasswordObj>();
 			}
