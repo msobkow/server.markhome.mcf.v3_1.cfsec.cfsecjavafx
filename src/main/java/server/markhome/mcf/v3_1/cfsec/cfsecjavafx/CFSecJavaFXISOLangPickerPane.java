@@ -67,9 +67,9 @@ implements ICFSecJavaFXISOLangPaneList
 	protected ICFSecJavaFXSchema javafxSchema = null;
 	protected Collection<ICFSecISOLangObj> javafxDataCollection = null;
 	protected ObservableList<ICFSecISOLangObj> observableListOfISOLang = null;
-	protected TableColumn<ICFSecISOLangObj, Short> tableColumnISOLangId = null;
-	protected TableColumn<ICFSecISOLangObj, String> tableColumnISO6392Code = null;
-	protected TableColumn<ICFSecISOLangObj, String> tableColumnISO6391Code = null;
+	protected TableColumn<ICFSecISOLangObj, $implIJavaOptAtomType$> tableColumnISOLangId = null;
+	protected TableColumn<ICFSecISOLangObj, $implIJavaOptAtomType$> tableColumnISO6392Code = null;
+	protected TableColumn<ICFSecISOLangObj, $implIJavaOptAtomType$> tableColumnISO6391Code = null;
 	protected TableColumn<ICFSecISOLangObj, String> tableColumnEnglishName = null;
 	protected TableView<ICFSecISOLangObj> dataTable = null;
 	protected CFHBox hboxMenu = null;
@@ -117,71 +117,71 @@ implements ICFSecJavaFXISOLangPaneList
 		javafxContainer = argContainer;
 		setJavaFXDataCollection( argDataCollection );
 		dataTable = new TableView<ICFSecISOLangObj>();
-		tableColumnISOLangId = new TableColumn<ICFSecISOLangObj,Short>( "ISOLangId" );
-		tableColumnISOLangId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOLangObj,Short>,ObservableValue<Short> >() {
-			public ObservableValue<Short> call( CellDataFeatures<ICFSecISOLangObj, Short> p ) {
+		tableColumnISOLangId = new TableColumn<ICFSecISOLangObj,$implIJavaOptAtomType$>( "ISOLangId" );
+		tableColumnISOLangId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOLangObj,$implIJavaOptAtomType$>,ObservableValue<$implIJavaOptAtomType$> >() {
+			public ObservableValue<$implIJavaOptAtomType$> call( CellDataFeatures<ICFSecISOLangObj, $implIJavaOptAtomType$> p ) {
 				ICFSecISOLangObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					short value = obj.getRequiredISOLangId();
-					Short wrapped = Short.valueOf( value );
-					ReadOnlyObjectWrapper<Short> observable = new ReadOnlyObjectWrapper<Short>();
+					$implIJavaAtomType$ value = obj.getRequiredISOLangId();
+					$implIJavaOptAtomType$ wrapped = $implIJavaOptAtomType$.valueOf( value );
+					ReadOnlyObjectWrapper<$implIJavaOptAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaOptAtomType$>();
 					observable.setValue( wrapped );
 					return( observable );
 				}
 			}
 		});
-		tableColumnISOLangId.setCellFactory( new Callback<TableColumn<ICFSecISOLangObj,Short>,TableCell<ICFSecISOLangObj,Short>>() {
-			@Override public TableCell<ICFSecISOLangObj,Short> call(
-				TableColumn<ICFSecISOLangObj,Short> arg)
+		tableColumnISOLangId.setCellFactory( new Callback<TableColumn<ICFSecISOLangObj,$implIJavaOptAtomType$>,TableCell<ICFSecISOLangObj,$implIJavaOptAtomType$>>() {
+			@Override public TableCell<ICFSecISOLangObj,$implIJavaOptAtomType$> call(
+				TableColumn<ICFSecISOLangObj,$implIJavaOptAtomType$> arg)
 			{
 				return new CFInt16TableCell<ICFSecISOLangObj>();
 			}
 		});
 		dataTable.getColumns().add( tableColumnISOLangId );
-		tableColumnISO6392Code = new TableColumn<ICFSecISOLangObj,String>( "ISO6392Code" );
-		tableColumnISO6392Code.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOLangObj,String>,ObservableValue<String> >() {
-			public ObservableValue<String> call( CellDataFeatures<ICFSecISOLangObj, String> p ) {
+		tableColumnISO6392Code = new TableColumn<ICFSecISOLangObj,$implIJavaOptAtomType$>( "ISO6392Code" );
+		tableColumnISO6392Code.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOLangObj,$implIJavaOptAtomType$>,ObservableValue<$implIJavaOptAtomType$> >() {
+			public ObservableValue<$implIJavaOptAtomType$> call( CellDataFeatures<ICFSecISOLangObj, $implIJavaOptAtomType$> p ) {
 				ICFSecISOLangObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					String value = obj.getRequiredISO6392Code();
-					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
+					$implIJavaAtomType$ value = obj.getRequiredISO6392Code();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnISO6392Code.setCellFactory( new Callback<TableColumn<ICFSecISOLangObj,String>,TableCell<ICFSecISOLangObj,String>>() {
-			@Override public TableCell<ICFSecISOLangObj,String> call(
-				TableColumn<ICFSecISOLangObj,String> arg)
+		tableColumnISO6392Code.setCellFactory( new Callback<TableColumn<ICFSecISOLangObj,$implIJavaOptAtomType$>,TableCell<ICFSecISOLangObj,$implIJavaOptAtomType$>>() {
+			@Override public TableCell<ICFSecISOLangObj,$implIJavaOptAtomType$> call(
+				TableColumn<ICFSecISOLangObj,$implIJavaOptAtomType$> arg)
 			{
 				return new CFStringTableCell<ICFSecISOLangObj>();
 			}
 		});
 		dataTable.getColumns().add( tableColumnISO6392Code );
-		tableColumnISO6391Code = new TableColumn<ICFSecISOLangObj,String>( "ISO6391Code" );
-		tableColumnISO6391Code.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOLangObj,String>,ObservableValue<String> >() {
-			public ObservableValue<String> call( CellDataFeatures<ICFSecISOLangObj, String> p ) {
+		tableColumnISO6391Code = new TableColumn<ICFSecISOLangObj,$implIJavaOptAtomType$>( "ISO6391Code" );
+		tableColumnISO6391Code.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOLangObj,$implIJavaOptAtomType$>,ObservableValue<$implIJavaOptAtomType$> >() {
+			public ObservableValue<$implIJavaOptAtomType$> call( CellDataFeatures<ICFSecISOLangObj, $implIJavaOptAtomType$> p ) {
 				ICFSecISOLangObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					String value = obj.getOptionalISO6391Code();
-					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
+					$implIJavaAtomType$ value = obj.getOptionalISO6391Code();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnISO6391Code.setCellFactory( new Callback<TableColumn<ICFSecISOLangObj,String>,TableCell<ICFSecISOLangObj,String>>() {
-			@Override public TableCell<ICFSecISOLangObj,String> call(
-				TableColumn<ICFSecISOLangObj,String> arg)
+		tableColumnISO6391Code.setCellFactory( new Callback<TableColumn<ICFSecISOLangObj,$implIJavaOptAtomType$>,TableCell<ICFSecISOLangObj,$implIJavaOptAtomType$>>() {
+			@Override public TableCell<ICFSecISOLangObj,$implIJavaOptAtomType$> call(
+				TableColumn<ICFSecISOLangObj,$implIJavaOptAtomType$> arg)
 			{
 				return new CFStringTableCell<ICFSecISOLangObj>();
 			}
@@ -195,8 +195,8 @@ implements ICFSecJavaFXISOLangPaneList
 					return( null );
 				}
 				else {
-					String value = obj.getRequiredEnglishName();
-					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
+					$implIJavaAtomType$ value = obj.getRequiredEnglishName();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}

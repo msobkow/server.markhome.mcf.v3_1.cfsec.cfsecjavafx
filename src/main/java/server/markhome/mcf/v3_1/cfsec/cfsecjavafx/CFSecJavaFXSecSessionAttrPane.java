@@ -102,7 +102,7 @@ implements ICFSecJavaFXSecSessionPaneCommon
 		public PageDataParentSecProxyList() {
 		}
 
-		public List<ICFSecSecUserObj> pageData( ICFLibKeyHash256 priorSecUserId )
+		public List<ICFSecSecUserObj> pageData( $implIJavaOptAtomType$ priorSecUserId )
 		{
 			java.util.List<ICFSecSecUserObj> listOfSecUser = null;
 			ICFSecSecSessionObj focus = (ICFSecSecSessionObj)getEffJavaFXFocus();

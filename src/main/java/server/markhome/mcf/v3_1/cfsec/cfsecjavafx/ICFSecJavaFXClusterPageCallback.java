@@ -45,5 +45,5 @@ import server.markhome.mcf.v3_1.cfsec.cfsecobj.*;
  */
 public interface ICFSecJavaFXClusterPageCallback
 {
-	public List<ICFSecClusterObj> pageData( ICFLibKeyHash256 priorId );
+	public List<ICFSecClusterObj> pageData( $implIJavaOptAtomType$ priorId );
 }

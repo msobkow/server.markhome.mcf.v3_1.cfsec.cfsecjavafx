@@ -45,5 +45,5 @@ import server.markhome.mcf.v3_1.cfsec.cfsecobj.*;
  */
 public interface ICFSecJavaFXSecUserEMConfPageCallback
 {
-	public List<ICFSecSecUserEMConfObj> pageData( ICFLibKeyHash256 priorSecUserId );
+	public List<ICFSecSecUserEMConfObj> pageData( $implIJavaOptAtomType$ priorSecUserId );
 }

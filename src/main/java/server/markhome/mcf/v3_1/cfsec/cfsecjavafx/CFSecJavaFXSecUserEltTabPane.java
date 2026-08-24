@@ -272,7 +272,7 @@ implements ICFSecJavaFXSecUserPaneCommon
 		public PageDataComponentsSecSessList() {
 		}
 
-		public List<ICFSecSecSessionObj> pageData( ICFLibKeyHash256 priorSecSessionId )
+		public List<ICFSecSecSessionObj> pageData( $implIJavaOptAtomType$ priorSecSessionId )
 		{
 			List<ICFSecSecSessionObj> dataList;
 			ICFSecSecUserObj focus = (ICFSecSecUserObj)getJavaFXFocusAsSecUser();
@@ -320,7 +320,7 @@ implements ICFSecJavaFXSecUserPaneCommon
 		public PageDataChildrenSecProxyList() {
 		}
 
-		public List<ICFSecSecSessionObj> pageData( ICFLibKeyHash256 priorSecSessionId )
+		public List<ICFSecSecSessionObj> pageData( $implIJavaOptAtomType$ priorSecSessionId )
 		{
 			List<ICFSecSecSessionObj> dataList;
 			ICFSecSecUserObj focus = (ICFSecSecUserObj)getJavaFXFocusAsSecUser();
@@ -368,8 +368,8 @@ implements ICFSecJavaFXSecUserPaneCommon
 		public PageDataChildrenSysSecGrpMembList() {
 		}
 
-		public List<ICFSecSecSysGrpMembObj> pageData( ICFLibKeyHash256 priorSecSysGrpId,
-		String priorLoginId )
+		public List<ICFSecSecSysGrpMembObj> pageData( $implIJavaOptAtomType$ priorSecSysGrpId,
+		$implIJavaOptAtomType$ priorLoginId )
 		{
 			List<ICFSecSecSysGrpMembObj> dataList;
 			ICFSecSecUserObj focus = (ICFSecSecUserObj)getJavaFXFocusAsSecUser();
@@ -418,8 +418,8 @@ implements ICFSecJavaFXSecUserPaneCommon
 		public PageDataChildrenClusSecGrpMembList() {
 		}
 
-		public List<ICFSecSecClusGrpMembObj> pageData( ICFLibKeyHash256 priorSecClusGrpId,
-		String priorLoginId )
+		public List<ICFSecSecClusGrpMembObj> pageData( $implIJavaOptAtomType$ priorSecClusGrpId,
+		$implIJavaOptAtomType$ priorLoginId )
 		{
 			List<ICFSecSecClusGrpMembObj> dataList;
 			ICFSecSecUserObj focus = (ICFSecSecUserObj)getJavaFXFocusAsSecUser();
@@ -468,8 +468,8 @@ implements ICFSecJavaFXSecUserPaneCommon
 		public PageDataChildrenTentSecGrpMembList() {
 		}
 
-		public List<ICFSecSecTentGrpMembObj> pageData( ICFLibKeyHash256 priorSecTentGrpId,
-		String priorLoginId )
+		public List<ICFSecSecTentGrpMembObj> pageData( $implIJavaOptAtomType$ priorSecTentGrpId,
+		$implIJavaOptAtomType$ priorLoginId )
 		{
 			List<ICFSecSecTentGrpMembObj> dataList;
 			ICFSecSecUserObj focus = (ICFSecSecUserObj)getJavaFXFocusAsSecUser();

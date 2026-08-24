@@ -75,7 +75,7 @@ implements ICFSecJavaFXTenantPaneList
 	protected CFButton buttonEditSelected = null;
 	protected CFButton buttonDeleteSelected = null;
 	protected TableView<ICFSecTenantObj> dataTable = null;
-	protected TableColumn<ICFSecTenantObj, ICFLibKeyHash256> tableColumnId = null;
+	protected TableColumn<ICFSecTenantObj, $implIJavaOptAtomType$> tableColumnId = null;
 	protected TableColumn<ICFSecTenantObj, String> tableColumnTenantName = null;
 
 	public final String S_ColumnNames[] = { "Name" };
@@ -165,24 +165,24 @@ implements ICFSecJavaFXTenantPaneList
 		javafxSortByChain = sortByChain;
 		pageCallback = argPageCallback;
 		dataTable = new TableView<ICFSecTenantObj>();
-		tableColumnId = new TableColumn<ICFSecTenantObj,ICFLibKeyHash256>( "Id" );
-		tableColumnId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecTenantObj,ICFLibKeyHash256>,ObservableValue<ICFLibKeyHash256> >() {
-			public ObservableValue<ICFLibKeyHash256> call( CellDataFeatures<ICFSecTenantObj, ICFLibKeyHash256> p ) {
+		tableColumnId = new TableColumn<ICFSecTenantObj,$implIJavaOptAtomType$>( "Id" );
+		tableColumnId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecTenantObj,$implIJavaOptAtomType$>,ObservableValue<$implIJavaOptAtomType$> >() {
+			public ObservableValue<$implIJavaOptAtomType$> call( CellDataFeatures<ICFSecTenantObj, $implIJavaOptAtomType$> p ) {
 				ICFSecTenantObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					ICFLibKeyHash256 value = obj.getRequiredId();
-					ReadOnlyObjectWrapper<ICFLibKeyHash256> observable = new ReadOnlyObjectWrapper<ICFLibKeyHash256>();
+					$implIJavaAtomType$ value = obj.getRequiredId();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnId.setCellFactory( new Callback<TableColumn<ICFSecTenantObj,ICFLibKeyHash256>,TableCell<ICFSecTenantObj,ICFLibKeyHash256>>() {
-			@Override public TableCell<ICFSecTenantObj,ICFLibKeyHash256> call(
-				TableColumn<ICFSecTenantObj,ICFLibKeyHash256> arg)
+		tableColumnId.setCellFactory( new Callback<TableColumn<ICFSecTenantObj,$implIJavaOptAtomType$>,TableCell<ICFSecTenantObj,$implIJavaOptAtomType$>>() {
+			@Override public TableCell<ICFSecTenantObj,$implIJavaOptAtomType$> call(
+				TableColumn<ICFSecTenantObj,$implIJavaOptAtomType$> arg)
 			{
 				return new CFDbKeyHash256TableCell<ICFSecTenantObj>();
 			}
@@ -196,8 +196,8 @@ implements ICFSecJavaFXTenantPaneList
 					return( null );
 				}
 				else {
-					String value = obj.getRequiredTenantName();
-					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
+					$implIJavaAtomType$ value = obj.getRequiredTenantName();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}

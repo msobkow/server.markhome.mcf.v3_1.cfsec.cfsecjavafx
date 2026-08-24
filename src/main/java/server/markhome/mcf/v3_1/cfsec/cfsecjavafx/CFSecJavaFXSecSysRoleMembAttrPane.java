@@ -102,7 +102,7 @@ implements ICFSecJavaFXSecSysRoleMembPaneCommon
 		public PageDataParentUserList() {
 		}
 
-		public List<ICFSecSecUserObj> pageData( ICFLibKeyHash256 priorSecUserId )
+		public List<ICFSecSecUserObj> pageData( $implIJavaOptAtomType$ priorSecUserId )
 		{
 			java.util.List<ICFSecSecUserObj> listOfSecUser = null;
 			ICFSecSecSysRoleMembObj focus = (ICFSecSecSysRoleMembObj)getEffJavaFXFocus();

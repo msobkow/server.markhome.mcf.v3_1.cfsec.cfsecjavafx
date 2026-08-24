@@ -151,8 +151,8 @@ implements ICFSecJavaFXSecSysRolePaneCommon
 		public PageDataComponentsEnabledByRoleList() {
 		}
 
-		public List<ICFSecSecSysRoleEnablesObj> pageData( ICFLibKeyHash256 priorSecSysRoleId,
-		String priorEnableName )
+		public List<ICFSecSecSysRoleEnablesObj> pageData( $implIJavaOptAtomType$ priorSecSysRoleId,
+		$implIJavaOptAtomType$ priorEnableName )
 		{
 			List<ICFSecSecSysRoleEnablesObj> dataList;
 			ICFSecSecSysRoleObj focus = (ICFSecSecSysRoleObj)getJavaFXFocusAsSecSysRole();
@@ -201,8 +201,8 @@ implements ICFSecJavaFXSecSysRolePaneCommon
 		public PageDataChildrenMembByRoleList() {
 		}
 
-		public List<ICFSecSecSysRoleMembObj> pageData( ICFLibKeyHash256 priorSecSysRoleId,
-		String priorLoginId )
+		public List<ICFSecSecSysRoleMembObj> pageData( $implIJavaOptAtomType$ priorSecSysRoleId,
+		$implIJavaOptAtomType$ priorLoginId )
 		{
 			List<ICFSecSecSysRoleMembObj> dataList;
 			ICFSecSecSysRoleObj focus = (ICFSecSecSysRoleObj)getJavaFXFocusAsSecSysRole();

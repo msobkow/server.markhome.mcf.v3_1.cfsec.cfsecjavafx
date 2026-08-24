@@ -144,8 +144,8 @@ implements ICFSecJavaFXSecClusRolePaneCommon
 		public PageDataChildrenMembByGrpList() {
 		}
 
-		public List<ICFSecSecClusRoleMembObj> pageData( ICFLibKeyHash256 priorSecClusRoleId,
-		String priorLoginId )
+		public List<ICFSecSecClusRoleMembObj> pageData( $implIJavaOptAtomType$ priorSecClusRoleId,
+		$implIJavaOptAtomType$ priorLoginId )
 		{
 			List<ICFSecSecClusRoleMembObj> dataList;
 			ICFSecSecClusRoleObj focus = (ICFSecSecClusRoleObj)getJavaFXFocusAsSecClusRole();

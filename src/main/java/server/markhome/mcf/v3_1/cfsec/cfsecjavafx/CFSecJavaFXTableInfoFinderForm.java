@@ -81,7 +81,7 @@ implements ICFSecJavaFXTableInfoPaneCommon,
 	protected CFButton buttonDeleteSelected = null;
 	protected List<ICFSecTableInfoObj> listOfTableInfo = null;
 	protected ObservableList<ICFSecTableInfoObj> observableListOfTableInfo = null;
-	protected TableColumn<ICFSecTableInfoObj, Integer> tableColumnTableInfoId = null;
+	protected TableColumn<ICFSecTableInfoObj, $implIJavaOptAtomType$> tableColumnTableInfoId = null;
 	protected TableColumn<ICFSecTableInfoObj, String> tableColumnSchemaName = null;
 	protected TableColumn<ICFSecTableInfoObj, String> tableColumnTableName = null;
 	protected TableColumn<ICFSecTableInfoObj, Integer> tableColumnBackingClassCode = null;
@@ -160,25 +160,25 @@ implements ICFSecJavaFXTableInfoPaneCommon,
 		}
 		javafxSchema = argSchema;
 		dataTable = new TableView<ICFSecTableInfoObj>();
-		tableColumnTableInfoId = new TableColumn<ICFSecTableInfoObj,Integer>( "TableInfoId" );
-		tableColumnTableInfoId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecTableInfoObj,Integer>,ObservableValue<Integer> >() {
-			public ObservableValue<Integer> call( CellDataFeatures<ICFSecTableInfoObj, Integer> p ) {
+		tableColumnTableInfoId = new TableColumn<ICFSecTableInfoObj,$implIJavaOptAtomType$>( "TableInfoId" );
+		tableColumnTableInfoId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecTableInfoObj,$implIJavaOptAtomType$>,ObservableValue<$implIJavaOptAtomType$> >() {
+			public ObservableValue<$implIJavaOptAtomType$> call( CellDataFeatures<ICFSecTableInfoObj, $implIJavaOptAtomType$> p ) {
 				ICFSecTableInfoObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					int value = obj.getRequiredTableInfoId();
-					Integer wrapped = Integer.valueOf( value );
-					ReadOnlyObjectWrapper<Integer> observable = new ReadOnlyObjectWrapper<Integer>();
+					$implIJavaAtomType$ value = obj.getRequiredTableInfoId();
+					$implIJavaOptAtomType$ wrapped = $implIJavaOptAtomType$.valueOf( value );
+					ReadOnlyObjectWrapper<$implIJavaOptAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaOptAtomType$>();
 					observable.setValue( wrapped );
 					return( observable );
 				}
 			}
 		});
-		tableColumnTableInfoId.setCellFactory( new Callback<TableColumn<ICFSecTableInfoObj,Integer>,TableCell<ICFSecTableInfoObj,Integer>>() {
-			@Override public TableCell<ICFSecTableInfoObj,Integer> call(
-				TableColumn<ICFSecTableInfoObj,Integer> arg)
+		tableColumnTableInfoId.setCellFactory( new Callback<TableColumn<ICFSecTableInfoObj,$implIJavaOptAtomType$>,TableCell<ICFSecTableInfoObj,$implIJavaOptAtomType$>>() {
+			@Override public TableCell<ICFSecTableInfoObj,$implIJavaOptAtomType$> call(
+				TableColumn<ICFSecTableInfoObj,$implIJavaOptAtomType$> arg)
 			{
 				return new CFInt32TableCell<ICFSecTableInfoObj>();
 			}
@@ -192,8 +192,8 @@ implements ICFSecJavaFXTableInfoPaneCommon,
 					return( null );
 				}
 				else {
-					String value = obj.getRequiredSchemaName();
-					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
+					$implIJavaAtomType$ value = obj.getRequiredSchemaName();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
@@ -215,8 +215,8 @@ implements ICFSecJavaFXTableInfoPaneCommon,
 					return( null );
 				}
 				else {
-					String value = obj.getRequiredTableName();
-					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
+					$implIJavaAtomType$ value = obj.getRequiredTableName();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
@@ -238,7 +238,7 @@ implements ICFSecJavaFXTableInfoPaneCommon,
 					return( null );
 				}
 				else {
-					int value = obj.getRequiredBackingClassCode();
+					$implIJavaAtomType$ value = obj.getRequiredBackingClassCode();
 					Integer wrapped = Integer.valueOf( value );
 					ReadOnlyObjectWrapper<Integer> observable = new ReadOnlyObjectWrapper<Integer>();
 					observable.setValue( wrapped );
@@ -262,7 +262,7 @@ implements ICFSecJavaFXTableInfoPaneCommon,
 					return( null );
 				}
 				else {
-					int value = obj.getRequiredRuntimeClassCode();
+					$implIJavaAtomType$ value = obj.getRequiredRuntimeClassCode();
 					Integer wrapped = Integer.valueOf( value );
 					ReadOnlyObjectWrapper<Integer> observable = new ReadOnlyObjectWrapper<Integer>();
 					observable.setValue( wrapped );
@@ -286,7 +286,7 @@ implements ICFSecJavaFXTableInfoPaneCommon,
 					return( null );
 				}
 				else {
-					boolean value = obj.getRequiredHasHistory();
+					$implIJavaAtomType$ value = obj.getRequiredHasHistory();
 					Boolean wrapped = Boolean.valueOf( value );
 					ReadOnlyObjectWrapper<Boolean> observable = new ReadOnlyObjectWrapper<Boolean>();
 					observable.setValue( wrapped );
@@ -310,7 +310,7 @@ implements ICFSecJavaFXTableInfoPaneCommon,
 					return( null );
 				}
 				else {
-					boolean value = obj.getRequiredIsMutable();
+					$implIJavaAtomType$ value = obj.getRequiredIsMutable();
 					Boolean wrapped = Boolean.valueOf( value );
 					ReadOnlyObjectWrapper<Boolean> observable = new ReadOnlyObjectWrapper<Boolean>();
 					observable.setValue( wrapped );
@@ -334,8 +334,8 @@ implements ICFSecJavaFXTableInfoPaneCommon,
 					return( null );
 				}
 				else {
-					String value = obj.getRequiredSecScopeName();
-					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
+					$implIJavaAtomType$ value = obj.getRequiredSecScopeName();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
@@ -357,8 +357,8 @@ implements ICFSecJavaFXTableInfoPaneCommon,
 					return( null );
 				}
 				else {
-					String value = obj.getRequiredCodeVis();
-					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
+					$implIJavaAtomType$ value = obj.getRequiredCodeVis();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}

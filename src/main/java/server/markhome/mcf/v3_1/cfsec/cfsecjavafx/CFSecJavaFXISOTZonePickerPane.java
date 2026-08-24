@@ -67,7 +67,7 @@ implements ICFSecJavaFXISOTZonePaneList
 	protected ICFSecJavaFXSchema javafxSchema = null;
 	protected Collection<ICFSecISOTZoneObj> javafxDataCollection = null;
 	protected ObservableList<ICFSecISOTZoneObj> observableListOfISOTZone = null;
-	protected TableColumn<ICFSecISOTZoneObj, Short> tableColumnISOTZoneId = null;
+	protected TableColumn<ICFSecISOTZoneObj, $implIJavaOptAtomType$> tableColumnISOTZoneId = null;
 	protected TableColumn<ICFSecISOTZoneObj, String> tableColumnIso8601 = null;
 	protected TableColumn<ICFSecISOTZoneObj, String> tableColumnTZName = null;
 	protected TableColumn<ICFSecISOTZoneObj, Short> tableColumnTZHourOffset = null;
@@ -120,25 +120,25 @@ implements ICFSecJavaFXISOTZonePaneList
 		javafxContainer = argContainer;
 		setJavaFXDataCollection( argDataCollection );
 		dataTable = new TableView<ICFSecISOTZoneObj>();
-		tableColumnISOTZoneId = new TableColumn<ICFSecISOTZoneObj,Short>( "ISO Timezone Id" );
-		tableColumnISOTZoneId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOTZoneObj,Short>,ObservableValue<Short> >() {
-			public ObservableValue<Short> call( CellDataFeatures<ICFSecISOTZoneObj, Short> p ) {
+		tableColumnISOTZoneId = new TableColumn<ICFSecISOTZoneObj,$implIJavaOptAtomType$>( "ISO Timezone Id" );
+		tableColumnISOTZoneId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOTZoneObj,$implIJavaOptAtomType$>,ObservableValue<$implIJavaOptAtomType$> >() {
+			public ObservableValue<$implIJavaOptAtomType$> call( CellDataFeatures<ICFSecISOTZoneObj, $implIJavaOptAtomType$> p ) {
 				ICFSecISOTZoneObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					short value = obj.getRequiredISOTZoneId();
-					Short wrapped = Short.valueOf( value );
-					ReadOnlyObjectWrapper<Short> observable = new ReadOnlyObjectWrapper<Short>();
+					$implIJavaAtomType$ value = obj.getRequiredISOTZoneId();
+					$implIJavaOptAtomType$ wrapped = $implIJavaOptAtomType$.valueOf( value );
+					ReadOnlyObjectWrapper<$implIJavaOptAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaOptAtomType$>();
 					observable.setValue( wrapped );
 					return( observable );
 				}
 			}
 		});
-		tableColumnISOTZoneId.setCellFactory( new Callback<TableColumn<ICFSecISOTZoneObj,Short>,TableCell<ICFSecISOTZoneObj,Short>>() {
-			@Override public TableCell<ICFSecISOTZoneObj,Short> call(
-				TableColumn<ICFSecISOTZoneObj,Short> arg)
+		tableColumnISOTZoneId.setCellFactory( new Callback<TableColumn<ICFSecISOTZoneObj,$implIJavaOptAtomType$>,TableCell<ICFSecISOTZoneObj,$implIJavaOptAtomType$>>() {
+			@Override public TableCell<ICFSecISOTZoneObj,$implIJavaOptAtomType$> call(
+				TableColumn<ICFSecISOTZoneObj,$implIJavaOptAtomType$> arg)
 			{
 				return new CFInt16TableCell<ICFSecISOTZoneObj>();
 			}
@@ -152,8 +152,8 @@ implements ICFSecJavaFXISOTZonePaneList
 					return( null );
 				}
 				else {
-					String value = obj.getRequiredIso8601();
-					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
+					$implIJavaAtomType$ value = obj.getRequiredIso8601();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
@@ -175,8 +175,8 @@ implements ICFSecJavaFXISOTZonePaneList
 					return( null );
 				}
 				else {
-					String value = obj.getRequiredTZName();
-					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
+					$implIJavaAtomType$ value = obj.getRequiredTZName();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
@@ -198,7 +198,7 @@ implements ICFSecJavaFXISOTZonePaneList
 					return( null );
 				}
 				else {
-					short value = obj.getRequiredTZHourOffset();
+					$implIJavaAtomType$ value = obj.getRequiredTZHourOffset();
 					Short wrapped = Short.valueOf( value );
 					ReadOnlyObjectWrapper<Short> observable = new ReadOnlyObjectWrapper<Short>();
 					observable.setValue( wrapped );
@@ -222,7 +222,7 @@ implements ICFSecJavaFXISOTZonePaneList
 					return( null );
 				}
 				else {
-					short value = obj.getRequiredTZMinOffset();
+					$implIJavaAtomType$ value = obj.getRequiredTZMinOffset();
 					Short wrapped = Short.valueOf( value );
 					ReadOnlyObjectWrapper<Short> observable = new ReadOnlyObjectWrapper<Short>();
 					observable.setValue( wrapped );
@@ -246,8 +246,8 @@ implements ICFSecJavaFXISOTZonePaneList
 					return( null );
 				}
 				else {
-					String value = obj.getRequiredDescription();
-					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
+					$implIJavaAtomType$ value = obj.getRequiredDescription();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
@@ -269,7 +269,7 @@ implements ICFSecJavaFXISOTZonePaneList
 					return( null );
 				}
 				else {
-					boolean value = obj.getRequiredVisible();
+					$implIJavaAtomType$ value = obj.getRequiredVisible();
 					Boolean wrapped = Boolean.valueOf( value );
 					ReadOnlyObjectWrapper<Boolean> observable = new ReadOnlyObjectWrapper<Boolean>();
 					observable.setValue( wrapped );

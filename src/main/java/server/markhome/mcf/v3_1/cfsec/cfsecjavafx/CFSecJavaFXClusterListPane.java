@@ -74,7 +74,7 @@ implements ICFSecJavaFXClusterPaneList
 	protected CFButton buttonViewSelected = null;
 	protected CFButton buttonEditSelected = null;
 	protected TableView<ICFSecClusterObj> dataTable = null;
-	protected TableColumn<ICFSecClusterObj, ICFLibKeyHash256> tableColumnId = null;
+	protected TableColumn<ICFSecClusterObj, $implIJavaOptAtomType$> tableColumnId = null;
 	protected TableColumn<ICFSecClusterObj, String> tableColumnFullDomName = null;
 	protected TableColumn<ICFSecClusterObj, String> tableColumnDescription = null;
 
@@ -165,24 +165,24 @@ implements ICFSecJavaFXClusterPaneList
 		javafxSortByChain = sortByChain;
 		pageCallback = argPageCallback;
 		dataTable = new TableView<ICFSecClusterObj>();
-		tableColumnId = new TableColumn<ICFSecClusterObj,ICFLibKeyHash256>( "Id" );
-		tableColumnId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecClusterObj,ICFLibKeyHash256>,ObservableValue<ICFLibKeyHash256> >() {
-			public ObservableValue<ICFLibKeyHash256> call( CellDataFeatures<ICFSecClusterObj, ICFLibKeyHash256> p ) {
+		tableColumnId = new TableColumn<ICFSecClusterObj,$implIJavaOptAtomType$>( "Id" );
+		tableColumnId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecClusterObj,$implIJavaOptAtomType$>,ObservableValue<$implIJavaOptAtomType$> >() {
+			public ObservableValue<$implIJavaOptAtomType$> call( CellDataFeatures<ICFSecClusterObj, $implIJavaOptAtomType$> p ) {
 				ICFSecClusterObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					ICFLibKeyHash256 value = obj.getRequiredId();
-					ReadOnlyObjectWrapper<ICFLibKeyHash256> observable = new ReadOnlyObjectWrapper<ICFLibKeyHash256>();
+					$implIJavaAtomType$ value = obj.getRequiredId();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnId.setCellFactory( new Callback<TableColumn<ICFSecClusterObj,ICFLibKeyHash256>,TableCell<ICFSecClusterObj,ICFLibKeyHash256>>() {
-			@Override public TableCell<ICFSecClusterObj,ICFLibKeyHash256> call(
-				TableColumn<ICFSecClusterObj,ICFLibKeyHash256> arg)
+		tableColumnId.setCellFactory( new Callback<TableColumn<ICFSecClusterObj,$implIJavaOptAtomType$>,TableCell<ICFSecClusterObj,$implIJavaOptAtomType$>>() {
+			@Override public TableCell<ICFSecClusterObj,$implIJavaOptAtomType$> call(
+				TableColumn<ICFSecClusterObj,$implIJavaOptAtomType$> arg)
 			{
 				return new CFDbKeyHash256TableCell<ICFSecClusterObj>();
 			}
@@ -196,8 +196,8 @@ implements ICFSecJavaFXClusterPaneList
 					return( null );
 				}
 				else {
-					String value = obj.getRequiredFullDomName();
-					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
+					$implIJavaAtomType$ value = obj.getRequiredFullDomName();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
@@ -219,8 +219,8 @@ implements ICFSecJavaFXClusterPaneList
 					return( null );
 				}
 				else {
-					String value = obj.getRequiredDescription();
-					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
+					$implIJavaAtomType$ value = obj.getRequiredDescription();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}

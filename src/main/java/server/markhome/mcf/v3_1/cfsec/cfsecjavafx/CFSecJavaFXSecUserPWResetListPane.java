@@ -75,7 +75,7 @@ implements ICFSecJavaFXSecUserPWResetPaneList
 	protected CFButton buttonEditSelected = null;
 	protected CFButton buttonDeleteSelected = null;
 	protected TableView<ICFSecSecUserPWResetObj> dataTable = null;
-	protected TableColumn<ICFSecSecUserPWResetObj, String> tableColumnSentToEMailAddr = null;
+	protected TableColumn<ICFSecSecUserPWResetObj, $implIJavaOptAtomType$> tableColumnSentToEMailAddr = null;
 	protected TableColumn<ICFSecSecUserPWResetObj, ICFLibUuid6> tableColumnPasswordResetUuid6 = null;
 	protected TableColumn<ICFSecSecUserPWResetObj, Boolean> tableColumnNewAccount = null;
 
@@ -166,24 +166,24 @@ implements ICFSecJavaFXSecUserPWResetPaneList
 		javafxSortByChain = sortByChain;
 		pageCallback = argPageCallback;
 		dataTable = new TableView<ICFSecSecUserPWResetObj>();
-		tableColumnSentToEMailAddr = new TableColumn<ICFSecSecUserPWResetObj,String>( "Sent To EMail Address" );
-		tableColumnSentToEMailAddr.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserPWResetObj,String>,ObservableValue<String> >() {
-			public ObservableValue<String> call( CellDataFeatures<ICFSecSecUserPWResetObj, String> p ) {
+		tableColumnSentToEMailAddr = new TableColumn<ICFSecSecUserPWResetObj,$implIJavaOptAtomType$>( "Sent To EMail Address" );
+		tableColumnSentToEMailAddr.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserPWResetObj,$implIJavaOptAtomType$>,ObservableValue<$implIJavaOptAtomType$> >() {
+			public ObservableValue<$implIJavaOptAtomType$> call( CellDataFeatures<ICFSecSecUserPWResetObj, $implIJavaOptAtomType$> p ) {
 				ICFSecSecUserPWResetObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					String value = obj.getRequiredSentToEMailAddr();
-					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
+					$implIJavaAtomType$ value = obj.getRequiredSentToEMailAddr();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnSentToEMailAddr.setCellFactory( new Callback<TableColumn<ICFSecSecUserPWResetObj,String>,TableCell<ICFSecSecUserPWResetObj,String>>() {
-			@Override public TableCell<ICFSecSecUserPWResetObj,String> call(
-				TableColumn<ICFSecSecUserPWResetObj,String> arg)
+		tableColumnSentToEMailAddr.setCellFactory( new Callback<TableColumn<ICFSecSecUserPWResetObj,$implIJavaOptAtomType$>,TableCell<ICFSecSecUserPWResetObj,$implIJavaOptAtomType$>>() {
+			@Override public TableCell<ICFSecSecUserPWResetObj,$implIJavaOptAtomType$> call(
+				TableColumn<ICFSecSecUserPWResetObj,$implIJavaOptAtomType$> arg)
 			{
 				return new CFStringTableCell<ICFSecSecUserPWResetObj>();
 			}
@@ -197,8 +197,8 @@ implements ICFSecJavaFXSecUserPWResetPaneList
 					return( null );
 				}
 				else {
-					ICFLibUuid6 value = obj.getRequiredPasswordResetUuid6();
-					ReadOnlyObjectWrapper<ICFLibUuid6> observable = new ReadOnlyObjectWrapper<ICFLibUuid6>();
+					$implIJavaAtomType$ value = obj.getRequiredPasswordResetUuid6();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
@@ -220,7 +220,7 @@ implements ICFSecJavaFXSecUserPWResetPaneList
 					return( null );
 				}
 				else {
-					boolean value = obj.getRequiredNewAccount();
+					$implIJavaAtomType$ value = obj.getRequiredNewAccount();
 					Boolean wrapped = Boolean.valueOf( value );
 					ReadOnlyObjectWrapper<Boolean> observable = new ReadOnlyObjectWrapper<Boolean>();
 					observable.setValue( wrapped );

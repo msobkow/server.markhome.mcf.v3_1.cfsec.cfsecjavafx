@@ -45,6 +45,6 @@ import server.markhome.mcf.v3_1.cfsec.cfsecobj.*;
  */
 public interface ICFSecJavaFXSecTentRoleMembPageCallback
 {
-	public List<ICFSecSecTentRoleMembObj> pageData( ICFLibKeyHash256 priorSecTentRoleId,
-		String priorLoginId );
+	public List<ICFSecSecTentRoleMembObj> pageData( $implIJavaOptAtomType$ priorSecTentRoleId,
+		$implIJavaOptAtomType$ priorLoginId );
 }

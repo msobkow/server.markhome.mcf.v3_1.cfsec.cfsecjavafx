@@ -75,7 +75,7 @@ implements ICFSecJavaFXSecUserPWHistoryPaneList
 	protected CFButton buttonEditSelected = null;
 	protected CFButton buttonDeleteSelected = null;
 	protected TableView<ICFSecSecUserPWHistoryObj> dataTable = null;
-	protected TableColumn<ICFSecSecUserPWHistoryObj, ICFLibKeyHash256> tableColumnSecUserId = null;
+	protected TableColumn<ICFSecSecUserPWHistoryObj, $implIJavaOptAtomType$> tableColumnSecUserId = null;
 	protected TableColumn<ICFSecSecUserPWHistoryObj, LocalDateTime> tableColumnPWSetStamp = null;
 	protected TableColumn<ICFSecSecUserPWHistoryObj, LocalDateTime> tableColumnPWReplacedStamp = null;
 	protected TableColumn<ICFSecSecUserPWHistoryObj, String> tableColumnPasswordHash = null;
@@ -167,24 +167,24 @@ implements ICFSecJavaFXSecUserPWHistoryPaneList
 		javafxSortByChain = sortByChain;
 		pageCallback = argPageCallback;
 		dataTable = new TableView<ICFSecSecUserPWHistoryObj>();
-		tableColumnSecUserId = new TableColumn<ICFSecSecUserPWHistoryObj,ICFLibKeyHash256>( "Security User Id" );
-		tableColumnSecUserId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserPWHistoryObj,ICFLibKeyHash256>,ObservableValue<ICFLibKeyHash256> >() {
-			public ObservableValue<ICFLibKeyHash256> call( CellDataFeatures<ICFSecSecUserPWHistoryObj, ICFLibKeyHash256> p ) {
+		tableColumnSecUserId = new TableColumn<ICFSecSecUserPWHistoryObj,$implIJavaOptAtomType$>( "Security User Id" );
+		tableColumnSecUserId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserPWHistoryObj,$implIJavaOptAtomType$>,ObservableValue<$implIJavaOptAtomType$> >() {
+			public ObservableValue<$implIJavaOptAtomType$> call( CellDataFeatures<ICFSecSecUserPWHistoryObj, $implIJavaOptAtomType$> p ) {
 				ICFSecSecUserPWHistoryObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					ICFLibKeyHash256 value = obj.getRequiredSecUserId();
-					ReadOnlyObjectWrapper<ICFLibKeyHash256> observable = new ReadOnlyObjectWrapper<ICFLibKeyHash256>();
+					$implIJavaAtomType$ value = obj.getRequiredSecUserId();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnSecUserId.setCellFactory( new Callback<TableColumn<ICFSecSecUserPWHistoryObj,ICFLibKeyHash256>,TableCell<ICFSecSecUserPWHistoryObj,ICFLibKeyHash256>>() {
-			@Override public TableCell<ICFSecSecUserPWHistoryObj,ICFLibKeyHash256> call(
-				TableColumn<ICFSecSecUserPWHistoryObj,ICFLibKeyHash256> arg)
+		tableColumnSecUserId.setCellFactory( new Callback<TableColumn<ICFSecSecUserPWHistoryObj,$implIJavaOptAtomType$>,TableCell<ICFSecSecUserPWHistoryObj,$implIJavaOptAtomType$>>() {
+			@Override public TableCell<ICFSecSecUserPWHistoryObj,$implIJavaOptAtomType$> call(
+				TableColumn<ICFSecSecUserPWHistoryObj,$implIJavaOptAtomType$> arg)
 			{
 				return new CFDbKeyHash256TableCell<ICFSecSecUserPWHistoryObj>();
 			}
@@ -198,8 +198,8 @@ implements ICFSecJavaFXSecUserPWHistoryPaneList
 					return( null );
 				}
 				else {
-					LocalDateTime value = obj.getRequiredPWSetStamp();
-					ReadOnlyObjectWrapper<LocalDateTime> observable = new ReadOnlyObjectWrapper<LocalDateTime>();
+					$implIJavaAtomType$ value = obj.getRequiredPWSetStamp();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
@@ -221,8 +221,8 @@ implements ICFSecJavaFXSecUserPWHistoryPaneList
 					return( null );
 				}
 				else {
-					LocalDateTime value = obj.getRequiredPWReplacedStamp();
-					ReadOnlyObjectWrapper<LocalDateTime> observable = new ReadOnlyObjectWrapper<LocalDateTime>();
+					$implIJavaAtomType$ value = obj.getRequiredPWReplacedStamp();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
@@ -244,8 +244,8 @@ implements ICFSecJavaFXSecUserPWHistoryPaneList
 					return( null );
 				}
 				else {
-					String value = obj.getRequiredPasswordHash();
-					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
+					$implIJavaAtomType$ value = obj.getRequiredPasswordHash();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}

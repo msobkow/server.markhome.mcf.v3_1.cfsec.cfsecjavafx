@@ -75,7 +75,7 @@ implements ICFSecJavaFXSecSessionPaneList
 	protected CFButton buttonEditSelected = null;
 	protected CFButton buttonDeleteSelected = null;
 	protected TableView<ICFSecSecSessionObj> dataTable = null;
-	protected TableColumn<ICFSecSecSessionObj, ICFLibKeyHash256> tableColumnSecSessionId = null;
+	protected TableColumn<ICFSecSecSessionObj, $implIJavaOptAtomType$> tableColumnSecSessionId = null;
 	protected TableColumn<ICFSecSecSessionObj, LocalDateTime> tableColumnStart = null;
 	protected TableColumn<ICFSecSecSessionObj, LocalDateTime> tableColumnFinish = null;
 	protected TableColumn<ICFSecSecSessionObj, ICFSecSecUserObj> tableColumnParentSecProxy = null;
@@ -167,24 +167,24 @@ implements ICFSecJavaFXSecSessionPaneList
 		javafxSortByChain = sortByChain;
 		pageCallback = argPageCallback;
 		dataTable = new TableView<ICFSecSecSessionObj>();
-		tableColumnSecSessionId = new TableColumn<ICFSecSecSessionObj,ICFLibKeyHash256>( "Security Session Id" );
-		tableColumnSecSessionId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecSessionObj,ICFLibKeyHash256>,ObservableValue<ICFLibKeyHash256> >() {
-			public ObservableValue<ICFLibKeyHash256> call( CellDataFeatures<ICFSecSecSessionObj, ICFLibKeyHash256> p ) {
+		tableColumnSecSessionId = new TableColumn<ICFSecSecSessionObj,$implIJavaOptAtomType$>( "Security Session Id" );
+		tableColumnSecSessionId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecSessionObj,$implIJavaOptAtomType$>,ObservableValue<$implIJavaOptAtomType$> >() {
+			public ObservableValue<$implIJavaOptAtomType$> call( CellDataFeatures<ICFSecSecSessionObj, $implIJavaOptAtomType$> p ) {
 				ICFSecSecSessionObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					ICFLibKeyHash256 value = obj.getRequiredSecSessionId();
-					ReadOnlyObjectWrapper<ICFLibKeyHash256> observable = new ReadOnlyObjectWrapper<ICFLibKeyHash256>();
+					$implIJavaAtomType$ value = obj.getRequiredSecSessionId();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnSecSessionId.setCellFactory( new Callback<TableColumn<ICFSecSecSessionObj,ICFLibKeyHash256>,TableCell<ICFSecSecSessionObj,ICFLibKeyHash256>>() {
-			@Override public TableCell<ICFSecSecSessionObj,ICFLibKeyHash256> call(
-				TableColumn<ICFSecSecSessionObj,ICFLibKeyHash256> arg)
+		tableColumnSecSessionId.setCellFactory( new Callback<TableColumn<ICFSecSecSessionObj,$implIJavaOptAtomType$>,TableCell<ICFSecSecSessionObj,$implIJavaOptAtomType$>>() {
+			@Override public TableCell<ICFSecSecSessionObj,$implIJavaOptAtomType$> call(
+				TableColumn<ICFSecSecSessionObj,$implIJavaOptAtomType$> arg)
 			{
 				return new CFDbKeyHash256TableCell<ICFSecSecSessionObj>();
 			}
@@ -198,8 +198,8 @@ implements ICFSecJavaFXSecSessionPaneList
 					return( null );
 				}
 				else {
-					LocalDateTime value = obj.getRequiredStart();
-					ReadOnlyObjectWrapper<LocalDateTime> observable = new ReadOnlyObjectWrapper<LocalDateTime>();
+					$implIJavaAtomType$ value = obj.getRequiredStart();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
@@ -221,8 +221,8 @@ implements ICFSecJavaFXSecSessionPaneList
 					return( null );
 				}
 				else {
-					LocalDateTime value = obj.getOptionalFinish();
-					ReadOnlyObjectWrapper<LocalDateTime> observable = new ReadOnlyObjectWrapper<LocalDateTime>();
+					$implIJavaAtomType$ value = obj.getOptionalFinish();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}

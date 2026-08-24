@@ -67,8 +67,8 @@ implements ICFSecJavaFXISOCcyPaneList
 	protected ICFSecJavaFXSchema javafxSchema = null;
 	protected Collection<ICFSecISOCcyObj> javafxDataCollection = null;
 	protected ObservableList<ICFSecISOCcyObj> observableListOfISOCcy = null;
-	protected TableColumn<ICFSecISOCcyObj, Short> tableColumnISOCcyId = null;
-	protected TableColumn<ICFSecISOCcyObj, String> tableColumnISOCode = null;
+	protected TableColumn<ICFSecISOCcyObj, $implIJavaOptAtomType$> tableColumnISOCcyId = null;
+	protected TableColumn<ICFSecISOCcyObj, $implIJavaOptAtomType$> tableColumnISOCode = null;
 	protected TableColumn<ICFSecISOCcyObj, String> tableColumnName = null;
 	protected TableColumn<ICFSecISOCcyObj, String> tableColumnUnitSymbol = null;
 	protected TableColumn<ICFSecISOCcyObj, Short> tableColumnPrecis = null;
@@ -118,48 +118,48 @@ implements ICFSecJavaFXISOCcyPaneList
 		javafxContainer = argContainer;
 		setJavaFXDataCollection( argDataCollection );
 		dataTable = new TableView<ICFSecISOCcyObj>();
-		tableColumnISOCcyId = new TableColumn<ICFSecISOCcyObj,Short>( "ISOCcyId" );
-		tableColumnISOCcyId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOCcyObj,Short>,ObservableValue<Short> >() {
-			public ObservableValue<Short> call( CellDataFeatures<ICFSecISOCcyObj, Short> p ) {
+		tableColumnISOCcyId = new TableColumn<ICFSecISOCcyObj,$implIJavaOptAtomType$>( "ISOCcyId" );
+		tableColumnISOCcyId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOCcyObj,$implIJavaOptAtomType$>,ObservableValue<$implIJavaOptAtomType$> >() {
+			public ObservableValue<$implIJavaOptAtomType$> call( CellDataFeatures<ICFSecISOCcyObj, $implIJavaOptAtomType$> p ) {
 				ICFSecISOCcyObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					short value = obj.getRequiredISOCcyId();
-					Short wrapped = Short.valueOf( value );
-					ReadOnlyObjectWrapper<Short> observable = new ReadOnlyObjectWrapper<Short>();
+					$implIJavaAtomType$ value = obj.getRequiredISOCcyId();
+					$implIJavaOptAtomType$ wrapped = $implIJavaOptAtomType$.valueOf( value );
+					ReadOnlyObjectWrapper<$implIJavaOptAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaOptAtomType$>();
 					observable.setValue( wrapped );
 					return( observable );
 				}
 			}
 		});
-		tableColumnISOCcyId.setCellFactory( new Callback<TableColumn<ICFSecISOCcyObj,Short>,TableCell<ICFSecISOCcyObj,Short>>() {
-			@Override public TableCell<ICFSecISOCcyObj,Short> call(
-				TableColumn<ICFSecISOCcyObj,Short> arg)
+		tableColumnISOCcyId.setCellFactory( new Callback<TableColumn<ICFSecISOCcyObj,$implIJavaOptAtomType$>,TableCell<ICFSecISOCcyObj,$implIJavaOptAtomType$>>() {
+			@Override public TableCell<ICFSecISOCcyObj,$implIJavaOptAtomType$> call(
+				TableColumn<ICFSecISOCcyObj,$implIJavaOptAtomType$> arg)
 			{
 				return new CFInt16TableCell<ICFSecISOCcyObj>();
 			}
 		});
 		dataTable.getColumns().add( tableColumnISOCcyId );
-		tableColumnISOCode = new TableColumn<ICFSecISOCcyObj,String>( "ISOCode" );
-		tableColumnISOCode.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOCcyObj,String>,ObservableValue<String> >() {
-			public ObservableValue<String> call( CellDataFeatures<ICFSecISOCcyObj, String> p ) {
+		tableColumnISOCode = new TableColumn<ICFSecISOCcyObj,$implIJavaOptAtomType$>( "ISOCode" );
+		tableColumnISOCode.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOCcyObj,$implIJavaOptAtomType$>,ObservableValue<$implIJavaOptAtomType$> >() {
+			public ObservableValue<$implIJavaOptAtomType$> call( CellDataFeatures<ICFSecISOCcyObj, $implIJavaOptAtomType$> p ) {
 				ICFSecISOCcyObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					String value = obj.getRequiredISOCode();
-					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
+					$implIJavaAtomType$ value = obj.getRequiredISOCode();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnISOCode.setCellFactory( new Callback<TableColumn<ICFSecISOCcyObj,String>,TableCell<ICFSecISOCcyObj,String>>() {
-			@Override public TableCell<ICFSecISOCcyObj,String> call(
-				TableColumn<ICFSecISOCcyObj,String> arg)
+		tableColumnISOCode.setCellFactory( new Callback<TableColumn<ICFSecISOCcyObj,$implIJavaOptAtomType$>,TableCell<ICFSecISOCcyObj,$implIJavaOptAtomType$>>() {
+			@Override public TableCell<ICFSecISOCcyObj,$implIJavaOptAtomType$> call(
+				TableColumn<ICFSecISOCcyObj,$implIJavaOptAtomType$> arg)
 			{
 				return new CFStringTableCell<ICFSecISOCcyObj>();
 			}
@@ -173,8 +173,8 @@ implements ICFSecJavaFXISOCcyPaneList
 					return( null );
 				}
 				else {
-					String value = obj.getRequiredName();
-					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
+					$implIJavaAtomType$ value = obj.getRequiredName();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
@@ -196,8 +196,8 @@ implements ICFSecJavaFXISOCcyPaneList
 					return( null );
 				}
 				else {
-					String value = obj.getOptionalUnitSymbol();
-					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
+					$implIJavaAtomType$ value = obj.getOptionalUnitSymbol();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
@@ -219,7 +219,7 @@ implements ICFSecJavaFXISOCcyPaneList
 					return( null );
 				}
 				else {
-					short value = obj.getRequiredPrecis();
+					$implIJavaAtomType$ value = obj.getRequiredPrecis();
 					Short wrapped = Short.valueOf( value );
 					ReadOnlyObjectWrapper<Short> observable = new ReadOnlyObjectWrapper<Short>();
 					observable.setValue( wrapped );

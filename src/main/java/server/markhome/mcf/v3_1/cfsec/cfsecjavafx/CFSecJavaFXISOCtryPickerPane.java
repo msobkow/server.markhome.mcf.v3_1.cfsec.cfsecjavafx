@@ -67,8 +67,8 @@ implements ICFSecJavaFXISOCtryPaneList
 	protected ICFSecJavaFXSchema javafxSchema = null;
 	protected Collection<ICFSecISOCtryObj> javafxDataCollection = null;
 	protected ObservableList<ICFSecISOCtryObj> observableListOfISOCtry = null;
-	protected TableColumn<ICFSecISOCtryObj, Short> tableColumnISOCtryId = null;
-	protected TableColumn<ICFSecISOCtryObj, String> tableColumnISOCode = null;
+	protected TableColumn<ICFSecISOCtryObj, $implIJavaOptAtomType$> tableColumnISOCtryId = null;
+	protected TableColumn<ICFSecISOCtryObj, $implIJavaOptAtomType$> tableColumnISOCode = null;
 	protected TableColumn<ICFSecISOCtryObj, String> tableColumnName = null;
 	protected TableView<ICFSecISOCtryObj> dataTable = null;
 	protected CFHBox hboxMenu = null;
@@ -116,48 +116,48 @@ implements ICFSecJavaFXISOCtryPaneList
 		javafxContainer = argContainer;
 		setJavaFXDataCollection( argDataCollection );
 		dataTable = new TableView<ICFSecISOCtryObj>();
-		tableColumnISOCtryId = new TableColumn<ICFSecISOCtryObj,Short>( "ISOCtryId" );
-		tableColumnISOCtryId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOCtryObj,Short>,ObservableValue<Short> >() {
-			public ObservableValue<Short> call( CellDataFeatures<ICFSecISOCtryObj, Short> p ) {
+		tableColumnISOCtryId = new TableColumn<ICFSecISOCtryObj,$implIJavaOptAtomType$>( "ISOCtryId" );
+		tableColumnISOCtryId.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOCtryObj,$implIJavaOptAtomType$>,ObservableValue<$implIJavaOptAtomType$> >() {
+			public ObservableValue<$implIJavaOptAtomType$> call( CellDataFeatures<ICFSecISOCtryObj, $implIJavaOptAtomType$> p ) {
 				ICFSecISOCtryObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					short value = obj.getRequiredISOCtryId();
-					Short wrapped = Short.valueOf( value );
-					ReadOnlyObjectWrapper<Short> observable = new ReadOnlyObjectWrapper<Short>();
+					$implIJavaAtomType$ value = obj.getRequiredISOCtryId();
+					$implIJavaOptAtomType$ wrapped = $implIJavaOptAtomType$.valueOf( value );
+					ReadOnlyObjectWrapper<$implIJavaOptAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaOptAtomType$>();
 					observable.setValue( wrapped );
 					return( observable );
 				}
 			}
 		});
-		tableColumnISOCtryId.setCellFactory( new Callback<TableColumn<ICFSecISOCtryObj,Short>,TableCell<ICFSecISOCtryObj,Short>>() {
-			@Override public TableCell<ICFSecISOCtryObj,Short> call(
-				TableColumn<ICFSecISOCtryObj,Short> arg)
+		tableColumnISOCtryId.setCellFactory( new Callback<TableColumn<ICFSecISOCtryObj,$implIJavaOptAtomType$>,TableCell<ICFSecISOCtryObj,$implIJavaOptAtomType$>>() {
+			@Override public TableCell<ICFSecISOCtryObj,$implIJavaOptAtomType$> call(
+				TableColumn<ICFSecISOCtryObj,$implIJavaOptAtomType$> arg)
 			{
 				return new CFInt16TableCell<ICFSecISOCtryObj>();
 			}
 		});
 		dataTable.getColumns().add( tableColumnISOCtryId );
-		tableColumnISOCode = new TableColumn<ICFSecISOCtryObj,String>( "ISOCode" );
-		tableColumnISOCode.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOCtryObj,String>,ObservableValue<String> >() {
-			public ObservableValue<String> call( CellDataFeatures<ICFSecISOCtryObj, String> p ) {
+		tableColumnISOCode = new TableColumn<ICFSecISOCtryObj,$implIJavaOptAtomType$>( "ISOCode" );
+		tableColumnISOCode.setCellValueFactory( new Callback<CellDataFeatures<ICFSecISOCtryObj,$implIJavaOptAtomType$>,ObservableValue<$implIJavaOptAtomType$> >() {
+			public ObservableValue<$implIJavaOptAtomType$> call( CellDataFeatures<ICFSecISOCtryObj, $implIJavaOptAtomType$> p ) {
 				ICFSecISOCtryObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					String value = obj.getRequiredISOCode();
-					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
+					$implIJavaAtomType$ value = obj.getRequiredISOCode();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnISOCode.setCellFactory( new Callback<TableColumn<ICFSecISOCtryObj,String>,TableCell<ICFSecISOCtryObj,String>>() {
-			@Override public TableCell<ICFSecISOCtryObj,String> call(
-				TableColumn<ICFSecISOCtryObj,String> arg)
+		tableColumnISOCode.setCellFactory( new Callback<TableColumn<ICFSecISOCtryObj,$implIJavaOptAtomType$>,TableCell<ICFSecISOCtryObj,$implIJavaOptAtomType$>>() {
+			@Override public TableCell<ICFSecISOCtryObj,$implIJavaOptAtomType$> call(
+				TableColumn<ICFSecISOCtryObj,$implIJavaOptAtomType$> arg)
 			{
 				return new CFStringTableCell<ICFSecISOCtryObj>();
 			}
@@ -171,8 +171,8 @@ implements ICFSecJavaFXISOCtryPaneList
 					return( null );
 				}
 				else {
-					String value = obj.getRequiredName();
-					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
+					$implIJavaAtomType$ value = obj.getRequiredName();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}

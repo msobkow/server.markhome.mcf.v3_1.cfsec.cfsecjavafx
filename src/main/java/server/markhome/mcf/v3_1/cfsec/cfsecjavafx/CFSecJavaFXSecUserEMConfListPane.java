@@ -75,7 +75,7 @@ implements ICFSecJavaFXSecUserEMConfPaneList
 	protected CFButton buttonEditSelected = null;
 	protected CFButton buttonDeleteSelected = null;
 	protected TableView<ICFSecSecUserEMConfObj> dataTable = null;
-	protected TableColumn<ICFSecSecUserEMConfObj, String> tableColumnConfirmEMailAddr = null;
+	protected TableColumn<ICFSecSecUserEMConfObj, $implIJavaOptAtomType$> tableColumnConfirmEMailAddr = null;
 	protected TableColumn<ICFSecSecUserEMConfObj, LocalDateTime> tableColumnEMailSentStamp = null;
 	protected TableColumn<ICFSecSecUserEMConfObj, ICFLibUuid6> tableColumnEMConfirmationUuid6 = null;
 	protected TableColumn<ICFSecSecUserEMConfObj, Boolean> tableColumnNewAccount = null;
@@ -167,24 +167,24 @@ implements ICFSecJavaFXSecUserEMConfPaneList
 		javafxSortByChain = sortByChain;
 		pageCallback = argPageCallback;
 		dataTable = new TableView<ICFSecSecUserEMConfObj>();
-		tableColumnConfirmEMailAddr = new TableColumn<ICFSecSecUserEMConfObj,String>( "Confirm EMail Address" );
-		tableColumnConfirmEMailAddr.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserEMConfObj,String>,ObservableValue<String> >() {
-			public ObservableValue<String> call( CellDataFeatures<ICFSecSecUserEMConfObj, String> p ) {
+		tableColumnConfirmEMailAddr = new TableColumn<ICFSecSecUserEMConfObj,$implIJavaOptAtomType$>( "Confirm EMail Address" );
+		tableColumnConfirmEMailAddr.setCellValueFactory( new Callback<CellDataFeatures<ICFSecSecUserEMConfObj,$implIJavaOptAtomType$>,ObservableValue<$implIJavaOptAtomType$> >() {
+			public ObservableValue<$implIJavaOptAtomType$> call( CellDataFeatures<ICFSecSecUserEMConfObj, $implIJavaOptAtomType$> p ) {
 				ICFSecSecUserEMConfObj obj = p.getValue();
 				if( obj == null ) {
 					return( null );
 				}
 				else {
-					String value = obj.getRequiredConfirmEMailAddr();
-					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
+					$implIJavaAtomType$ value = obj.getRequiredConfirmEMailAddr();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
 			}
 		});
-		tableColumnConfirmEMailAddr.setCellFactory( new Callback<TableColumn<ICFSecSecUserEMConfObj,String>,TableCell<ICFSecSecUserEMConfObj,String>>() {
-			@Override public TableCell<ICFSecSecUserEMConfObj,String> call(
-				TableColumn<ICFSecSecUserEMConfObj,String> arg)
+		tableColumnConfirmEMailAddr.setCellFactory( new Callback<TableColumn<ICFSecSecUserEMConfObj,$implIJavaOptAtomType$>,TableCell<ICFSecSecUserEMConfObj,$implIJavaOptAtomType$>>() {
+			@Override public TableCell<ICFSecSecUserEMConfObj,$implIJavaOptAtomType$> call(
+				TableColumn<ICFSecSecUserEMConfObj,$implIJavaOptAtomType$> arg)
 			{
 				return new CFStringTableCell<ICFSecSecUserEMConfObj>();
 			}
@@ -198,8 +198,8 @@ implements ICFSecJavaFXSecUserEMConfPaneList
 					return( null );
 				}
 				else {
-					LocalDateTime value = obj.getRequiredEMailSentStamp();
-					ReadOnlyObjectWrapper<LocalDateTime> observable = new ReadOnlyObjectWrapper<LocalDateTime>();
+					$implIJavaAtomType$ value = obj.getRequiredEMailSentStamp();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
@@ -221,8 +221,8 @@ implements ICFSecJavaFXSecUserEMConfPaneList
 					return( null );
 				}
 				else {
-					ICFLibUuid6 value = obj.getRequiredEMConfirmationUuid6();
-					ReadOnlyObjectWrapper<ICFLibUuid6> observable = new ReadOnlyObjectWrapper<ICFLibUuid6>();
+					$implIJavaAtomType$ value = obj.getRequiredEMConfirmationUuid6();
+					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
 					observable.setValue( value );
 					return( observable );
 				}
@@ -244,7 +244,7 @@ implements ICFSecJavaFXSecUserEMConfPaneList
 					return( null );
 				}
 				else {
-					boolean value = obj.getRequiredNewAccount();
+					$implIJavaAtomType$ value = obj.getRequiredNewAccount();
 					Boolean wrapped = Boolean.valueOf( value );
 					ReadOnlyObjectWrapper<Boolean> observable = new ReadOnlyObjectWrapper<Boolean>();
 					observable.setValue( wrapped );

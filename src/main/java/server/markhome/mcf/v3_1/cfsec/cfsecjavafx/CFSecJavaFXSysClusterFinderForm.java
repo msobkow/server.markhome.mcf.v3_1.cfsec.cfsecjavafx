@@ -160,7 +160,7 @@ implements ICFSecJavaFXSysClusterPaneCommon,
 					return( null );
 				}
 				else {
-					int value = obj.getRequiredSingletonId();
+					$implIJavaAtomType$ value = obj.getRequiredSingletonId();
 					Integer wrapped = Integer.valueOf( value );
 					ReadOnlyObjectWrapper<Integer> observable = new ReadOnlyObjectWrapper<Integer>();
 					observable.setValue( wrapped );
