@@ -122,7 +122,7 @@ implements ICFSecJavaFXSysClusterPaneList
 					return( null );
 				}
 				else {
-					$implIJavaAtomType$ value = obj.getRequiredSingletonId();
+					int value = obj.getRequiredSingletonId();
 					Integer wrapped = Integer.valueOf( value );
 					ReadOnlyObjectWrapper<Integer> observable = new ReadOnlyObjectWrapper<Integer>();
 					observable.setValue( wrapped );

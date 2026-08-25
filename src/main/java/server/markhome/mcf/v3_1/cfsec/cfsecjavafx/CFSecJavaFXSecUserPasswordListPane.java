@@ -170,8 +170,8 @@ implements ICFSecJavaFXSecUserPasswordPaneList
 					return( null );
 				}
 				else {
-					$implIJavaAtomType$ value = obj.getRequiredPWSetStamp();
-					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
+					LocalDateTime value = obj.getRequiredPWSetStamp();
+					ReadOnlyObjectWrapper<LocalDateTime> observable = new ReadOnlyObjectWrapper<LocalDateTime>();
 					observable.setValue( value );
 					return( observable );
 				}
@@ -193,8 +193,8 @@ implements ICFSecJavaFXSecUserPasswordPaneList
 					return( null );
 				}
 				else {
-					$implIJavaAtomType$ value = obj.getRequiredPasswordHash();
-					ReadOnlyObjectWrapper<$implIJavaAtomType$> observable = new ReadOnlyObjectWrapper<$implIJavaAtomType$>();
+					String value = obj.getRequiredPasswordHash();
+					ReadOnlyObjectWrapper<String> observable = new ReadOnlyObjectWrapper<String>();
 					observable.setValue( value );
 					return( observable );
 				}
