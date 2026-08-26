@@ -144,8 +144,8 @@ implements ICFSecJavaFXSecTentRolePaneCommon
 		public PageDataChildrenMembByRoleList() {
 		}
 
-		public List<ICFSecSecTentRoleMembObj> pageData( $implIJavaOptAtomType$ priorSecTentRoleId,
-		$implIJavaOptAtomType$ priorLoginId )
+		public List<ICFSecSecTentRoleMembObj> pageData( ICFLibKeyHash256 priorSecTentRoleId,
+		String priorLoginId )
 		{
 			List<ICFSecSecTentRoleMembObj> dataList;
 			ICFSecSecTentRoleObj focus = (ICFSecSecTentRoleObj)getJavaFXFocusAsSecTentRole();

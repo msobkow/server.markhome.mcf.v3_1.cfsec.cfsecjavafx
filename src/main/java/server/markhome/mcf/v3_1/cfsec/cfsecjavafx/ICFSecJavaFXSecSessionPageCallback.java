@@ -45,5 +45,5 @@ import server.markhome.mcf.v3_1.cfsec.cfsecobj.*;
  */
 public interface ICFSecJavaFXSecSessionPageCallback
 {
-	public List<ICFSecSecSessionObj> pageData( $implIJavaOptAtomType$ priorSecSessionId );
+	public List<ICFSecSecSessionObj> pageData( ICFLibKeyHash256 priorSecSessionId );
 }

@@ -45,5 +45,5 @@ import server.markhome.mcf.v3_1.cfsec.cfsecobj.*;
  */
 public interface ICFSecJavaFXTenantPageCallback
 {
-	public List<ICFSecTenantObj> pageData( $implIJavaOptAtomType$ priorId );
+	public List<ICFSecTenantObj> pageData( ICFLibKeyHash256 priorId );
 }

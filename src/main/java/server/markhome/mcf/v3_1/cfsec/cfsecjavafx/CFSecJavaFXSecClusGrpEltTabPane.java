@@ -144,8 +144,8 @@ implements ICFSecJavaFXSecClusGrpPaneCommon
 		public PageDataChildrenMembByGrpList() {
 		}
 
-		public List<ICFSecSecClusGrpMembObj> pageData( $implIJavaOptAtomType$ priorSecClusGrpId,
-		$implIJavaOptAtomType$ priorLoginId )
+		public List<ICFSecSecClusGrpMembObj> pageData( ICFLibKeyHash256 priorSecClusGrpId,
+		String priorLoginId )
 		{
 			List<ICFSecSecClusGrpMembObj> dataList;
 			ICFSecSecClusGrpObj focus = (ICFSecSecClusGrpObj)getJavaFXFocusAsSecClusGrp();
